@@ -1,0 +1,31 @@
+name: Comprobar y desplegar
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: despliegue
+  cancel-in-progress: false
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: npx --yes html-validate@11 "site/**/*.html"
+
+  desplegar:
+    needs: comprobar
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: produccion
+    steps:
+      - name: Avisar a Easypanel
+        env:
+          EASYPANEL_DEPLOY_URL: ${{ secrets.EASYPANEL_DEPLOY_URL }}
+        run: curl --fail --silent --show-error --max-time 30 "$EASYPANEL_DEPLOY_URL" > /dev/null
