@@ -7,19 +7,18 @@ Actualizado: 2026-11-05
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
 - 2026-11-05 · Solo español. Se programa desde cero; el esqueleto de IA solo sirve como mapa de contenidos.
-- 2026-11-05 · Alojamiento: VPS con Easypanel. Despliegue: Actions valida y llama al Trigger (ADR 0001).
+- 2026-11-05 · Alojamiento: VPS con Easypanel. Despliegue: Actions valida y llama al Deployment Trigger; Auto Deploy desactivado (ADR 0001).
 - 2026-11-05 · Datos personales al mínimo; cada funcionalidad que los trate se decide aparte. Autoevaluación sin datos de salud.
 - 2026-11-05 · Aprueba la comisión de salud. Datos del alumnado: consulta al DPD antes del pasaporte.
 - 2026-11-05 · Organización iesrioarba a nombre del IES Río Arba (GitHub Customer Agreement), con autorización escrita de la dirección. Creada desde la cuenta personal del webmaster.
 - 2026-11-05 · Organización para todos los proyectos del centro: un equipo por proyecto, permisos base «No permission», solo los propietarios crean repositorios. Sin cuentas compartidas.
-- 2026-11-05 · Un único repositorio público, iesrioarba/web-comision-salud, sin copias.
+- 2026-11-05 · Un único repositorio público, iesrioarba/web-comision-salud, sin copias. Remoto por HTTPS.
+- 2026-11-05 · main protegida: sin force push ni borrado. En la fase 6 se exigirán pull request y comprobación en verde.
 
 ## Hecho
 - Inventario de la petición de la comisión.
-- Organización iesrioarba creada; equipo comision-salud.
-
-## En curso
-- Esqueleto andante: hola mundo desplegado con validación.
+- Organización iesrioarba creada; equipo comision-salud con Write en el repositorio.
+- Esqueleto andante: hola mundo validado en Actions y desplegado automáticamente en Easypanel por Trigger.
 
 ## Pendiente en fase 0
 - OpenCode con Copilot Pro y control del gasto
@@ -33,4 +32,8 @@ Actualizado: 2026-11-05
 - Cuenta webmasteriesrioarba: sin uso. Proponer a la dirección borrarla (o protegerla si se quiere reservar el nombre)
 - De quién es la VPS y dónde está
 - Dominio definitivo
+- Panel de Easypanel accesible por HTTP (IP:3000): ponerle dominio con HTTPS
 - Quién edita los contenidos y cómo (opciones en la fase 4)
+
+## Próximo paso
+Configurar OpenCode con GitHub Copilot Pro y redactar AGENTS.md.
