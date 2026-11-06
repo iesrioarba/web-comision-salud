@@ -14,15 +14,22 @@
       "WebFetch"
     ],
     "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Edit(./.env)",
-      "Edit(./.env.*)",
-      "Bash(cat .env*)",
+      "Read(./**/.env)",
+      "Read(./**/.env.local)",
+      "Read(./**/.env.*.local)",
+      "Read(./**/.env.production)",
+      "Edit(./**/.env)",
+      "Edit(./**/.env.local)",
+      "Edit(./**/.env.*.local)",
+      "Edit(./**/.env.production)",
       "Bash(git push --force *)",
       "Bash(git push -f *)",
+      "Bash(git push * --force*)",
+      "Bash(git push * -f*)",
+      "Bash(git push * +*)",
       "Bash(git reset --hard *)",
       "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
       "mcp__*"
     ]
   }
