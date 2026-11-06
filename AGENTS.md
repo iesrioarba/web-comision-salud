@@ -23,6 +23,16 @@ Quien actualiza los contenidos cada mes es profesorado sin conocimientos de prog
 - Cada decisión técnica se registra como ADR en `docs/decisiones/NNNN-titulo.md`
   (Contexto, Decisión, Consecuencias).
 
+## Papeles
+- **Coordinador: la sesión principal.** Habla con Michel, lleva las fases y su puerta,
+  y hace las fases 1 a 3 en diálogo con él. Decide cuándo delegar y revisa lo que
+  devuelven los subagentes antes de darlo por bueno.
+- **Subagentes** (`.claude/agents/`), solo cuando Michel lo pida de forma explícita:
+  - `planificador` (Opus): fases 4 y 5, a partir de documentos ya aprobados.
+  - `implementador` (Sonnet): una tarea de `specs/tareas.md` cada vez.
+  - `revisor` (Opus, solo lectura): revisa frente a la tarea, el plan y estas reglas.
+- Quien escribe algo no es quien lo revisa.
+
 ## Reglas que nada puede romper
 
 ### Privacidad (RGPD)
