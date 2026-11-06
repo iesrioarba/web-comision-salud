@@ -1,0 +1,10 @@
+{
+  "name": "web-comision-salud",
+  "private": true,
+  "scripts": {
+    "validar": "html-validate \"site/**/*.html\""
+  },
+  "devDependencies": {
+    "html-validate": "^11.18.0"
+  }
+}
