@@ -16,6 +16,7 @@ Actualizado: 2026-11-06
 - 2026-11-05 · main protegida: sin force push ni borrado. En la fase 6 se exigirán pull request y comprobación en verde.
 - 2026-11-06 · Herramienta: Claude Code con plan Max. Opus 5.5 para especificar, planificar y revisar; Sonnet/Haiku 5.5 para implementar. Plan B: OpenCode + Copilot Pro. AGENTS.md como única fuente (ADR 0002).
 - 2026-11-06 · Código en inglés; documentación, textos de la web y commits en español.
+- 2026-11-06 · Validador de HTML: html-validate 11 como dependencia de desarrollo, versión fijada (ADR 0003).
 
 ## Hecho
 - Inventario de la petición de la comisión.
@@ -25,9 +26,10 @@ Actualizado: 2026-11-06
 - 2026-11-06 · Claude Code 2.1.319 instalado y verificado (plan Max, Opus 5.5).
 - 2026-11-06 · AGENTS.md con las reglas de la casa y permisos del proyecto en .claude/settings.json (modo manual, .env protegido, MCP bloqueados).
 - 2026-11-06 · Validación con versión fijada: package.json + package-lock.json, npm run validar en local y en Actions. Primera tarea hecha con Claude Code (Sonnet 5.5) y revisada.
+- 2026-11-06 · Subagentes planificador (Opus), implementador (Sonnet) y revisor (Opus, solo lectura) en .claude/agents/; sección «Papeles» en AGENTS.md.
+- 2026-11-06 · Primera revisión independiente hecha; hallazgos corregidos: reglas deny ampliadas, ADR 0003, aclaraciones en el ADR 0002 y correo noreply en los commits.
 
 ## Pendiente en fase 0
-- Agentes (planificador, implementador, revisor) en .claude/agents/, con su modelo y sus herramientas
 - Primeras skills del proyecto (y decidir si usamos GitHub Spec Kit o llevamos las fases a mano)
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
 
@@ -39,4 +41,4 @@ Actualizado: 2026-11-06
 - Quién edita los contenidos y cómo (opciones en la fase 4)
 
 ## Próximo paso
-Crear los agentes del proyecto en .claude/agents/: planificador (Opus), implementador (Sonnet) y revisor (Opus, solo lectura).
+Primeras skills del proyecto y decidir entre GitHub Spec Kit o llevar las fases a mano.
