@@ -17,7 +17,9 @@ pero sí incluye Claude Code y claude.ai, con límites compartidos entre ambos.
   sobre el mismo AGENTS.md y las mismas tareas. Presupuesto adicional de Copilot: 0 $.
 
 ## Consecuencias
-- Coste adicional: 0 €. El límite lo comparte todo el uso de Claude del desarrollador.
+- Coste adicional: 0 $. El límite lo comparte todo el uso de Claude del desarrollador.
 - El proyecto no depende de la herramienta: instrucciones, especificaciones y tareas son
   Markdown estándar en el repositorio.
 - Quien continúe sin plan de Claude puede seguir con OpenCode y Copilot.
+- Las suscripciones de IA son personales: quien continúe el proyecto usa su propio plan
+  de Claude o el plan B; nada del repositorio depende de una cuenta concreta.
