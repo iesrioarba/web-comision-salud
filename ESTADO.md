@@ -17,6 +17,8 @@ Actualizado: 2026-11-06
 - 2026-11-06 · Herramienta: Claude Code con plan Max. Opus 5.5 para especificar, planificar y revisar; Sonnet/Haiku 5.5 para implementar. Plan B: OpenCode + Copilot Pro. AGENTS.md como única fuente (ADR 0002).
 - 2026-11-06 · Código en inglés; documentación, textos de la web y commits en español.
 - 2026-11-06 · Validador de HTML: html-validate 11 como dependencia de desarrollo, versión fijada (ADR 0003).
+- 2026-11-07 · Desarrollo guiado por especificaciones con GitHub Spec Kit 1.3.2, adaptado: implementación con el subagente implementador, speckit-implement desactivada, trabajo por funcionalidades (ADR 0004).
+- 2026-11-07 · Herramientas y dependencias: última versión estable, notas leídas, fijada y con ADR.
 
 ## Hecho
 - Inventario de la petición de la comisión.
@@ -28,9 +30,9 @@ Actualizado: 2026-11-06
 - 2026-11-06 · Validación con versión fijada: package.json + package-lock.json, npm run validar en local y en Actions. Primera tarea hecha con Claude Code (Sonnet 5.5) y revisada.
 - 2026-11-06 · Subagentes planificador (Opus), implementador (Sonnet) y revisor (Opus, solo lectura) en .claude/agents/; sección «Papeles» en AGENTS.md.
 - 2026-11-06 · Primera revisión independiente hecha; hallazgos corregidos: reglas deny ampliadas, ADR 0003, aclaraciones en el ADR 0002 y correo noreply en los commits.
+- 2026-11-07 · Spec Kit instalado en la rama chore/spec-kit y revisado; AGENTS.md y subagentes adaptados.
 
 ## Pendiente en fase 0
-- Primeras skills del proyecto (y decidir si usamos GitHub Spec Kit o llevamos las fases a mano)
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
 
 ## Preguntas abiertas
@@ -41,4 +43,4 @@ Actualizado: 2026-11-06
 - Quién edita los contenidos y cómo (opciones en la fase 4)
 
 ## Próximo paso
-Primeras skills del proyecto y decidir entre GitHub Spec Kit o llevar las fases a mano.
+Cerrar la fase 0 y empezar la fase 1: constitución con /speckit-constitution.
