@@ -2,7 +2,7 @@
 Actualizado: 2026-11-06
 
 ## Fase actual
-1 · Principios (constitución)
+2 · Especificación · 001-reto-octubre
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -19,6 +19,7 @@ Actualizado: 2026-11-06
 - 2026-11-06 · Validador de HTML: html-validate 11 como dependencia de desarrollo, versión fijada (ADR 0003).
 - 2026-11-07 · Desarrollo guiado por especificaciones con GitHub Spec Kit 1.3.2, adaptado: implementación con el subagente implementador, speckit-implement desactivada, trabajo por funcionalidades (ADR 0004).
 - 2026-11-07 · Herramientas y dependencias: última versión estable, notas leídas, fijada y con ADR.
+- 2026-11-09 · Constitución 1.0.0 ratificada: 8 principios, reglas generales y gobierno (.specify/memory/constitution.md).
 
 ## Hecho
 - Inventario de la petición de la comisión.
@@ -32,16 +33,18 @@ Actualizado: 2026-11-06
 - 2026-11-06 · Primera revisión independiente hecha; hallazgos corregidos: reglas deny ampliadas, ADR 0003, aclaraciones en el ADR 0002 y correo noreply en los commits.
 - 2026-11-07 · Spec Kit instalado en la rama chore/spec-kit y revisado; AGENTS.md y subagentes adaptados.
 - 2026-11-08 · Fase 0 cerrada con el visto bueno de Michel.
+- 2026-11-09 · Fase 1 cerrada: constitución redactada con /speckit-constitution, revisada e integrada por PR.
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
 
 ## Preguntas abiertas
 - Cuenta webmasteriesrioarba: sin uso. Proponer a la dirección borrarla (o protegerla si se quiere reservar el nombre)
-- De quién es la VPS y dónde está
+- -VPS de Easypanel: es del centro (la compró a petición del departamento de informática; aloja todos los proyectos). Cumple el principio VIII.
+- Pendiente para la fase 4: cuenta del proveedor a nombre del centro, usuarios individuales en Easypanel (y HTTPS en el panel) y país del servidor.
 - Dominio definitivo
 - Panel de Easypanel accesible por HTTP (IP:3000): ponerle dominio con HTTPS
 - Quién edita los contenidos y cómo (opciones en la fase 4)
 
 ## Próximo paso
-Cerrar la fase 0 y empezar la fase 1: constitución con /speckit-constitution.
+Especificar la funcionalidad 001-reto-octubre con /speckit-specify.
