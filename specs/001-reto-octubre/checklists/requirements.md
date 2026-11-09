@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -31,10 +31,10 @@
 
 ## Notes
 
-- Quedan 3 marcadores [NEEDS CLARIFICATION]:
-  1. Reto motriz «Banco Chipi Chipi»: en qué consiste y dónde se hace (dato de contenido
-     pendiente de la comisión; no bloquea el plan porque FR-004 cubre el «por confirmar»).
-  2. Qué se muestra como «reto del mes» cuando el mes en curso no tiene reto publicado.
-  3. Si los retos de meses pasados siguen consultables.
-- Los marcadores 2 y 3 afectan al alcance y deben resolverse antes de `/speckit-plan`
-  (con `/speckit-clarify` o con respuesta directa de Michel).
+- No queda ningún marcador [NEEDS CLARIFICATION]. Se resolvieron con `/speckit-clarify`
+  el 2026-11-09 (ver «Clarifications» en spec.md):
+  1. Reto motriz «Banco Chipi Chipi»: queda como dato de contenido pendiente de la
+     comisión; la web lo muestra «por confirmar» (FR-004) hasta que lo dé.
+  2. Mes sin reto en curso: aviso de «próximo reto», enlace al último reto publicado y
+     calendario (FR-029).
+  3. Retos de meses pasados: siguen consultables con sus materiales (FR-028).

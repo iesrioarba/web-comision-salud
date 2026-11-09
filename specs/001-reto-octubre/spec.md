@@ -58,12 +58,23 @@ reales de octubre, pero todo lo que se describe aquí DEBE servir igual para cua
 - **Fuentes**: modelo de los Mensajes-Yo de Thomas Gordon y comunicación no violenta de
   Marshall Rosenberg.
 - **Reto motriz**: «Banco Chipi Chipi», viernes 9 de octubre de 2026 a las 11:30 (recreo).
-  - En qué consiste y lugar: [NEEDS CLARIFICATION: pendiente de la comisión: en qué consiste el reto motriz «Banco Chipi Chipi» y dónde se hace. Mientras no se sepa, la web lo muestra «por confirmar» (FR-004)]
+  - En qué consiste y lugar: dato pendiente de la comisión. Mientras no lo dé, la web lo
+    muestra «por confirmar» (FR-004).
 - **Materiales**: guía del tutor/a, ficha del alumnado, carta para las familias,
   justificante para las familias, cartel del reto motriz e infografía de los 4 pasos.
 - **Pendiente de la comisión** (contenido, no bloquea la especificación): en qué consiste
-  y dónde se hace el reto motriz, y las fechas concretas de cada semana. No se inventan:
-  se piden a la comisión.
+  y dónde se hace el reto motriz y, si se quieren mostrar, las fechas concretas de cada
+  semana. No se inventan: se piden a la comisión.
+
+## Clarifications
+
+### Session 2026-11-09
+
+- Q: Cuando termina un mes, ¿su reto, con los materiales, se puede seguir viendo en la web? → A: Sí. Cada reto publicado se puede seguir viendo con sus materiales; en el calendario, cada mes pasado lleva a su reto, y se indica con claridad que ya no es el reto en curso.
+- Q: Cuando no hay ningún reto en curso (antes de publicar el del mes, o de julio a septiembre), ¿qué ve el visitante en el lugar del «reto del mes»? → A: Un aviso de «próximo reto» con el mes y su tema (o «por anunciar»), un enlace al último reto publicado y el calendario. La comisión indica cuándo no hay reto en curso.
+- Q: El reto de tutoría se adapta por etapas (1.º y 2.º ESO, 3.º y 4.º ESO, Bachillerato y FP). ¿La web tiene que mostrar esa adaptación por separado? → A: No. Hay un solo reto de tutoría; la adaptación por etapas va dentro de la guía del tutor/a y la web solo dice que la hay.
+- Q: Además de «1.ª semana», «2.ª y 3.ª semanas» y «última semana», ¿la web tiene que mostrar las fechas concretas de cada reto? → A: La semana siempre; las fechas concretas solo si la comisión las da. Si no las da, no se muestra nada de fechas (no es un dato «por confirmar»).
+- Q: ¿Qué hacemos con el marcador del reto motriz «Banco Chipi Chipi» (en qué consiste y dónde se hace)? → A: Se quita el marcador; queda como dato de contenido pendiente de la comisión y la web lo muestra «por confirmar» (FR-004) hasta que lo dé.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -182,6 +193,9 @@ cualquier otro mes que se le pregunte.
    sin inventar un tema.
 3. **Given** el mes del reto en curso, **When** aparece en el calendario, **Then** se
    distingue de los demás de una forma que no depende solo del color, y lleva al reto.
+4. **Given** un mes ya pasado con reto publicado, **When** el visitante lo pulsa en el
+   calendario, **Then** llega a ese reto con sus materiales y ve claramente que no es el
+   reto en curso.
 
 ---
 
@@ -216,8 +230,11 @@ que sale de la web del centro y llega al Genially.
 - **Cambio de fecha o lugar del reto motriz** (lluvia, imprevistos): la comisión lo
   cambia y la web muestra solo el dato nuevo.
 - **Entre meses y fuera del curso** (julio a septiembre, o antes de publicar el reto de un
-  mes): la web no muestra un hueco; [NEEDS CLARIFICATION: ¿qué se ve como «reto del mes» cuando el mes en curso no tiene reto publicado: el último reto publicado, un aviso de «próximo reto» o solo el calendario?]
-- **Retos de meses pasados**: ver «Assumptions».
+  mes): la web no muestra un hueco ni presenta un reto pasado como si estuviera en curso;
+  muestra el aviso de «próximo reto», el enlace al último reto publicado y el calendario
+  (FR-029).
+- **Retos de meses pasados**: siguen consultables con sus materiales, marcados como
+  pasados para que nadie los confunda con el reto en curso (FR-028).
 - **Conexión lenta o móvil modesto**: el reto del mes se lee antes de que terminen de
   cargar imágenes o materiales; los materiales pesados no se descargan si la persona no
   los pide.
@@ -236,17 +253,27 @@ que sale de la web del centro y llega al Genially.
   reto, objetivo y descripción.
 - **FR-002**: La web DEBE mostrar los tres retos del mes (motriz, de tutoría y en
   familia), cada uno con su nombre, la semana o semanas en que se hace, para quién es y
-  en qué consiste.
+  en qué consiste. Si la comisión da las fechas concretas de esas semanas, la web DEBE
+  mostrarlas junto a la semana; si no las da, la web DEBE mostrar solo la semana.
 - **FR-003**: Del reto motriz, la web DEBE mostrar además la fecha, la hora y el lugar, e
   indicar que se hace en el recreo y que lo ha diseñado alumnado de 2.º de Bachillerato,
   sin nombres de alumnos o alumnas.
 - **FR-004**: Cuando un dato aún no se conoce, la web DEBE indicarlo como «por confirmar»
-  y NO DEBE mostrar un hueco vacío ni un dato inventado.
+  y NO DEBE mostrar un hueco vacío ni un dato inventado. Se exceptúan las fechas concretas
+  de las semanas de cada reto, que son opcionales (FR-002): si faltan, la web NO DEBE mostrar fechas ni
+  «por confirmar».
 - **FR-005**: La estructura del reto (tema, objetivo, tres retos con su semana, datos del
   motriz y materiales) DEBE ser la misma para los 9 meses del curso; el reto de octubre
   es el primer caso, no un caso especial.
 - **FR-006**: Para octubre, la web DEBE mostrar los 4 pasos de los Mensajes-Yo en orden y
   con el texto exacto de la comisión.
+- **FR-029**: Cuando la comisión indique que no hay reto en curso, la web DEBE mostrar en
+  su lugar un aviso de «próximo reto» con el mes y su tema (o «por anunciar»), un enlace al
+  último reto publicado, si lo hay, y el calendario. La comisión DEBE poder indicarlo sin
+  tocar código.
+- **FR-030**: Cada mes tiene un solo reto de tutoría para todas las etapas. Si se adapta
+  por etapas, la web DEBE decirlo en su descripción y remitir a la guía del tutor/a, que
+  recoge la adaptación. La web NO DEBE mostrar apartados ni materiales distintos por etapa.
 
 **Materiales**
 
@@ -282,7 +309,10 @@ que sale de la web del centro y llega al Genially.
 - **FR-018**: La web DEBE mostrar el calendario del curso con los 9 meses de octubre a
   junio en orden, cada uno con su tema o «por anunciar».
 - **FR-019**: El calendario DEBE distinguir el mes en curso sin depender solo del color, y
-  enlazar con su reto.
+  enlazar con su reto. Cada mes pasado con reto publicado DEBE enlazar también con su reto.
+- **FR-028**: Los retos de meses pasados DEBEN seguir consultables en la web con todos sus
+  materiales, y DEBEN indicar de forma clara, sin depender solo del color, que no son el
+  reto en curso.
 - **FR-020**: La comisión DEBE poder añadir o cambiar el tema de cada mes del calendario
   sin tocar código.
 
@@ -315,8 +345,8 @@ que sale de la web del centro y llega al Genially.
 - **Reto del mes**: lo que la comisión propone para un mes: nombre (p. ej. «Resolver, no
   ganar»), objetivo, descripción, fuentes y sus tres retos.
 - **Reto**: uno de los tres del mes. Tipo (motriz, tutoría o familia), nombre, semana o
-  semanas, para quién es, en qué consiste y sus materiales. El reto motriz tiene además
-  fecha, hora y lugar.
+  semanas, fechas concretas de esas semanas (opcionales), para quién es, en qué consiste y
+  sus materiales. El reto motriz tiene además fecha, hora y lugar.
 - **Material**: un documento descargable de un reto. Nombre, para quién es, formato,
   tamaño y, si es una infografía, su versión en texto.
 - **Enlace externo**: el Genially «El Arbalquimista de la salud», con su nombre y destino.
@@ -345,7 +375,7 @@ Ninguna entidad contiene datos personales.
   conexión) las fija el presupuesto de rendimiento del plan técnico (principio VI).
 - **SC-007**: El 100 % de las infografías publicadas tiene su versión en texto.
 - **SC-008**: Ningún dato desconocido aparece vacío o inventado: el 100 % se muestra como
-  «por confirmar» o «por anunciar».
+  «por confirmar» o «por anunciar» (salvo las fechas opcionales de las semanas, FR-002).
 
 ## Assumptions
 
@@ -354,15 +384,16 @@ Ninguna entidad contiene datos personales.
 - La comisión da todos los textos, fechas, lugares, fuentes y materiales; esta
   especificación no inventa ninguno. Los materiales de octubre ya existen o los preparará
   la comisión.
-- «Reto del mes en curso» es el que la comisión marca como actual; no hace falta que la
-  web adivine el mes por la fecha.
-- Retos de meses pasados: [NEEDS CLARIFICATION: ¿los retos de meses ya pasados siguen consultables en la web (con sus materiales), o solo se muestra el reto en curso y el calendario?]
+- «Reto del mes en curso» es el que la comisión marca como actual, o ninguno si la
+  comisión indica que no hay reto en curso; no hace falta que la web adivine el mes por la
+  fecha.
 - El reto de octubre se usa como ejemplo real aunque la web se estrene en enero de 2027;
   octubre ya habrá pasado cuando se publique.
 - Los 9 temas del curso 2026-2027 están decididos (ver «Contexto»). El «por anunciar» se
   mantiene como caso general, para cursos futuros o si la comisión cambia un tema.
-- Las fechas concretas de la 2.ª, 3.ª y última semanas de cada mes las da la comisión;
-  «semana» se refiere a semanas lectivas del mes.
+- Las fechas concretas de las semanas de cada reto las da la comisión si quiere; son
+  opcionales y su ausencia no se marca como «por confirmar». «Semana» se refiere a semanas
+  lectivas del mes.
 - Las personas de la comisión que publican tienen acceso individual (sin cuentas
   compartidas), según la constitución (principio VIII).
 - Ese acceso implica unas cuentas con datos mínimos del profesorado que publica. Es una
