@@ -27,6 +27,10 @@ Quien actualiza los contenidos cada mes es profesorado sin conocimientos de prog
 | 8 Despliegue y traspaso | A mano | Producción y guía de mantenimiento |
 
 - Las fases 2 a 7 se repiten por funcionalidad (`001-…`, `002-…`). La primera es el reto de octubre.
+- La funcionalidad activa de Spec Kit está en `.specify/feature.json`, que es local
+  (Spec Kit lo excluye de git). `/speckit-specify` lo fija al crear una funcionalidad.
+  En un clon nuevo, o para cambiar de funcionalidad, se edita ese fichero o se define
+  la variable `SPECIFY_FEATURE_DIRECTORY=specs/NNN-nombre`.
 
 - No se avanza de fase sin el visto bueno explícito de Michel.
 - En las fases 1 a 3 no se elige tecnología ni se escribe código.

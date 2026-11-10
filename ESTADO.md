@@ -1,8 +1,8 @@
 # ESTADO · Web de la Comisión de Salud (IES Río Arba)
-Actualizado: 2026-11-09
+Actualizado: 2026-11-10
 
 ## Fase actual
-3 · Aclaraciones · 001-reto-octubre (hechas; falta el visto bueno de Michel para pasar a la fase 4)
+4 · Plan técnico · 001-reto-octubre
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -37,6 +37,7 @@ Actualizado: 2026-11-09
 - 2026-11-09 · Fase 1 cerrada: constitución redactada con /speckit-constitution, revisada e integrada por PR.
 - 2026-11-09 · Fase 2: especificación de 001-reto-octubre (specs/001-reto-octubre/spec.md).
 - 2026-11-09 · Fase 3: /speckit-clarify con 5 preguntas; sin marcadores pendientes.
+- 2026-11-09 · Fase 3 cerrada: especificación aclarada aprobada por Michel e integrada en main (PR #3).
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
@@ -47,8 +48,8 @@ Actualizado: 2026-11-09
 - Pendiente para la fase 4: cuenta del proveedor a nombre del centro, usuarios individuales en Easypanel (y HTTPS en el panel) y país del servidor.
 - Dominio definitivo
 - Panel de Easypanel accesible por HTTP (IP:3000): ponerle dominio con HTTPS
-- Quién edita los contenidos y cómo (opciones en la fase 4)
+- Cómo publica la comisión: opciones A (web estática + Pages CMS en el VPS del centro, recomendada), B (Payload CMS) y C (WordPress); panel propio desaconsejado (plazo, seguridad y continuidad). Pendiente de la reunión con la comisión.
 
 ## Próximo paso
-Visto bueno de Michel a la especificación aclarada y, con él, fase 4: /speckit-plan con el subagente planificador.
-Pedir a la comisión en qué consiste y dónde se hace el Banco Chipi Chipi.
+Decidir cómo publica la comisión sin tocar código (ADR) y, después, /speckit-plan con el subagente planificador.
+Reunión con la comisión: quién y cuántos publican, si aceptan entrar en un panel por invitación de correo, si quieren publicar fotos (sería una funcionalidad nueva), el Banco Chipi Chipi y si se muestran las fechas de las semanas.
