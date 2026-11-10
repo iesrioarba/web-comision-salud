@@ -1,8 +1,8 @@
 # ESTADO · Web de la Comisión de Salud (IES Río Arba)
-Actualizado: 2026-11-06
+Actualizado: 2026-11-09
 
 ## Fase actual
-2 · Especificación · 001-reto-octubre
+3 · Aclaraciones · 001-reto-octubre (hechas; falta el visto bueno de Michel para pasar a la fase 4)
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -20,6 +20,7 @@ Actualizado: 2026-11-06
 - 2026-11-07 · Desarrollo guiado por especificaciones con GitHub Spec Kit 1.3.2, adaptado: implementación con el subagente implementador, speckit-implement desactivada, trabajo por funcionalidades (ADR 0004).
 - 2026-11-07 · Herramientas y dependencias: última versión estable, notas leídas, fijada y con ADR.
 - 2026-11-09 · Constitución 1.0.0 ratificada: 8 principios, reglas generales y gobierno (.specify/memory/constitution.md).
+- 2026-11-09 · 001-reto-octubre aclarada: los retos pasados siguen consultables; sin reto en curso, aviso de «próximo reto»; un solo reto de tutoría (la adaptación por etapas va en la guía); fechas de las semanas opcionales; el lugar y la descripción del Banco Chipi Chipi quedan como contenido pendiente.
 
 ## Hecho
 - Inventario de la petición de la comisión.
@@ -34,6 +35,8 @@ Actualizado: 2026-11-06
 - 2026-11-07 · Spec Kit instalado en la rama chore/spec-kit y revisado; AGENTS.md y subagentes adaptados.
 - 2026-11-08 · Fase 0 cerrada con el visto bueno de Michel.
 - 2026-11-09 · Fase 1 cerrada: constitución redactada con /speckit-constitution, revisada e integrada por PR.
+- 2026-11-09 · Fase 2: especificación de 001-reto-octubre (specs/001-reto-octubre/spec.md).
+- 2026-11-09 · Fase 3: /speckit-clarify con 5 preguntas; sin marcadores pendientes.
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
@@ -47,4 +50,5 @@ Actualizado: 2026-11-06
 - Quién edita los contenidos y cómo (opciones en la fase 4)
 
 ## Próximo paso
-Especificar la funcionalidad 001-reto-octubre con /speckit-specify.
+Visto bueno de Michel a la especificación aclarada y, con él, fase 4: /speckit-plan con el subagente planificador.
+Pedir a la comisión en qué consiste y dónde se hace el Banco Chipi Chipi.
