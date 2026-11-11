@@ -1,8 +1,8 @@
 # ESTADO · Web de la Comisión de Salud (IES Río Arba)
-Actualizado: 2026-11-09
+Actualizado: 2026-11-11
 
 ## Fase actual
-3 · Aclaraciones · 001-reto-octubre (hechas; falta el visto bueno de Michel para pasar a la fase 4)
+4 · Plan técnico · 001-reto-octubre (plan listo; falta el visto bueno de Michel)
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -21,11 +21,14 @@ Actualizado: 2026-11-09
 - 2026-11-07 · Herramientas y dependencias: última versión estable, notas leídas, fijada y con ADR.
 - 2026-11-09 · Constitución 1.0.0 ratificada: 8 principios, reglas generales y gobierno (.specify/memory/constitution.md).
 - 2026-11-09 · 001-reto-octubre aclarada: los retos pasados siguen consultables; sin reto en curso, aviso de «próximo reto»; un solo reto de tutoría (la adaptación por etapas va en la guía); fechas de las semanas opcionales; el lugar y la descripción del Banco Chipi Chipi quedan como contenido pendiente.
+- 2026-11-11 · Continuidad cubierta: la organización iesrioarba tiene otros propietarios además de Michel; el VPS es del centro y lo gestionan otras personas del centro (principio VIII).
+- 2026-11-11 · Publicación: web estática + Pages CMS autoalojado en el VPS (ADR 0005). La comisión confía en el criterio de Michel.
+- 2026-11-11 · Plan de 001-reto-octubre: Eleventy 3.1.8, Node 26, nginx 1.30.6, contenido en YAML validado, borradores con campo estado, aviso de fallos por correo, presupuesto de rendimiento y pruebas (ADR 0006 a 0014).
+- 2026-11-11 · Constitución 1.0.1: el principio VII aclara que la revisión independiente es para el código (ADR 0015).
 
 ## Hecho
 - Inventario de la petición de la comisión.
 - Organización iesrioarba creada; equipo comision-salud con Write en el repositorio.
-- Segundo propietario de la organización iesrioarba (urgente si aún no está)
 - Esqueleto andante: hola mundo validado en Actions y desplegado automáticamente en Easypanel por Trigger.
 - 2026-11-06 · Claude Code 2.1.319 instalado y verificado (plan Max, Opus 5.5).
 - 2026-11-06 · AGENTS.md con las reglas de la casa y permisos del proyecto en .claude/settings.json (modo manual, .env protegido, MCP bloqueados).
@@ -37,18 +40,20 @@ Actualizado: 2026-11-09
 - 2026-11-09 · Fase 1 cerrada: constitución redactada con /speckit-constitution, revisada e integrada por PR.
 - 2026-11-09 · Fase 2: especificación de 001-reto-octubre (specs/001-reto-octubre/spec.md).
 - 2026-11-09 · Fase 3: /speckit-clarify con 5 preguntas; sin marcadores pendientes.
+- 2026-11-09 · Fase 3 cerrada: especificación aclarada aprobada por Michel e integrada en main (PR #3).
+- 2026-11-11 · Fase 4: plan de 001-reto-octubre con el subagente planificador, revisado y corregido.
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
 
 ## Preguntas abiertas
 - Cuenta webmasteriesrioarba: sin uso. Proponer a la dirección borrarla (o protegerla si se quiere reservar el nombre)
-- -VPS de Easypanel: es del centro (la compró a petición del departamento de informática; aloja todos los proyectos). Cumple el principio VIII.
-- Pendiente para la fase 4: cuenta del proveedor a nombre del centro, usuarios individuales en Easypanel (y HTTPS en el panel) y país del servidor.
+- Confirmar en hPanel en qué centro de datos de Hostinger está el VPS (debe estar en la UE o Reino Unido; lo necesita la información de privacidad).
+- Avisar a quienes gestionan el VPS: el panel de Easypanel se usa por HTTP (IP:3000) y conviene ponerle dominio con HTTPS. Comprobar también si la URL del Deployment Trigger empieza por http://.
 - Dominio definitivo
-- Panel de Easypanel accesible por HTTP (IP:3000): ponerle dominio con HTTPS
-- Quién edita los contenidos y cómo (opciones en la fase 4)
+- Huecos del plan: sección HUECOS de specs/001-reto-octubre/plan.md
+- Crear la cuenta del centro para enviar correo y preguntar si el Workspace permite contraseñas de aplicación
+- Preguntar a la comisión si quiere publicar fotos de los retos (sería una funcionalidad nueva, con autorizaciones y sin nombres)
 
 ## Próximo paso
-Visto bueno de Michel a la especificación aclarada y, con él, fase 4: /speckit-plan con el subagente planificador.
-Pedir a la comisión en qué consiste y dónde se hace el Banco Chipi Chipi.
+Visto bueno de Michel al plan (PR) y fase 5: /speckit-tasks con el planificador y después /speckit-analyze.

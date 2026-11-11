@@ -1,0 +1,87 @@
+# Ejemplo de contrato: content/retos/2026-2027-octubre.yml
+# Datos de octubre tomados de specs/001-reto-octubre/spec.md («Datos reales de octubre»).
+# Lo que la comisión aún no ha dado se deja vacío: la web lo muestra «Por confirmar».
+# Los materiales no tienen fichero todavía: la web muestra «Disponible próximamente».
+curso: "2026-2027"
+mes: octubre
+estado: publicado
+nombre: "Resolver, no ganar"
+objetivo: >-
+  Que el alumnado tome conciencia de sus respuestas automáticas ante el conflicto y
+  practique de forma deliberada una herramienta de comunicación asertiva en sus
+  relaciones habituales.
+descripcion: >-
+  Comunicación asertiva con Mensajes-Yo en 4 pasos.
+pasos:
+  - "¿Qué ha pasado?"
+  - "¿Cómo lo he vivido yo?"
+  - "¿Cómo lo ha vivido la otra persona?"
+  - "¿Qué podemos hacer ahora?"
+fuentes:
+  - titulo: "Modelo de los Mensajes-Yo de Thomas Gordon"
+    url: ""
+  - titulo: "Comunicación no violenta de Marshall Rosenberg"
+    url: ""
+motriz:
+  nombre: "Banco Chipi Chipi"
+  descripcion: ""          # pendiente de la comisión → «Por confirmar»
+  fecha: "2026-10-09"
+  hora: "11:30"
+  lugar: ""                # pendiente de la comisión → «Por confirmar»
+  desde: ""
+  hasta: ""
+  materiales:
+    - titulo: "Cartel del reto motriz"
+      tipo: cartel
+      destinatario: todo-el-centro
+      archivo: ""
+tutoria:
+  nombre: ""               # sin nombre propio en la especificación → «Reto de tutoría»
+  descripcion: |-
+    Dos sesiones de 45-50 minutos separadas por una semana de práctica autónoma.
+
+    En la primera se presenta la herramienta y se entrega la ficha. Durante la semana,
+    cada alumno/a aplica los 4 pasos a un único desacuerdo real. En la segunda se pone
+    en común.
+  adaptado_por_etapas: true
+  desde: ""
+  hasta: ""
+  materiales:
+    - titulo: "Guía del tutor/a"
+      tipo: documento
+      destinatario: tutores
+      archivo: ""
+    - titulo: "Ficha del alumnado"
+      tipo: ficha
+      destinatario: alumnado
+      archivo: ""
+    - titulo: "Infografía de los 4 pasos"
+      tipo: infografia
+      destinatario: todo-el-centro
+      archivo: ""
+      # HUECO: el texto completo de la infografía lo da la comisión; aquí solo los 4 pasos.
+      version_texto: |-
+        1. ¿Qué ha pasado?
+
+        2. ¿Cómo lo he vivido yo?
+
+        3. ¿Cómo lo ha vivido la otra persona?
+
+        4. ¿Qué podemos hacer ahora?
+familia:
+  nombre: ""               # → «Reto en familia»
+  descripcion: |-
+    Una conversación en casa de 15 a 20 minutos sobre un desacuerdo cotidiano siguiendo
+    los mismos 4 pasos, con un justificante que se devuelve en papel o por la plataforma
+    educativa.
+  desde: ""
+  hasta: ""
+  materiales:
+    - titulo: "Carta para las familias"
+      tipo: documento
+      destinatario: familias
+      archivo: ""
+    - titulo: "Justificante para las familias"
+      tipo: justificante
+      destinatario: familias
+      archivo: ""

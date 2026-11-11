@@ -76,10 +76,14 @@ conexión; cada pieza añadida es algo más que mantener, actualizar y que puede
 
 - Toda funcionalidad DEBE tener criterios de aceptación comprobables.
 - NO DEBE publicarse nada sin las comprobaciones en verde.
-- NO DEBE publicarse nada sin revisión independiente de alguien que no escribió el código.
+- NO DEBE publicarse código sin revisión independiente de alguien que no lo escribió.
+- El contenido que la comisión publica desde el panel no pasa por esa revisión de código:
+  lo garantizan la revisión de la comisión (principio IV) y las comprobaciones automáticas
+  de «comprobar», que DEBEN bloquear el despliegue si fallan.
 
 **Justificación**: sin criterios comprobables no se sabe cuándo algo está hecho, y quien
-escribe algo no ve sus propios fallos.
+escribe algo no ve sus propios fallos. En el contenido, ese papel lo cumplen la comisión
+y las comprobaciones automáticas.
 
 ### VIII. Continuidad
 
@@ -111,4 +115,4 @@ después tiene que poder entender por qué se hizo cada cosa.
   plan técnico, en `/speckit-analyze` y en cada revisión del subagente `revisor`.
 - **Revisión periódica**: la constitución DEBE revisarse al inicio de cada curso escolar.
 
-**Version**: 1.0.0 | **Ratified**: 2026-11-08 | **Last Amended**: 2026-11-08
+**Version**: 1.0.1 | **Ratified**: 2026-11-08 | **Last Amended**: 2026-11-11
