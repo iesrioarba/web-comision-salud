@@ -1,5 +1,5 @@
 # ESTADO · Web de la Comisión de Salud (IES Río Arba)
-Actualizado: 2026-11-10
+Actualizado: 2026-11-11
 
 ## Fase actual
 4 · Plan técnico · 001-reto-octubre
@@ -21,11 +21,11 @@ Actualizado: 2026-11-10
 - 2026-11-07 · Herramientas y dependencias: última versión estable, notas leídas, fijada y con ADR.
 - 2026-11-09 · Constitución 1.0.0 ratificada: 8 principios, reglas generales y gobierno (.specify/memory/constitution.md).
 - 2026-11-09 · 001-reto-octubre aclarada: los retos pasados siguen consultables; sin reto en curso, aviso de «próximo reto»; un solo reto de tutoría (la adaptación por etapas va en la guía); fechas de las semanas opcionales; el lugar y la descripción del Banco Chipi Chipi quedan como contenido pendiente.
+- 2026-11-11 · Continuidad cubierta: la organización iesrioarba tiene otros propietarios además de Michel; el VPS es del centro y lo gestionan otras personas del centro (principio VIII).
 
 ## Hecho
 - Inventario de la petición de la comisión.
 - Organización iesrioarba creada; equipo comision-salud con Write en el repositorio.
-- Segundo propietario de la organización iesrioarba (urgente si aún no está)
 - Esqueleto andante: hola mundo validado en Actions y desplegado automáticamente en Easypanel por Trigger.
 - 2026-11-06 · Claude Code 2.1.319 instalado y verificado (plan Max, Opus 5.5).
 - 2026-11-06 · AGENTS.md con las reglas de la casa y permisos del proyecto en .claude/settings.json (modo manual, .env protegido, MCP bloqueados).
@@ -44,10 +44,9 @@ Actualizado: 2026-11-10
 
 ## Preguntas abiertas
 - Cuenta webmasteriesrioarba: sin uso. Proponer a la dirección borrarla (o protegerla si se quiere reservar el nombre)
-- -VPS de Easypanel: es del centro (la compró a petición del departamento de informática; aloja todos los proyectos). Cumple el principio VIII.
-- Pendiente para la fase 4: cuenta del proveedor a nombre del centro, usuarios individuales en Easypanel (y HTTPS en el panel) y país del servidor.
+- Confirmar en hPanel en qué centro de datos de Hostinger está el VPS (debe estar en la UE o Reino Unido; lo necesita la información de privacidad).
+- Avisar a quienes gestionan el VPS: el panel de Easypanel se usa por HTTP (IP:3000) y conviene ponerle dominio con HTTPS. Comprobar también si la URL del Deployment Trigger empieza por http://.
 - Dominio definitivo
-- Panel de Easypanel accesible por HTTP (IP:3000): ponerle dominio con HTTPS
 - Cómo publica la comisión: opciones A (web estática + Pages CMS en el VPS del centro, recomendada), B (Payload CMS) y C (WordPress); panel propio desaconsejado (plazo, seguridad y continuidad). Pendiente de la reunión con la comisión.
 
 ## Próximo paso
