@@ -44,3 +44,7 @@ Las notificaciones de GitHub solo llegan a cuentas de GitHub.
 - HUECO: dirección del buzón de la comisión (debe ser un buzón del centro, no personal).
 - Quien mantiene la web debería, además, vigilar los fallos de Actions en GitHub.
 - Si un día Pages CMS muestra el estado de los flujos, se revisa este ADR.
+- Riesgo: si el centro no permite contraseñas de aplicación, los avisos desde Actions no
+  podrán salir por el relay (ADR 0009). En ese caso, los fallos de contenido se avisan
+  como los de código, a quien mantiene la web, que avisa a la comisión, y se revisan este
+  ADR y el 0009.

@@ -53,6 +53,7 @@ Actualizado: 2026-11-11
 - Dominio definitivo
 - Huecos del plan: sección HUECOS de specs/001-reto-octubre/plan.md
 - Crear la cuenta del centro para enviar correo y preguntar si el Workspace permite contraseñas de aplicación
+- Preguntar a la comisión si quiere publicar fotos de los retos (sería una funcionalidad nueva, con autorizaciones y sin nombres)
 
 ## Próximo paso
 Visto bueno de Michel al plan (PR) y fase 5: /speckit-tasks con el planificador y después /speckit-analyze.

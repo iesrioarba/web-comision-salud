@@ -39,3 +39,6 @@ edita es un dato personal (ADR 0010).
 - Si el SMTP del centro exige una cuenta personal, se incumpliría el principio VIII: la
   cuenta remitente DEBE ser un buzón del centro, no de una persona.
 - El mismo SMTP sirve para los avisos de fallo (ADR 0012).
+- Riesgo: si el centro no permite contraseñas de aplicación, los avisos desde Actions no
+  podrán salir por el relay. En ese caso, los fallos de contenido se avisan como los de
+  código, a quien mantiene la web, que avisa a la comisión, y se revisan este ADR y el 0012.
