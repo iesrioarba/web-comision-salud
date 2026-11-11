@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:web-comision-salud:schema:reto",
+  "title": "Reto del mes",
+  "description": "Contrato de content/retos/<curso>-<mes>.yml. Ver data-model.md. Las reglas entre campos que JSON Schema no expresa (unicidad de mes, desde/hasta, existencia y tamaño de ficheros, fecha dentro del curso, tema del mes) las comprueba scripts/validate-content.js.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["curso", "mes", "estado", "nombre", "objetivo", "descripcion", "motriz", "tutoria", "familia"],
+  "properties": {
+    "curso": { "$ref": "#/$defs/curso" },
+    "mes": { "$ref": "#/$defs/mes" },
+    "estado": { "enum": ["borrador", "publicado"] },
+    "nombre": { "$ref": "#/$defs/textoObligatorio80" },
+    "objetivo": { "type": "string", "minLength": 1, "maxLength": 600 },
+    "descripcion": { "type": "string", "minLength": 1, "maxLength": 1500 },
+    "pasos": {
+      "anyOf": [
+        { "$ref": "#/$defs/vacio" },
+        { "type": "array", "maxItems": 10, "items": { "type": "string", "minLength": 1, "maxLength": 200 } }
+      ]
+    },
+    "fuentes": {
+      "anyOf": [
+        { "$ref": "#/$defs/vacio" },
+        { "type": "array", "items": { "$ref": "#/$defs/fuente" } }
+      ]
+    },
+    "motriz": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nombre"],
+      "properties": {
+        "nombre": { "$ref": "#/$defs/textoObligatorio80" },
+        "descripcion": { "$ref": "#/$defs/textoLargoOpcional" },
+        "fecha": { "$ref": "#/$defs/fechaOpcional" },
+        "hora": {
+          "anyOf": [
+            { "$ref": "#/$defs/vacio" },
+            { "type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$" }
+          ]
+        },
+        "lugar": { "$ref": "#/$defs/textoOpcional120" },
+        "desde": { "$ref": "#/$defs/fechaOpcional" },
+        "hasta": { "$ref": "#/$defs/fechaOpcional" },
+        "materiales": { "$ref": "#/$defs/materiales" }
+      }
+    },
+    "tutoria": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "nombre": { "$ref": "#/$defs/textoOpcional80" },
+        "descripcion": { "$ref": "#/$defs/textoLargoOpcional" },
+        "adaptado_por_etapas": { "anyOf": [{ "$ref": "#/$defs/vacio" }, { "type": "boolean" }] },
+        "desde": { "$ref": "#/$defs/fechaOpcional" },
+        "hasta": { "$ref": "#/$defs/fechaOpcional" },
+        "materiales": { "$ref": "#/$defs/materiales" }
+      }
+    },
+    "familia": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "nombre": { "$ref": "#/$defs/textoOpcional80" },
+        "descripcion": { "$ref": "#/$defs/textoLargoOpcional" },
+        "desde": { "$ref": "#/$defs/fechaOpcional" },
+        "hasta": { "$ref": "#/$defs/fechaOpcional" },
+        "materiales": { "$ref": "#/$defs/materiales" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "estado": { "const": "publicado" } } },
+      "then": {
+        "required": ["fuentes"],
+        "properties": { "fuentes": { "type": "array", "minItems": 1 } }
+      }
+    }
+  ],
+  "$defs": {
+    "vacio": { "enum": ["", null] },
+    "curso": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{4}$" },
+    "mes": { "enum": ["octubre", "noviembre", "diciembre", "enero", "febrero", "marzo", "abril", "mayo", "junio"] },
+    "fecha": { "type": "string", "format": "date" },
+    "fechaOpcional": { "anyOf": [{ "$ref": "#/$defs/vacio" }, { "$ref": "#/$defs/fecha" }] },
+    "textoObligatorio80": { "type": "string", "minLength": 1, "maxLength": 80, "pattern": "\\S" },
+    "textoOpcional80": { "anyOf": [{ "$ref": "#/$defs/vacio" }, { "type": "string", "maxLength": 80 }] },
+    "textoOpcional120": { "anyOf": [{ "$ref": "#/$defs/vacio" }, { "type": "string", "maxLength": 120 }] },
+    "textoLargoOpcional": { "anyOf": [{ "$ref": "#/$defs/vacio" }, { "type": "string", "maxLength": 1200 }] },
+    "urlOpcional": {
+      "anyOf": [
+        { "$ref": "#/$defs/vacio" },
+        { "type": "string", "maxLength": 300, "pattern": "^https://[^\\s]+$" }
+      ]
+    },
+    "fuente": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo"],
+      "properties": {
+        "titulo": { "type": "string", "minLength": 1, "maxLength": 200, "pattern": "\\S" },
+        "url": { "$ref": "#/$defs/urlOpcional" }
+      }
+    },
+    "materiales": {
+      "anyOf": [
+        { "$ref": "#/$defs/vacio" },
+        { "type": "array", "maxItems": 10, "items": { "$ref": "#/$defs/material" } }
+      ]
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "tipo", "destinatario"],
+      "properties": {
+        "titulo": { "type": "string", "minLength": 1, "maxLength": 120, "pattern": "\\S" },
+        "tipo": { "enum": ["documento", "ficha", "justificante", "cartel", "infografia"] },
+        "destinatario": { "enum": ["alumnado", "familias", "tutores", "todo-el-centro"] },
+        "archivo": {
+          "anyOf": [
+            { "$ref": "#/$defs/vacio" },
+            { "type": "string", "pattern": "^/materiales/(?!.*\\.\\.)[A-Za-z0-9._/-]+\\.([pP][dD][fF]|[pP][nN][gG]|[jJ][pP][eE]?[gG])$" }
+          ]
+        },
+        "version_texto": { "anyOf": [{ "$ref": "#/$defs/vacio" }, { "type": "string", "maxLength": 3000 }] }
+      },
+      "if": { "properties": { "tipo": { "const": "infografia" } } },
+      "then": {
+        "required": ["version_texto"],
+        "properties": { "version_texto": { "type": "string", "minLength": 1, "pattern": "\\S" } }
+      }
+    }
+  }
+}

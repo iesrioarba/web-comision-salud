@@ -2,7 +2,7 @@
 Actualizado: 2026-11-11
 
 ## Fase actual
-4 · Plan técnico · 001-reto-octubre
+4 · Plan técnico · 001-reto-octubre (plan listo; falta el visto bueno de Michel)
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -22,6 +22,9 @@ Actualizado: 2026-11-11
 - 2026-11-09 · Constitución 1.0.0 ratificada: 8 principios, reglas generales y gobierno (.specify/memory/constitution.md).
 - 2026-11-09 · 001-reto-octubre aclarada: los retos pasados siguen consultables; sin reto en curso, aviso de «próximo reto»; un solo reto de tutoría (la adaptación por etapas va en la guía); fechas de las semanas opcionales; el lugar y la descripción del Banco Chipi Chipi quedan como contenido pendiente.
 - 2026-11-11 · Continuidad cubierta: la organización iesrioarba tiene otros propietarios además de Michel; el VPS es del centro y lo gestionan otras personas del centro (principio VIII).
+- 2026-11-11 · Publicación: web estática + Pages CMS autoalojado en el VPS (ADR 0005). La comisión confía en el criterio de Michel.
+- 2026-11-11 · Plan de 001-reto-octubre: Eleventy 3.1.8, Node 26, nginx 1.30.6, contenido en YAML validado, borradores con campo estado, aviso de fallos por correo, presupuesto de rendimiento y pruebas (ADR 0006 a 0014).
+- 2026-11-11 · Constitución 1.0.1: el principio VII aclara que la revisión independiente es para el código (ADR 0015).
 
 ## Hecho
 - Inventario de la petición de la comisión.
@@ -38,6 +41,7 @@ Actualizado: 2026-11-11
 - 2026-11-09 · Fase 2: especificación de 001-reto-octubre (specs/001-reto-octubre/spec.md).
 - 2026-11-09 · Fase 3: /speckit-clarify con 5 preguntas; sin marcadores pendientes.
 - 2026-11-09 · Fase 3 cerrada: especificación aclarada aprobada por Michel e integrada en main (PR #3).
+- 2026-11-11 · Fase 4: plan de 001-reto-octubre con el subagente planificador, revisado y corregido.
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
@@ -47,8 +51,8 @@ Actualizado: 2026-11-11
 - Confirmar en hPanel en qué centro de datos de Hostinger está el VPS (debe estar en la UE o Reino Unido; lo necesita la información de privacidad).
 - Avisar a quienes gestionan el VPS: el panel de Easypanel se usa por HTTP (IP:3000) y conviene ponerle dominio con HTTPS. Comprobar también si la URL del Deployment Trigger empieza por http://.
 - Dominio definitivo
-- Cómo publica la comisión: opciones A (web estática + Pages CMS en el VPS del centro, recomendada), B (Payload CMS) y C (WordPress); panel propio desaconsejado (plazo, seguridad y continuidad). Pendiente de la reunión con la comisión.
+- Huecos del plan: sección HUECOS de specs/001-reto-octubre/plan.md
+- Crear la cuenta del centro para enviar correo y preguntar si el Workspace permite contraseñas de aplicación
 
 ## Próximo paso
-Decidir cómo publica la comisión sin tocar código (ADR) y, después, /speckit-plan con el subagente planificador.
-Reunión con la comisión: quién y cuántos publican, si aceptan entrar en un panel por invitación de correo, si quieren publicar fotos (sería una funcionalidad nueva), el Banco Chipi Chipi y si se muestran las fechas de las semanas.
+Visto bueno de Michel al plan (PR) y fase 5: /speckit-tasks con el planificador y después /speckit-analyze.
