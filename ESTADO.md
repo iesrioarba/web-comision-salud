@@ -2,7 +2,7 @@
 Actualizado: 2026-11-11
 
 ## Fase actual
-4 · Plan técnico · 001-reto-octubre (plan listo; falta el visto bueno de Michel)
+5 · Tareas · 001-reto-octubre
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -42,6 +42,7 @@ Actualizado: 2026-11-11
 - 2026-11-09 · Fase 3: /speckit-clarify con 5 preguntas; sin marcadores pendientes.
 - 2026-11-09 · Fase 3 cerrada: especificación aclarada aprobada por Michel e integrada en main (PR #3).
 - 2026-11-11 · Fase 4: plan de 001-reto-octubre con el subagente planificador, revisado y corregido.
+- 2026-11-11 · Fase 4 cerrada: plan técnico de 001-reto-octubre aprobado por Michel e integrado en main (PR #4).
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
@@ -56,4 +57,4 @@ Actualizado: 2026-11-11
 - Preguntar a la comisión si quiere publicar fotos de los retos (sería una funcionalidad nueva, con autorizaciones y sin nombres)
 
 ## Próximo paso
-Visto bueno de Michel al plan (PR) y fase 5: /speckit-tasks con el planificador y después /speckit-analyze.
+/speckit-tasks con el subagente planificador y después /speckit-analyze.
