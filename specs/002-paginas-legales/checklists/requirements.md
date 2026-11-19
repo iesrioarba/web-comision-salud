@@ -34,7 +34,6 @@
 - Los 2 marcadores [NEEDS CLARIFICATION] se resolvieron con Michel el 2026-11-19
   (sección «Clarifications»: FR-022 a FR-026 y SC-008).
 - Los datos legales desconocidos (CIF, dirección, correo, canal de accesibilidad,
-  unidad de reclamaciones, responsable y base legal, registros de visitas, encargados,
-  mantenimiento) no son marcadores: son contenido pendiente, listado en «Assumptions».
+  unidad de reclamaciones, responsable y base legal, encargados, mantenimiento) no son marcadores: son contenido pendiente, listado en «Assumptions».
 - Las referencias a T023, T047 y T050 de la 001 y a los ADR 0010 y 0016 son
   dependencias del proyecto, no detalles de implementación.

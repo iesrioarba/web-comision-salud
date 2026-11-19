@@ -26,7 +26,8 @@ Decisiones ya tomadas que condicionan esta funcionalidad:
   mano (tarea T047 de la 001).
 - La declaración puede publicarse al principio como «parcialmente conforme, en
   revisión», con fecha.
-- La web no tiene formularios, cookies, analítica, fotos ni vídeos.
+- La web pública no tiene formularios, cookies, analítica, fotos ni vídeos (el panel
+  solo usa una cookie técnica de sesión, FR-020).
 
 ## Clarifications
 
@@ -34,6 +35,11 @@ Decisiones ya tomadas que condicionan esta funcionalidad:
 
 - Q: ¿Las páginas legales las edita la comisión desde el panel o solo quien mantiene la web? → A: Solo quien mantiene la web, con rama, PR y revisión. Además, DEBE haber un mantenedor suplente nombrado y una guía del cambio.
 - Q: ¿Se puede integrar y desplegar (T023) con datos legales pendientes? → A: Sí, mostrados como «Pendiente de confirmar», salvo el canal de contacto de accesibilidad (obligatorio desde la primera publicación) y el responsable y la base legal del tratamiento (obligatorios antes de dar acceso a nadie al panel, T040 de la 001). En el estreno no queda ningún dato pendiente.
+- Q: ¿El servidor de la web pública debe guardar registros de las visitas (IP, página, hora)? → A: No. Sin registros de visitas; solo se guardan los errores del servidor, sin IP. La página de privacidad dice que no se guarda nada que identifique a quien visita.
+- Q: ¿Quién da el visto bueno al contenido de las páginas legales antes de publicarlas o cambiarlas? → A: La dirección del centro, anotado en la PR, antes de la primera publicación y de cada cambio de contenido. La parte de privacidad de quienes editan se consulta además con el DPD.
+- Q: ¿La declaración de accesibilidad cubre solo la web pública o también el panel? → A: Las dos. Se comprueba la accesibilidad del panel y se declaran sus fallos, con una alternativa para quien edita y no puede usarlo.
+- Q: ¿Cómo se asegura la revisión anual de la declaración? → A: Un aviso automático en el repositorio (una incidencia que se abre sola) un mes antes de cumplirse el año desde la última revisión, para quien mantiene la web y su suplente; además, en cada push una comprobación avisa, sin bloquear, si la revisión vence en menos de un mes o ya ha vencido.
+- Q: ¿En cuántos días como máximo se publica el contenido que envía quien no puede usar el panel? → A: 5 días lectivos.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -99,9 +105,8 @@ editan?», «¿a quién escribo para ejercer mis derechos?» y «¿dónde reclam
    **Then** la encuentra en el pie con un enlace de nombre claro.
 2. **Given** la parte para visitantes, **When** la persona la lee, **Then** sabe que la
    web no tiene formularios, cookies ni analítica, que no carga servicios de terceros
-   y, sobre los datos técnicos de las visitas, lo que de verdad se guarda: si no se
-   guarda nada que identifique a quien visita, lo dice; si se guarda algo, dice qué,
-   para qué y durante cuánto tiempo.
+   y que el servidor no guarda registros de visitas ni nada que identifique a quien la
+   visita (solo errores del servidor, sin dirección IP).
 3. **Given** la parte para quienes editan, **When** la persona la lee, **Then**
    encuentra: responsable del tratamiento, contacto del Delegado de Protección de Datos
    (protecciondatossecd@aragon.es), finalidad (dar acceso para publicar), base legal,
@@ -160,11 +165,14 @@ y la web muestra los datos nuevos.
 2. **Given** una declaración con fecha de última revisión de hace más de un año,
    **When** quien mantiene la web la revisa, **Then** existe un procedimiento escrito
    que dice qué revisar y cómo actualizar la fecha.
+   Además, un mes antes de cumplirse el año ya se abrió sola una incidencia en el
+   repositorio para quien mantiene la web y su suplente.
 3. **Given** cualquier cambio en las páginas legales, **When** se publica, **Then** la
    web sigue pasando las mismas comprobaciones de accesibilidad y no se rompe su diseño.
 4. **Given** un cambio en una página legal, **When** se hace, **Then** lo hace quien
    mantiene la web o su suplente, en una rama, con PR y revisión independiente antes de
-   integrarlo; la comisión no edita estas páginas desde el panel.
+   integrarlo, con el visto bueno de la dirección del centro anotado en la PR si cambia
+   el contenido; la comisión no edita estas páginas desde el panel.
 5. **Given** que quien mantiene la web no está disponible, **When** hay que actualizar
    una página legal, **Then** el suplente nombrado puede hacerlo solo con la guía del
    cambio.
@@ -174,8 +182,7 @@ y la web muestra los datos nuevos.
 ### Edge Cases
 
 - **Dato legal pendiente** (CIF, dirección, correo del centro, canal de accesibilidad,
-  unidad de reclamaciones, responsable y base legal del tratamiento, registros de
-  visitas, encargados): la página NUNCA inventa el dato; muestra «Pendiente de
+  unidad de reclamaciones, responsable y base legal del tratamiento, encargados): la página NUNCA inventa el dato; muestra «Pendiente de
   confirmar» en su lugar (FR-022). Hay tres excepciones que bloquean (FR-023): sin canal
   de contacto de accesibilidad no se publica la declaración; sin responsable y base
   legal del tratamiento no se da acceso al panel a nadie (T040 de la 001); y el estreno
@@ -224,7 +231,8 @@ RD 1112/2018)
   declaración; observaciones y datos de contacto; procedimiento de aplicación.
 - **FR-009**: «Compromiso y alcance» DEBE decir que el IES Río Arba se compromete a hacer
   accesible la web según el RD 1112/2018 y a qué web se aplica la declaración (su
-  dirección y que incluye las páginas del reto del mes, el calendario y los materiales).
+  dirección y que incluye las páginas del reto del mes, el calendario y los materiales)
+  y que también se aplica al panel de edición que usa la comisión.
 - **FR-010**: «Situación de cumplimiento» DEBE indicar una de las situaciones del modelo
   («totalmente conforme», «parcialmente conforme» o «no conforme») con el RD 1112/2018.
   Antes del estreno DEBE decir «parcialmente conforme», que está en revisión y su fecha.
@@ -233,6 +241,12 @@ RD 1112/2018)
   fuera del ámbito de la legislación), con el motivo y la alternativa accesible si la
   hay. Como mínimo: los materiales en PDF que aún no se hayan revisado y el Genially
   como contenido de terceros solo enlazado.
+- **FR-011a**: La accesibilidad del panel DEBE comprobarse con el mismo método que la
+  web pública (herramientas automáticas y revisión manual con teclado y lector de
+  pantalla), y sus fallos DEBEN figurar en «Contenido no accesible». Como alternativa,
+  la declaración DEBE decir que quien edita y no puede usar el panel puede enviar el
+  contenido por el canal de contacto de accesibilidad a quien mantiene la web, que lo
+  publica en un plazo máximo de 5 días lectivos, indicado en la declaración.
 - **FR-012**: «Preparación de la declaración» DEBE indicar la fecha en que se preparó,
   el método (autoevaluación con herramientas automáticas y revisión manual con teclado
   y lector de pantalla) y la fecha de la última revisión.
@@ -261,9 +275,10 @@ RD 1112/2018)
   «Si visitas la web» y «Si editas la web desde el panel».
 - **FR-019**: La parte de visitantes se refiere a la web pública (no al panel). DEBE
   decir que la web pública no tiene formularios, cookies, analítica ni servicios de
-  terceros que rastreen, y DEBE describir lo que de verdad se guarda de las visitas: si no se guarda nada que identifique a quien visita, lo dice;
-  si se guardan datos técnicos (por ejemplo, registros del servidor), dice cuáles, para
-  qué y durante cuánto tiempo.
+  terceros que rastreen, y que no se guarda nada que identifique a quien visita. El
+  servidor de la web pública NO DEBE guardar registros de visitas (ni dirección IP, ni
+  página pedida, ni hora); solo puede guardar registros de errores del servidor, sin
+  dirección IP ni otro dato que identifique a quien visita.
 - **FR-020**: La parte de quienes editan DEBE indicar: responsable del tratamiento;
   contacto del Delegado de Protección de Datos (protecciondatossecd@aragon.es);
   finalidad (dar acceso para publicar); base legal; dato que se guarda (solo el correo y
@@ -296,6 +311,11 @@ RD 1112/2018)
 - **FR-024**: Las páginas legales solo las cambia quien mantiene la web o su suplente,
   en una rama, con PR y revisión independiente antes de integrar (principio VII). La
   comisión NO las edita desde el panel.
+- **FR-024a**: Antes de la primera publicación y de cada cambio de contenido (no de
+  diseño ni de formato), la dirección del centro DEBE dar su visto bueno al texto, y ese
+  visto bueno queda anotado en la PR (sin datos personales: por cargo). La parte de
+  privacidad de quienes editan (responsable, base legal, encargados) se consulta además
+  con el DPD antes de publicarla.
 - **FR-025**: DEBE haber un mantenedor suplente nombrado por el centro, distinto de quien
   mantiene la web, que pueda hacer estos cambios. Su nombramiento queda registrado en la
   documentación del proyecto, por su cargo o función en el centro y sin datos personales
@@ -308,6 +328,11 @@ RD 1112/2018)
   mano, cómo cambiar un dato legal y cómo comprobar que la web sigue en verde. La guía
   DEBE explicar cómo hacerlo desde la web de GitHub, sin terminal: editar el fichero de
   la página legal en el navegador, crear la rama y abrir la PR desde allí.
+- **FR-027**: Un mes antes de cumplirse un año desde la fecha de la última revisión de
+  la declaración, DEBE abrirse sola una incidencia en el repositorio dirigida a quien
+  mantiene la web y a su suplente, sin servicios de terceros nuevos. Además, en cada push
+  una comprobación DEBE avisar, sin bloquear el despliegue, si la revisión vence en menos
+  de un mes o ya ha vencido.
 
 ### Key Entities
 
@@ -344,11 +369,15 @@ Ningún dato de visitantes se recoge con esta funcionalidad.
   posterior a la comprobación a mano de la 001 (T047); después, nunca tiene más de un
   año.
 - **SC-007**: La información de privacidad no contradice el comportamiento real: la
-  revisión de la web publicada encuentra 0 cookies, 0 peticiones a terceros y, sobre los
-  registros de visitas, lo mismo que dice la página.
+  revisión de la web publicada encuentra 0 cookies, 0 peticiones a terceros y 0
+  registros de visitas en el servidor; los registros de errores no contienen ninguna
+  dirección IP.
 - **SC-008**: Antes del estreno hay un mantenedor suplente nombrado y, en una prueba,
   actualiza la fecha de la última revisión de la declaración solo con la guía del cambio,
   sin ayuda.
+- **SC-009**: Antes del estreno, la accesibilidad del panel se ha comprobado con
+  herramientas automáticas, teclado y lector de pantalla, y cada fallo encontrado figura
+  en la declaración.
 
 ## Assumptions
 
@@ -370,8 +399,7 @@ Ningún dato de visitantes se recoge con esta funcionalidad.
   postal y correo de contacto del centro; canal de contacto de accesibilidad; unidad que
   tramita las reclamaciones de accesibilidad de la web de un centro educativo;
   responsable y base legal del tratamiento de los correos de quienes editan (a
-  confirmar con el DPD); si el servidor guarda datos técnicos de las visitas y cuánto
-  tiempo; encargados del tratamiento; quién es el mantenedor suplente (FR-025).
+  confirmar con el DPD); encargados del tratamiento; quién es el mantenedor suplente (FR-025).
 - Fuera de alcance: fotos y vídeos (no hay), formularios, cookies, analítica, banner de
   cookies (no hace falta: la web pública no usa cookies y el panel solo usa una cookie
   técnica de sesión, que no necesita consentimiento) y traducción a otros idiomas.
