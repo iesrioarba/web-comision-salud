@@ -246,7 +246,7 @@ Comisión ─▶ Pages CMS (valida required/pattern) ─▶ commit en main (GitH
 | [0012](../../docs/decisiones/0012-aviso-de-fallos-al-publicar.md) | Correo al buzón de la comisión si «comprobar» falla con un commit de contenido de la app; si falla un cambio de código, aviso a quien mantiene la web |
 | [0013](../../docs/decisiones/0013-presupuesto-de-rendimiento.md) | Presupuesto de rendimiento con Lighthouse CI 0.16.0 |
 | [0014](../../docs/decisiones/0014-estrategia-de-pruebas.md) | html-validate 11.21.0, linkinator 8.1.0, Playwright 1.65.0 + axe 4.14.0, `node:test` |
-| [0016](../../docs/decisiones/0016-lanzamiento-sin-anunciar.md) | (Propuesta, 2026-11-19) Lanzamiento sin anunciar: `noindex` y `X-Robots-Tag` hasta el estreno |
+| [0016](../../docs/decisiones/0016-lanzamiento-sin-anunciar.md) | (Aceptada, 2026-11-19) Lanzamiento sin anunciar: `noindex` y `X-Robots-Tag` hasta el estreno |
 
 ## Decisiones confirmadas
 

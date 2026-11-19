@@ -1,7 +1,7 @@
 # 0016 · Lanzamiento sin anunciar hasta el estreno
 
 - Fecha: 2026-11-19
-- Estado: propuesta (borrador del planificador; la decisión es de Michel, pendiente de su visto bueno sobre este texto)
+- Estado: aceptada
 
 ## Contexto
 Cada integración en `main` que pasa «comprobar» se despliega en el VPS (ADR 0001). En

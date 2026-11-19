@@ -240,8 +240,9 @@ que sale de la web del centro y llega al Genially.
   los pide.
 - **Impresión**: al imprimir la página del reto, se imprime el contenido legible, sin
   menús ni elementos que solo sirven en pantalla.
-- **Imágenes de menores**: si un material o el cartel incluye fotos de alumnado, solo se
-  publican con autorización y sin nombres.
+- **Imágenes de menores**: ningún material, carteles incluidos, lleva fotos de alumnado.
+  Si algún día se quieren fotos o vídeos, será una funcionalidad aparte con su
+  especificación.
 
 ## Requirements *(mandatory)*
 

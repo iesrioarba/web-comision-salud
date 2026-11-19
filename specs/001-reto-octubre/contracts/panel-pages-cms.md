@@ -65,11 +65,12 @@ lo que no se ha podido comprobar en la documentación está marcado como «compr
      `desde`, `hasta`, `materiales`.
   9. `familia` (`object`): `nombre`, `descripcion`, `desde`, `hasta`, `materiales`.
 - `materiales` (lista de `object`, máx. 10). Descripción de la lista: «No subas fotos de
-  los retos. PNG y JPG solo para carteles e infografías; el resto de materiales, en
+  personas: los carteles e infografías llevan texto, iconos o ilustraciones. PNG y JPG solo para carteles e infografías; el resto de materiales, en
   PDF.» (decisión de Michel del 2026-11-19). Campos: `titulo`, `tipo` (select),
   `destinatario` (select), `archivo` (file, fuente `materiales`, `extensions: [pdf, png,
   jpg, jpeg]`, carpeta `content/materiales/{curso}-{mes}` si la versión lo permite —
-  comprobar; descripción: «No subas fotos de los retos. Ficha, justificante y
+  comprobar; descripción: «No subas fotos de personas: los carteles e infografías llevan texto,
+  iconos o ilustraciones. Ficha, justificante y
   documento: solo PDF. Cartel e infografía: PDF, PNG o JPG.»), `version_texto` (text;
   descripción «Obligatorio si es una infografía: copia aquí todo su texto, en el mismo
   orden»).
