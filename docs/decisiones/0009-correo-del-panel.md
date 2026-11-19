@@ -42,3 +42,5 @@ edita es un dato personal (ADR 0010).
 - Riesgo: si el centro no permite contraseñas de aplicación, los avisos desde Actions no
   podrán salir por el relay. En ese caso, los fallos de contenido se avisan como los de
   código, a quien mantiene la web, que avisa a la comisión, y se revisan este ADR y el 0012.
+
+Actualización 2026-11-19: el centro permite contraseñas de aplicación; el riesgo del relay no se da.

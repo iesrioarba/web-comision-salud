@@ -10,6 +10,7 @@ salir. Los nombres de los scripts son los del plan (ADR 0014).
 
 - Node 26.13.0 (`.nvmrc`) y npm.
 - `npm ci` y, para las pruebas de navegador, `npx playwright install chromium`.
+- Docker en local para A8 y A9 (`comprobar:cabeceras` forma parte de `npm run comprobar`).
 - Para los escenarios del panel: Pages CMS en marcha en el VPS (HUECO: dominio, SMTP) y
   una persona de prueba invitada con un correo inventado del centro.
 
@@ -18,13 +19,15 @@ salir. Los nombres de los scripts son los del plan (ADR 0014).
 | # | Orden | Resultado esperado |
 |---|---|---|
 | A1 | `npm run comprobar:contenido` | Sale con código 0 y «Contenido correcto» con el contenido real |
-| A2 | `npm test` | Todas las pruebas del validador en verde, incluidas las que deben fallar (fecha imposible, hora 25:00, infografía sin texto, publicado sin fuentes, `en_curso` apuntando a un borrador, material inexistente o > 10 MB, mes repetido) con su mensaje en español |
-| A3 | `npm run build` | Genera `_site/` con `/`, `/calendario/`, `/retos/2026-2027/octubre/` y `/404.html`; ningún borrador genera página |
+| A2 | `npm test` | Todas las pruebas del validador en verde, incluidas las que deben fallar (fecha imposible, hora 25:00, infografía sin texto, publicado sin fuentes, `en_curso` apuntando a un borrador, material inexistente o > 10 MB, ficha, justificante o documento en PNG/JPG, mes repetido) con su mensaje en español |
+| A3 | `npm run build` | Genera `_site/` con `/`, `/calendario/`, `/retos/2026-2027/octubre/` y `/404.html`; ningún borrador genera página; hasta el estreno, todas las páginas llevan `<meta name="robots" content="noindex">` (ADR 0016) |
 | A4 | `npm run validar` | 0 errores de `html-validate` en `_site/**/*.html` |
 | A5 | `npm run comprobar:enlaces` | 0 enlaces internos rotos; los externos se omiten |
 | A6 | `npm run comprobar:web` | Todos los escenarios de `tests/e2e/` en verde, con contenido real y con `tests/fixtures/`; 0 infracciones de axe (`wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa`); 0 cookies; 0 peticiones fuera de `localhost` |
 | A7 | `npm run comprobar:rendimiento` | Todas las aserciones de `lighthouserc` cumplidas (ADR 0013) |
 | A8 | `docker build .` | La imagen se construye; si el contenido es inválido, la construcción falla en el paso de validación |
+| A9 | `npm run comprobar:cabeceras` (necesita Docker) | Construye y arranca la imagen: `Content-Security-Policy` con `default-src 'self'`; ninguna respuesta con `Set-Cookie`; ruta inexistente → 404 en español; contenido comprimido; hasta el estreno, `X-Robots-Tag: noindex` en todas las respuestas, y después del estreno (T050), ninguna (ADR 0016) |
+| A10 | `npm run comprobar` | Ejecuta A1 a A9 en el mismo orden que «comprobar» en Actions (A8 va dentro de A9) |
 
 ## B · Escenarios de la especificación cubiertos por pruebas automáticas
 

@@ -74,3 +74,15 @@ Easypanel (ADR 0001). El principio VIII exige que nada dependa de una cuenta per
   un servicio de terceros. Antes de usarla hace falta un ADR nuevo (principio II).
 - Copias de seguridad: el contenido está en GitHub; la base de datos del panel solo
   guarda estado reconstruible (se vuelve a invitar a las personas colaboradoras).
+
+Actualización 2026-11-19 (permisos mínimos de la GitHub App, decisión de Michel): la
+documentación de Pages CMS pide, entre otros, «Administration» y «Actions» con escritura
+(<https://pagescms.org/docs/guides/installing/github-app/>, consultado el 2026-11-19).
+Se aplica mínimo privilegio: la app NO tiene «Workflows», NI «Administration» con
+escritura (ninguno o, si hace falta, solo lectura), NI «Actions» con escritura (no se
+usan las acciones de Pages CMS). Contents con escritura; Metadata, Checks, Commit
+statuses y Email addresses de lectura. Se ensaya primero con una app de ensayo en local
+(tareas T029 y T030 de `specs/001-reto-octubre/tasks.md`) y la app definitiva (T036) se
+crea con los permisos que salgan del ensayo. Si Pages CMS exige «Administration» con
+escritura, se PARA: con ese permiso la app podría cambiar los rulesets de `main` que la
+controlan, y Michel decide con un ADR nuevo.

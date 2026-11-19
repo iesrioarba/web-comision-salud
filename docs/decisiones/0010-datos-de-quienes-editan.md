@@ -40,3 +40,5 @@ persona colaboradora se guarda en la base de datos del panel, no en `.pages.yml`
   para datos del alumnado).
 - La información de privacidad de la web debe mencionar este tratamiento si se publica
   una página de privacidad. HUECO: esa página no está en la especificación 001.
+
+Actualización 2026-11-19: el VPS está en Fráncfort (Alemania), dentro de la UE.

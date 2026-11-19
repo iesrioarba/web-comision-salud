@@ -1,8 +1,8 @@
 # ESTADO · Web de la Comisión de Salud (IES Río Arba)
-Actualizado: 2026-11-11
+Actualizado: 2026-11-19
 
 ## Fase actual
-4 · Plan técnico · 001-reto-octubre (plan listo; falta el visto bueno de Michel)
+5 · Tareas · 001-reto-octubre
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -25,6 +25,7 @@ Actualizado: 2026-11-11
 - 2026-11-11 · Publicación: web estática + Pages CMS autoalojado en el VPS (ADR 0005). La comisión confía en el criterio de Michel.
 - 2026-11-11 · Plan de 001-reto-octubre: Eleventy 3.1.8, Node 26, nginx 1.30.6, contenido en YAML validado, borradores con campo estado, aviso de fallos por correo, presupuesto de rendimiento y pruebas (ADR 0006 a 0014).
 - 2026-11-11 · Constitución 1.0.1: el principio VII aclara que la revisión independiente es para el código (ADR 0015).
+- 2026-11-19 · Sin fotos de los retos. Si se publican vídeos, será una funcionalidad aparte con su especificación: nunca en el repositorio, enlazados y no incrustados, y con autorización de imagen.
 
 ## Hecho
 - Inventario de la petición de la comisión.
@@ -42,18 +43,17 @@ Actualizado: 2026-11-11
 - 2026-11-09 · Fase 3: /speckit-clarify con 5 preguntas; sin marcadores pendientes.
 - 2026-11-09 · Fase 3 cerrada: especificación aclarada aprobada por Michel e integrada en main (PR #3).
 - 2026-11-11 · Fase 4: plan de 001-reto-octubre con el subagente planificador, revisado y corregido.
+- 2026-11-11 · Fase 4 cerrada: plan técnico de 001-reto-octubre aprobado por Michel e integrado en main (PR #4).
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
 
 ## Preguntas abiertas
 - Cuenta webmasteriesrioarba: sin uso. Proponer a la dirección borrarla (o protegerla si se quiere reservar el nombre)
-- Confirmar en hPanel en qué centro de datos de Hostinger está el VPS (debe estar en la UE o Reino Unido; lo necesita la información de privacidad).
 - Avisar a quienes gestionan el VPS: el panel de Easypanel se usa por HTTP (IP:3000) y conviene ponerle dominio con HTTPS. Comprobar también si la URL del Deployment Trigger empieza por http://.
 - Dominio definitivo
 - Huecos del plan: sección HUECOS de specs/001-reto-octubre/plan.md
-- Crear la cuenta del centro para enviar correo y preguntar si el Workspace permite contraseñas de aplicación
-- Preguntar a la comisión si quiere publicar fotos de los retos (sería una funcionalidad nueva, con autorizaciones y sin nombres)
+- Crear la cuenta del centro solo para enviar correo, con verificación en dos pasos y contraseña de aplicación (será una tarea MANUAL de tasks.md).
 
 ## Próximo paso
-Visto bueno de Michel al plan (PR) y fase 5: /speckit-tasks con el planificador y después /speckit-analyze.
+/speckit-tasks con el subagente planificador y después /speckit-analyze.
