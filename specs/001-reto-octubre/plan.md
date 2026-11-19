@@ -273,9 +273,9 @@ Lo que hacía falta y no está escrito en `specs/` ni en los documentos del proy
 | # | Hueco | Quién lo resuelve | Bloquea |
 |---|---|---|---|
 | H1 | Dominio de la web y del panel (`BASE_URL`, URLs de la GitHub App) | Michel con el centro | Puesta en marcha del panel |
-| H2 | El correo del centro es Google Workspace. Opción preferida: una cuenta del centro solo para enviar, con `smtp.gmail.com` (587 STARTTLS o 465 SSL) y contraseña de aplicación; si el centro no permite contraseñas de aplicación, el SMTP relay de Workspace (ADR 0009). Falta crear la cuenta y decidir quién la administra (debe ser del centro) | Centro / dirección | Panel (invitaciones) y avisos |
+| H2 | **Resuelto (2026-11-19).** El Workspace del centro permite contraseñas de aplicación: cuenta del centro solo para enviar, `smtp.gmail.com` con contraseña de aplicación (ADR 0009) | Centro / dirección | Nada |
 | H3 | Buzón de la comisión para avisos de fallo | Comisión / centro | ADR 0012 |
-| H4 | El VPS es de Hostinger; falta confirmar en hPanel que su centro de datos está en la UE (ya en «Preguntas abiertas» de ESTADO.md) | Quienes gestionan el VPS | ADR 0010 |
+| H4 | **Resuelto (2026-11-19).** El VPS está en Fráncfort (Alemania), dentro de la UE (ADR 0010) | Quienes gestionan el VPS | Nada |
 | H5 | Quién administra Pages CMS (`ADMIN_EMAILS`, al menos dos personas del centro) y cuántas personas publican | Michel y la comisión | Principio VIII |
 | H6 | URL del Genially «El Arbalquimista de la salud» | Comisión | FR-021 (el ejemplo usa una URL inventada) |
 | H7 | Descripción y lugar del reto motriz de octubre; fechas de las semanas (ya pendientes en la especificación) | Comisión | Nada: se muestran «Por confirmar» o se omiten |
