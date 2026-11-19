@@ -78,11 +78,16 @@ Quien actualiza los contenidos cada mes es profesorado sin conocimientos de prog
   en un ADR.
 
 ## Cómo se trabaja una tarea (fase 6)
-1. Una tarea de `specs/NNN-nombre/tasks.md` cada vez, en una rama corta: `tarea/NNN-TNN-descripcion`.
+1. Una tarea de `specs/NNN-nombre/tasks.md` cada vez por encargo al implementador.
+   Una rama puede agrupar varias tareas (ver «Ramas y commits» en `tasks.md`).
+   Ramas cortas: `tarea/NNN-TNNN-descripcion` (tres cifras, como Spec Kit).
 2. Primero la prueba o la comprobación que demuestra el criterio de hecho; luego el código.
+   Si las pruebas y su implementación van juntas, una sola rama: primer commit con las
+   pruebas en rojo, después la implementación.
 3. Cambios pequeños. No toques lo que la tarea no pide.
 4. Ejecuta las comprobaciones (abajo). Una tarea no está hecha sin ellas en verde.
-5. Commits convencionales: `tipo: descripción en español`
+5. El subagente `implementador` no hace commit ni push: Michel revisa el diff y hace el
+   commit convencional, el push y la PR. Commits convencionales: `tipo: descripción en español`
    (`feat`, `fix`, `docs`, `test`, `chore`, `refactor`, `style`, `ci`).
 6. Actualiza `ESTADO.md` y marca la tarea en `tasks.md`.
 7. Nunca hagas `git push --force`, no borres ramas remotas ni reescribas historia publicada.
