@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:web-comision-salud:schema:legal",
+  "title": "Datos de las páginas legales",
+  "description": "Contrato de src/legal/datos.yml. null = «Pendiente de confirmar». Ver data-model.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["centro", "accesibilidad", "declaracion", "tratamiento_editores"],
+  "$defs": {
+    "texto": {
+      "type": "string", "minLength": 1, "maxLength": 400, "pattern": "\\S",
+      "not": { "pattern": "[Pp][Ee][Nn][Dd][Ii][Ee][Nn][Tt][Ee]" }
+    },
+    "textoOPendiente": { "anyOf": [ { "$ref": "#/$defs/texto" }, { "type": "null" } ] },
+    "fecha": { "type": "string", "format": "date" }
+  },
+  "properties": {
+    "centro": {
+      "type": "object", "additionalProperties": false,
+      "required": ["nombre", "dependencia", "cif", "direccion_postal", "correo", "web"],
+      "properties": {
+        "nombre": { "const": "IES Río Arba" },
+        "dependencia": { "const": "Departamento de Educación del Gobierno de Aragón" },
+        "cif": { "anyOf": [ { "type": "string", "pattern": "^[A-Z0-9]{9}$" }, { "type": "null" } ] },
+        "direccion_postal": { "$ref": "#/$defs/textoOPendiente" },
+        "correo": { "anyOf": [ { "type": "string", "format": "email" }, { "type": "null" } ] },
+        "web": { "anyOf": [ { "type": "string", "pattern": "^https://[^\\s]+$" }, { "type": "null" } ] }
+      }
+    },
+    "accesibilidad": {
+      "type": "object", "additionalProperties": false,
+      "required": ["canal_contacto", "unidad_reclamaciones", "plazo_respuesta_dias_habiles", "plazo_contenido_panel_dias_lectivos"],
+      "properties": {
+        "canal_contacto": {
+          "type": "object", "additionalProperties": false,
+          "required": ["tipo", "valor"],
+          "properties": {
+            "tipo": { "enum": ["correo", "web"] },
+            "valor": { "type": "string", "minLength": 3, "maxLength": 300 }
+          },
+          "allOf": [
+            { "if": { "properties": { "tipo": { "const": "correo" } } }, "then": { "properties": { "valor": { "format": "email" } } } },
+            { "if": { "properties": { "tipo": { "const": "web" } } }, "then": { "properties": { "valor": { "pattern": "^https://[^\\s]+$" } } } }
+          ]
+        },
+        "unidad_reclamaciones": {
+          "anyOf": [
+            {
+              "type": "object", "additionalProperties": false,
+              "required": ["nombre", "contacto"],
+              "properties": { "nombre": { "$ref": "#/$defs/texto" }, "contacto": { "$ref": "#/$defs/texto" } }
+            },
+            { "type": "null" }
+          ]
+        },
+        "plazo_respuesta_dias_habiles": { "const": 20 },
+        "plazo_contenido_panel_dias_lectivos": { "const": 5 }
+      }
+    },
+    "declaracion": {
+      "type": "object", "additionalProperties": false,
+      "required": ["situacion", "en_revision", "fecha_situacion", "fecha_preparacion", "fecha_ultima_revision", "panel_comprobado", "contenido_no_accesible"],
+      "properties": {
+        "situacion": { "enum": ["totalmente-conforme", "parcialmente-conforme", "no-conforme"] },
+        "en_revision": { "type": "boolean" },
+        "fecha_situacion": { "$ref": "#/$defs/fecha" },
+        "fecha_preparacion": { "$ref": "#/$defs/fecha" },
+        "fecha_ultima_revision": { "$ref": "#/$defs/fecha" },
+        "panel_comprobado": { "anyOf": [ { "$ref": "#/$defs/fecha" }, { "type": "null" } ] },
+        "contenido_no_accesible": {
+          "type": "array", "minItems": 0, "maxItems": 50,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["contenido", "grupo", "ambito", "motivo"],
+            "properties": {
+              "contenido": { "$ref": "#/$defs/texto", "maxLength": 200 },
+              "grupo": { "enum": ["falta-de-conformidad", "carga-desproporcionada", "fuera-de-ambito"] },
+              "ambito": { "enum": ["web", "panel"] },
+              "motivo": { "$ref": "#/$defs/texto" },
+              "alternativa": { "$ref": "#/$defs/texto" }
+            }
+          }
+        }
+      }
+    },
+    "tratamiento_editores": {
+      "type": "object", "additionalProperties": false,
+      "required": ["responsable", "base_legal", "dpd_correo", "encargados", "lugar"],
+      "properties": {
+        "responsable": { "$ref": "#/$defs/textoOPendiente" },
+        "base_legal": { "$ref": "#/$defs/textoOPendiente" },
+        "dpd_correo": { "const": "protecciondatossecd@aragon.es" },
+        "encargados": {
+          "anyOf": [
+            { "type": "array", "minItems": 1, "maxItems": 10, "items": { "$ref": "#/$defs/texto", "maxLength": 200 } },
+            { "type": "null" }
+          ]
+        },
+        "lugar": { "$ref": "#/$defs/texto" }
+      }
+    }
+  }
+}
