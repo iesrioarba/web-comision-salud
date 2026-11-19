@@ -123,7 +123,7 @@ specs/001-reto-octubre/
 │   ├── paginas-web.md          # Rutas, estructura y textos de las páginas públicas
 │   └── ejemplos/               # Octubre, curso y sitio como datos de ejemplo
 ├── checklists/requirements.md
-└── tasks.md             # Fase 5 (/speckit-tasks), aún no existe
+└── tasks.md             # Fase 5 (/speckit-tasks): tareas, ramas y trazabilidad
 ```
 
 ### Source Code (repository root)
@@ -200,8 +200,9 @@ Comisión ─▶ Pages CMS (valida required/pattern) ─▶ commit en main (GitH
 ```
 
 - `npm run comprobar` ejecuta en local la misma secuencia que Actions.
-- La sección «Comprobaciones» de AGENTS.md debe listar estos scripts. El planificador no
-  puede tocar AGENTS.md: lo hace la sesión principal cuando se apruebe el plan.
+- La sección «Comprobaciones» de AGENTS.md debe listar estos scripts. La actualiza la
+  tarea que crea los scripts (T013 de [tasks.md](tasks.md), y T023 para
+  `comprobar:cabeceras`), por decisión de Michel (N10 de tasks.md).
 - Secretos nuevos en GitHub (entorno `produccion`): servidor, puerto, usuario y
   contraseña SMTP, y dirección del buzón de avisos. Ninguno en el repositorio.
 
@@ -245,6 +246,7 @@ Comisión ─▶ Pages CMS (valida required/pattern) ─▶ commit en main (GitH
 | [0012](../../docs/decisiones/0012-aviso-de-fallos-al-publicar.md) | Correo al buzón de la comisión si «comprobar» falla con un commit de contenido de la app; si falla un cambio de código, aviso a quien mantiene la web |
 | [0013](../../docs/decisiones/0013-presupuesto-de-rendimiento.md) | Presupuesto de rendimiento con Lighthouse CI 0.16.0 |
 | [0014](../../docs/decisiones/0014-estrategia-de-pruebas.md) | html-validate 11.21.0, linkinator 8.1.0, Playwright 1.65.0 + axe 4.14.0, `node:test` |
+| [0016](../../docs/decisiones/0016-lanzamiento-sin-anunciar.md) | (Propuesta, 2026-11-19) Lanzamiento sin anunciar: `noindex` y `X-Robots-Tag` hasta el estreno |
 
 ## Decisiones confirmadas
 
@@ -261,7 +263,9 @@ Confirmadas por Michel el 2026-11-11, tal como estaban propuestas.
    Bachillerato): no se editan desde el panel.
 6. Nombre de los retos de tutoría y familia opcional, con el nombre del tipo si falta.
 7. Enlaces externos en la misma pestaña, con «(sitio externo)» en el texto.
-8. Límite de 10 MB por material y formatos PDF, PNG y JPG.
+8. Límite de 10 MB por material y formatos PDF, PNG y JPG. Precisado el 2026-11-19: PNG
+   y JPG solo en materiales de tipo `cartel` o `infografia`; el resto, solo PDF; sin
+   fotos de los retos (contracts/reto.schema.json y contracts/panel-pages-cms.md).
 9. Un reto `publicado` de un mes que aún no ha llegado se ve en la web como «No es el
    reto en curso».
 10. La guía de mantenimiento vive en `docs/guia-publicar.md` del repositorio público.
@@ -282,7 +286,7 @@ Lo que hacía falta y no está escrito en `specs/` ni en los documentos del proy
 | H8 | Ficheros de los materiales de octubre, su formato, su tamaño y el texto completo de la infografía | Comisión | US2 con datos reales |
 | H9 | ¿Los retos de tutoría y familia tienen nombre propio? FR-002 pide «nombre» pero los datos de octubre solo dan el del motriz | Comisión | Nada (confirmado: opcional; decisión 6) |
 | H10 | ¿Se ven los retos publicados de meses futuros? La especificación solo habla de pasados | Michel / comisión | Nada (confirmado: sí, como «no en curso»; decisión 9) |
-| H11 | Declaración de accesibilidad (principio I) y, si procede, información de privacidad (ADR 0010): no están en la especificación 001 | Michel (nueva funcionalidad o ampliar la 001) | Producción |
+| H11 | Declaración de accesibilidad (principio I) y, si procede, información de privacidad (ADR 0010): no están en la especificación 001. **Decidido (2026-11-19):** van en la funcionalidad nueva 002 (páginas legales), que se integra en `main` antes que la imagen nueva (T023) y está publicada y al día en el estreno (T050) | Michel | T023 y estreno |
 | H12 | Navegación global y qué más contiene la web además del reto (cabecera, pie, otras secciones) | Michel | Diseño |
 | H13 | Diseño visual (colores, tipografía, disposición) | Skill `frontend-design`, después | Aspecto, no funcionamiento |
 | H14 | Móvil real para la prueba manual de SC-006 | Michel | Quickstart C3 |
@@ -296,9 +300,10 @@ Lo que hacía falta y no está escrito en `specs/` ni en los documentos del proy
 - `.specify/extensions.yml` no existe: no hay ganchos `before_plan` ni `after_plan`.
 - Este flujo de Spec Kit 1.3.2 no ha intentado actualizar ningún fichero de contexto de
   agente; en cualquier caso no se crearía CLAUDE.md (ADR 0002): AGENTS.md es la única
-  fuente y su sección «Comprobaciones» la actualiza la sesión principal.
-- ESTADO.md sigue diciendo que el modo de publicación está «pendiente de la reunión con
-  la comisión»; la decisión de Michel (ADR 0005) debe reflejarse allí (sesión principal).
+  fuente y su sección «Comprobaciones» la actualiza la tarea T013 de [tasks.md](tasks.md)
+  (N10).
+- ESTADO.md ya recoge la decisión de publicación de Michel (ADR 0005, entrada del
+  2026-11-11).
 
 ## Complexity Tracking
 

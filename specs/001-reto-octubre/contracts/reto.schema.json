@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:web-comision-salud:schema:reto",
   "title": "Reto del mes",
-  "description": "Contrato de content/retos/<curso>-<mes>.yml. Ver data-model.md. Las reglas entre campos que JSON Schema no expresa (unicidad de mes, desde/hasta, existencia y tamaño de ficheros, fecha dentro del curso, tema del mes) las comprueba scripts/validate-content.js.",
+  "description": "Contrato de content/retos/<curso>-<mes>.yml. Ver data-model.md. PNG y JPG solo en materiales de tipo cartel o infografia (el resto, solo PDF). Las reglas entre campos que JSON Schema no expresa (unicidad de mes, desde/hasta, existencia y tamaño de ficheros, fecha dentro del curso, tema del mes) las comprueba scripts/validate-content.js.",
   "type": "object",
   "additionalProperties": false,
   "required": ["curso", "mes", "estado", "nombre", "objetivo", "descripcion", "motriz", "tutoria", "familia"],
@@ -125,11 +125,32 @@
         },
         "version_texto": { "anyOf": [{ "$ref": "#/$defs/vacio" }, { "type": "string", "maxLength": 3000 }] }
       },
-      "if": { "properties": { "tipo": { "const": "infografia" } } },
-      "then": {
-        "required": ["version_texto"],
-        "properties": { "version_texto": { "type": "string", "minLength": 1, "pattern": "\\S" } }
-      }
+      "allOf": [
+        {
+          "if": { "properties": { "tipo": { "const": "infografia" } } },
+          "then": {
+            "required": ["version_texto"],
+            "properties": { "version_texto": { "type": "string", "minLength": 1, "pattern": "\\S" } }
+          }
+        },
+        {
+          "$comment": "PNG y JPG solo en carteles e infografías; documento, ficha y justificante, solo PDF (decisión de Michel del 2026-11-19).",
+          "if": {
+            "required": ["tipo"],
+            "properties": { "tipo": { "enum": ["documento", "ficha", "justificante"] } }
+          },
+          "then": {
+            "properties": {
+              "archivo": {
+                "anyOf": [
+                  { "$ref": "#/$defs/vacio" },
+                  { "type": "string", "pattern": "\\.[pP][dD][fF]$" }
+                ]
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

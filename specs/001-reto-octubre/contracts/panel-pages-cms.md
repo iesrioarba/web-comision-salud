@@ -64,10 +64,22 @@ lo que no se ha podido comprobar en la documentación está marcado como «compr
   8. `tutoria` (`object`): `nombre`, `descripcion`, `adaptado_por_etapas` (boolean),
      `desde`, `hasta`, `materiales`.
   9. `familia` (`object`): `nombre`, `descripcion`, `desde`, `hasta`, `materiales`.
-- `materiales` (lista de `object`, máx. 10): `titulo`, `tipo` (select), `destinatario`
-  (select), `archivo` (file, fuente `materiales`, carpeta `content/materiales/{curso}-{mes}`
-  si la versión lo permite — comprobar), `version_texto` (text; descripción
-  «Obligatorio si es una infografía: copia aquí todo su texto, en el mismo orden»).
+- `materiales` (lista de `object`, máx. 10). Descripción de la lista: «No subas fotos de
+  los retos. PNG y JPG solo para carteles e infografías; el resto de materiales, en
+  PDF.» (decisión de Michel del 2026-11-19). Campos: `titulo`, `tipo` (select),
+  `destinatario` (select), `archivo` (file, fuente `materiales`, `extensions: [pdf, png,
+  jpg, jpeg]`, carpeta `content/materiales/{curso}-{mes}` si la versión lo permite —
+  comprobar; descripción: «No subas fotos de los retos. Ficha, justificante y
+  documento: solo PDF. Cartel e infografía: PDF, PNG o JPG.»), `version_texto` (text;
+  descripción «Obligatorio si es una infografía: copia aquí todo su texto, en el mismo
+  orden»).
+- **Formato según el tipo**: PNG y JPG solo se admiten si `tipo` es `cartel` o
+  `infografia`; en `documento`, `ficha` y `justificante`, solo PDF. El panel NO puede
+  imponerlo: la opción `extensions` del campo `file` es fija por campo y no depende del
+  valor de otro campo (<https://pagescms.org/docs/configuration/fields/file/>, consultado
+  el 2026-11-19). Las defensas son la descripción del campo y el validador
+  (`schemas/reto.schema.json` y `scripts/validate-content.js`), que rechaza, por ejemplo,
+  una ficha en PNG con un mensaje en español; si pasa, el aviso por correo del ADR 0012.
 
 ### «Curso y calendario»
 

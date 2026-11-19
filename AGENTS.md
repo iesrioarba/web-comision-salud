@@ -91,6 +91,7 @@ Quien actualiza los contenidos cada mes es profesorado sin conocimientos de prog
    (`feat`, `fix`, `docs`, `test`, `chore`, `refactor`, `style`, `ci`).
 6. Actualiza `ESTADO.md` y marca la tarea en `tasks.md`.
 7. Nunca hagas `git push --force`, no borres ramas remotas ni reescribas historia publicada.
+   Las ramas `ensayo/…` son de usar y tirar: se borran al terminar el ensayo.
 
 ## Comprobaciones
 - Validar HTML: `npm run validar`
