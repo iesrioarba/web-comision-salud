@@ -199,6 +199,11 @@ y la web muestra los datos nuevos.
 - **Impresión**: las páginas legales se imprimen legibles, sin menús.
 - **Declaración caducada**: si la fecha de la última revisión tiene más de un año, se
   considera desfasada y se revisa (User Story 4).
+- **Proxy compartido del VPS**: la prohibición de guardar registros de visitas (FR-019)
+  se aplica a todo lo que atiende las visitas de la web pública, también al proxy de
+  Easypanel que está delante. Si en el plan se comprueba que ese proxy guarda la IP y
+  quienes gestionan el VPS no pueden desactivarlo para esta web, la página de privacidad
+  DEBE decir qué se guarda, para qué y cuánto tiempo (FR-021), y se revisa esta decisión.
 
 ## Requirements *(mandatory)*
 
@@ -279,6 +284,8 @@ RD 1112/2018)
   servidor de la web pública NO DEBE guardar registros de visitas (ni dirección IP, ni
   página pedida, ni hora); solo puede guardar registros de errores del servidor, sin
   dirección IP ni otro dato que identifique a quien visita.
+  Esto incluye el proxy del VPS que está delante de la web (caso límite «Proxy
+  compartido del VPS»).
 - **FR-020**: La parte de quienes editan DEBE indicar: responsable del tratamiento;
   contacto del Delegado de Protección de Datos (protecciondatossecd@aragon.es);
   finalidad (dar acceso para publicar); base legal; dato que se guarda (solo el correo y
