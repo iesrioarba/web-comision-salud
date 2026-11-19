@@ -106,7 +106,7 @@ longitudes) pero no se le exigen `fuentes`; no genera página ni aparece en el c
 | `titulo` | texto | sí | ≤ 120. Ej.: «Guía del tutor/a» |
 | `tipo` | `documento` \| `ficha` \| `justificante` \| `cartel` \| `infografia` | sí | |
 | `destinatario` | `alumnado` \| `familias` \| `tutores` \| `todo-el-centro` | sí | Se muestra «Alumnado», «Familias», «Tutor/a», «Todo el centro» (FR-008) |
-| `archivo` | ruta de fichero | no | Empieza por `/materiales/` (se recomienda la subcarpeta `<curso>-<mes>/`), sin `..`; el fichero existe en `content/materiales/…` (script); extensión `pdf`, `png`, `jpg` o `jpeg` (mayúsculas o minúsculas); ≤ 10 MB (ADR 0013). Vacío → «Disponible próximamente», sin enlace (caso límite «material que falta») |
+| `archivo` | ruta de fichero | no | Empieza por `/materiales/` (se recomienda la subcarpeta `<curso>-<mes>/`), sin `..`; el fichero existe en `content/materiales/…` (script); extensión `pdf`, `png`, `jpg` o `jpeg` (mayúsculas o minúsculas); PNG y JPG solo si `tipo` es `cartel` o `infografia`; el resto, solo PDF; ≤ 10 MB (ADR 0013). Vacío → «Disponible próximamente», sin enlace (caso límite «material que falta») |
 | `version_texto` | texto largo | sí si `tipo` = `infografia` | ≤ 3 000; párrafos o pasos separados por línea en blanco; se muestra en la web en el mismo orden (FR-010, SC-007) |
 | *Formato* | derivado | — | De la extensión: «PDF», «Imagen PNG», «Imagen JPG» |
 | *Tamaño* | derivado | — | Del fichero real, en español: «850 KB», «1,2 MB» |

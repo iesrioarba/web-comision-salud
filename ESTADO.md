@@ -26,6 +26,9 @@ Actualizado: 2026-11-19
 - 2026-11-11 · Plan de 001-reto-octubre: Eleventy 3.1.8, Node 26, nginx 1.30.6, contenido en YAML validado, borradores con campo estado, aviso de fallos por correo, presupuesto de rendimiento y pruebas (ADR 0006 a 0014).
 - 2026-11-11 · Constitución 1.0.1: el principio VII aclara que la revisión independiente es para el código (ADR 0015).
 - 2026-11-19 · Sin fotos de los retos. Si se publican vídeos, será una funcionalidad aparte con su especificación: nunca en el repositorio, enlazados y no incrustados, y con autorización de imagen.
+- 2026-11-19 · Ningún material lleva fotos de alumnado (carteles incluidos).
+- 2026-11-19 · Lanzamiento sin anunciar hasta el estreno: noindex y X-Robots-Tag (ADR 0016).
+- 2026-11-19 · Las páginas legales (002: declaración de accesibilidad, aviso legal y privacidad) se integran antes de desplegar la web nueva (T023).
 
 ## Hecho
 - Inventario de la petición de la comisión.
@@ -44,6 +47,7 @@ Actualizado: 2026-11-19
 - 2026-11-09 · Fase 3 cerrada: especificación aclarada aprobada por Michel e integrada en main (PR #3).
 - 2026-11-11 · Fase 4: plan de 001-reto-octubre con el subagente planificador, revisado y corregido.
 - 2026-11-11 · Fase 4 cerrada: plan técnico de 001-reto-octubre aprobado por Michel e integrado en main (PR #4).
+- 2026-11-19 · Fase 5: tareas de 001-reto-octubre (50) revisadas con tres pasadas de /speckit-analyze, sin críticos.
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
@@ -56,4 +60,4 @@ Actualizado: 2026-11-19
 - Crear la cuenta del centro solo para enviar correo, con verificación en dos pasos y contraseña de aplicación (será una tarea MANUAL de tasks.md).
 
 ## Próximo paso
-/speckit-tasks con el subagente planificador y después /speckit-analyze.
+Visto bueno de Michel a las tareas (PR). Después, en paralelo: fase 6 de 001 (T001 a T012) y fase 2 de 002 con /speckit-specify.

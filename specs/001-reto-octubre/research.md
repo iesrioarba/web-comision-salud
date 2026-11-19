@@ -68,7 +68,9 @@ Todas se fijan con versión exacta en `package.json` (sin `^`, a diferencia del 
   front matter, solo el panel.
 - **Comprobado en esta fase**: los tres esquemas de `contracts/` compilan en modo estricto
   con el `ajv` que ya hay en `node_modules` (dependencia de `html-validate`) y aceptan o
-  rechazan como se espera el ejemplo de octubre y 6 variantes mal formadas.
+  rechazan como se espera el ejemplo de octubre y 6 variantes mal formadas. El esquema
+  de `reto` cambió el 2026-11-19 (PNG y JPG solo en carteles e infografías): la
+  compilación en modo estricto del esquema nuevo la confirma T006.
 - **A tener en cuenta**: los mensajes de `ajv` salen en inglés y repetidos por los
   `anyOf`; el script DEBE traducirlos a un mensaje en español por campo («En
   `motriz.hora`: escribe la hora así: 11:30»).
