@@ -21,7 +21,7 @@ control de commits de la app (ADR 0005), editables en el navegador (FR-026).
 
 ## Technical Context
 
-**Language/Version**: la de la 001: JavaScript (ES) sobre Node.js 26.13.0; Nunjucks;
+**Language/Version**: la de la 001: JavaScript (ES) sobre Node.js 26.13.1; Nunjucks;
 Markdown (con `markdown-it`, incluido en Eleventy 3.x); YAML; HTML y CSS.
 
 **Primary Dependencies**: ninguna nueva. Eleventy 3.1.8, `yaml` 2.9.1, `ajv` 8.20.0,

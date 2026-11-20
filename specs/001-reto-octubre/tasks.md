@@ -120,20 +120,20 @@ Convenciones confirmadas por Michel (N7 a N9):
 
 **Purpose**: Node 26, dependencias fijadas y flujo de Actions al día.
 
-- [ ] T001 Fijar Node 26.13.0 y las dependencias del plan en `package.json`, `package-lock.json`, `.nvmrc` y `.gitignore`
+- [x] T001 Fijar Node 26.13.1 y las dependencias del plan en `package.json`, `package-lock.json`, `.nvmrc` y `.gitignore`
   - **Rama**: `tarea/001-T001-node-y-dependencias` · **Depende de**: —
   - **Objetivo**: dejar el proyecto con las versiones exactas de research.md (tabla de versiones) y ADR 0006, 0007, 0008, 0013 y 0014.
-  - **Ficheros**: `.nvmrc` (`26.13.0`), `package.json` (`"type": "module"`, `engines.node` con 26.13.0, `dependencies`: `@11ty/eleventy` 3.1.8, `yaml` 2.9.1, `ajv` 8.20.0, `ajv-formats` 3.0.1; `devDependencies`: `html-validate` 11.21.0, `linkinator` 8.1.0, `@playwright/test` 1.65.0, `@axe-core/playwright` 4.14.0, `@lhci/cli` 0.16.0; todas sin `^` ni `~`), `package-lock.json`, `.gitignore` (añade `_site/`, `_site-fixtures/`, `test-results/`, `playwright-report/`, `.lighthouseci/`).
+  - **Ficheros**: `.nvmrc` (`26.13.1`), `package.json` (`"type": "module"`, `engines.node` con 26.13.1, `dependencies`: `@11ty/eleventy` 3.1.8, `yaml` 2.9.1, `ajv` 8.20.0, `ajv-formats` 3.0.1; `devDependencies`: `html-validate` 11.21.1, `linkinator` 8.1.0, `@playwright/test` 1.65.1, `@axe-core/playwright` 4.14.0, `@lhci/cli` 0.16.1; todas sin `^` ni `~`), `package-lock.json`, `.gitignore` (añade `_site/`, `_site-fixtures/`, `test-results/`, `playwright-report/`, `.lighthouseci/`).
   - **Antes de instalar**: comprobar en el registro de npm que cada versión sigue siendo la última estable (`/latest`). Si alguna ha cambiado desde el 2026-11-11, PARAR y avisar: hay que leer las notas y actualizar su ADR (AGENTS.md, «Mantenibilidad»). No tocar el script `validar` ni `site/` en esta tarea.
-  - **Hecho cuando**: `npm ci` termina sin errores con Node 26.13.0 y `package.json` no tiene rangos.
-  - **Comprobación**: `node --version` → `v26.13.0`; `npm ci` (código 0); `npm ls --depth=0` muestra las 9 versiones exactas; `grep -E '"[\^~][0-9]' package.json` no devuelve nada; `npm run validar` sigue en verde (aún valida `site/`).
+  - **Hecho cuando**: `npm ci` termina sin errores con Node 26.13.1 y `package.json` no tiene rangos.
+  - **Comprobación**: `node --version` → `v26.13.1`; `npm ci` (código 0); `npm ls --depth=0` muestra las 9 versiones exactas; `grep -E '"[\^~][0-9]' package.json` no devuelve nada; `npm run validar` sigue en verde (aún valida `site/`).
 
 - [ ] T002 Pasar el flujo `.github/workflows/despliegue.yml` a Node 26 y fijar las versiones de `actions/checkout`, `actions/setup-node` y `actions/upload-artifact` (H18, N11)
   - **Rama**: `tarea/001-T002-actions-node-26` · **Depende de**: T001
   - **Objetivo**: ADR 0007 («`.github/workflows/despliegue.yml` pasa a Node 26») y decisión N11 (`actions/upload-artifact` es una acción oficial de GitHub; se fija y se anota aquí para usarla en T014).
   - **Ficheros**: `.github/workflows/despliegue.yml` (solo `node-version-file: .nvmrc` en lugar de `node-version: 22`, y la versión de `checkout` y `setup-node`; `upload-artifact` aún no se usa). Propuesta de actualización en `docs/decisiones/0007-compilacion-y-servidor.md` con las versiones de las tres acciones y sus fuentes, que confirma Michel.
-  - **Hecho cuando**: las tres acciones tienen su última versión estable comprobada en su página de versiones de GitHub (fuente anotada, notas leídas buscando cambios incompatibles) y el flujo usa Node 26.13.0.
-  - **Comprobación**: el flujo «Comprobar y desplegar» de la PR de esta rama sale en verde y su registro muestra `Node.js v26.13.0`; la propuesta de ADR lista las tres versiones con su fuente.
+  - **Hecho cuando**: las tres acciones tienen su última versión estable comprobada en su página de versiones de GitHub (fuente anotada, notas leídas buscando cambios incompatibles) y el flujo usa Node 26.13.1.
+  - **Comprobación**: el flujo «Comprobar y desplegar» de la PR de esta rama sale en verde y su registro muestra `Node.js v26.13.1`; la propuesta de ADR lista las tres versiones con su fuente.
   - **Revisión**: Michel revisa el diff y el subagente `revisor` revisa la PR (toca `.github/workflows/`).
 
 ---
@@ -377,7 +377,7 @@ de las comprobaciones a mano (T047).
 
 - [ ] T023 Sustituir el `Dockerfile` por el de dos etapas, crear `nginx/nginx.conf` y `nginx/default.conf`, borrar `site/` y añadir `comprobar:cabeceras` a `.github/workflows/despliegue.yml` y a `AGENTS.md`
   - **Rama**: `tarea/001-T022-imagen-y-nginx` · **Depende de**: T022, la funcionalidad 002 integrada en `main`, con sus enlaces en el pie (C2), y la tarea MANUAL del proxy de la 002 (002-T002, ADR 0018; su resultado puede cambiar el texto de `/privacidad/`): la PR del grupo no se integra antes
-  - **Objetivo**: ADR 0007, ADR 0016 y ADR 0018. Etapa 1 `node:26.13.0-alpine3.24`: `npm ci --omit=dev`, validación y compilación (`npm run build`). Etapa 2 `nginx:1.30.6-alpine3.24`: solo la carpeta generada, `nginx/nginx.conf` (sustituye la configuración principal de la imagen: `access_log off` en `http`, `error_log stderr notice` a nivel principal, `error_log stderr emerg` en `http`, `log_not_found off`; ADR 0018) y `nginx/default.conf` (CSP `default-src 'self'`, `X-Robots-Tag: noindex` en todas las respuestas hasta el estreno (L3, ADR 0016), compresión, caché larga para `/materiales/`, `error_page 404 /404.html`, sin cookies). Etiquetas completas, nunca `stable`.
+  - **Objetivo**: ADR 0007, ADR 0016 y ADR 0018. Etapa 1 `node:26.13.1-alpine3.24`: `npm ci --omit=dev`, validación y compilación (`npm run build`). Etapa 2 `nginx:1.30.6-alpine3.24`: solo la carpeta generada, `nginx/nginx.conf` (sustituye la configuración principal de la imagen: `access_log off` en `http`, `error_log stderr notice` a nivel principal, `error_log stderr emerg` en `http`, `log_not_found off`; ADR 0018) y `nginx/default.conf` (CSP `default-src 'self'`, `X-Robots-Tag: noindex` en todas las respuestas hasta el estreno (L3, ADR 0016), compresión, caché larga para `/materiales/`, `error_page 404 /404.html`, sin cookies). Etiquetas completas, nunca `stable`.
   - **Hecho cuando**: la imagen se construye, `comprobar:cabeceras` pasa, está como paso de «comprobar» en Actions (mismo orden que `npm run comprobar`) y como línea en «Comprobaciones» de AGENTS.md, que dice que necesita Docker en local.
   - **Comprobación**: `docker build .` correcto; `npm run comprobar` con código 0 (incluye `comprobar:cabeceras`); en local, con `content/curso.yml` estropeado a propósito (sin integrar), `docker build .` falla en el paso de validación con el mensaje en español (quickstart A8); PR del grupo en verde.
   - **Revisión**: Michel revisa el diff y el subagente `revisor` revisa la PR del grupo (toca `.github/workflows/` y `nginx/`).

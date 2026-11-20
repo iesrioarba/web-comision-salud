@@ -8,7 +8,7 @@ salir. Los nombres de los scripts son los del plan (ADR 0014).
 
 ## Requisitos
 
-- Node 26.13.0 (`.nvmrc`) y npm.
+- Node 26.13.1 (`.nvmrc`) y npm.
 - `npm ci` y, para las pruebas de navegador, `npx playwright install chromium`.
 - Docker en local para A8 y A9 (`comprobar:cabeceras` forma parte de `npm run comprobar`).
 - Para los escenarios del panel: Pages CMS en marcha en el VPS (HUECO: dominio, SMTP) y

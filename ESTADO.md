@@ -1,8 +1,8 @@
 # ESTADO · Web de la Comisión de Salud (IES Río Arba)
-Actualizado: 2026-11-19
+Actualizado: 2026-11-20
 
 ## Fase actual
-001-reto-octubre: fase 6 (implementación) pendiente de empezar · 002-paginas-legales: fase 4 (plan técnico)
+001: fase 6 (implementación), T002 · 002: fase 6 pendiente (empieza tras 001-T012 y la rama T013+T014)
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -51,6 +51,8 @@ Actualizado: 2026-11-19
 - 2026-11-11 · Fase 4 cerrada: plan técnico de 001-reto-octubre aprobado por Michel e integrado en main (PR #4).
 - 2026-11-19 · Fase 5: tareas de 001-reto-octubre (50) revisadas con tres pasadas de /speckit-analyze, sin críticos.
 - 2026-11-19 · 002-paginas-legales: especificación y 7 aclaraciones, aprobadas por Michel e integradas en main.
+- 2026-11-20 · 002: plan y tareas aprobados e integrados (PR #8)
+- 2026-11-20 · 001-T001: Node 26.13.1 y dependencias fijadas; versiones de parche actualizadas en los ADR y planes; npm audit con riesgo aceptado (ADR 0014)
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
@@ -63,4 +65,4 @@ Actualizado: 2026-11-19
 - Crear la cuenta del centro solo para enviar correo, con verificación en dos pasos y contraseña de aplicación (será una tarea MANUAL de tasks.md).
 
 ## Próximo paso
-Plan técnico de 002 con el subagente planificador; después, tareas de 002 y ajustes de tasks.md de 001 (T030 y T040).
+Tareas de 001 en orden; gestiones manuales 002-T001 a T003 en paralelo.

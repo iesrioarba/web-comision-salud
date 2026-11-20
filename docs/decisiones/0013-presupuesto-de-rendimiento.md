@@ -33,12 +33,15 @@ en un móvil de gama media
 | Peticiones a terceros | 0 | SC-005 |
 | Cada material descargable | ≤ 10 MB (lo comprueba el validador, ADR 0008) | No se descarga si no se pide; límite para el repositorio y el móvil |
 
-**Herramienta**: `@lhci/cli` **0.16.0** (incluye Lighthouse 13.6.0), dependencia de
+**Herramienta**: `@lhci/cli` **0.16.1** (incluye Lighthouse 13.6.0), dependencia de
 desarrollo con versión exacta. Usa `staticDistDir` para servir la carpeta generada sin
 servidor aparte, y aserciones `maxNumericValue` y `resource-summary:<tipo>:(size|count)`
 (<https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md>).
 Bloquea «comprobar» si no se cumple.
-- Comprobado el 2026-11-11: 0.16.0 es `latest` en npm
+- Comprobado el 2026-11-20: 0.16.1 es `latest` en npm (el 2026-11-11 era 0.16.0; el
+  parche 0.16.1, del 11 de noviembre, solo corrige hashes de URL en `lhci`, MySQL del
+  servidor y dependencias, sin cambios incompatibles:
+  <https://github.com/GoogleChrome/lighthouse-ci/releases/tag/v0.16.1>)
   (<https://registry.npmjs.org/@lhci/cli/latest>) y la última en
   <https://github.com/GoogleChrome/lighthouse-ci/releases> (2 de noviembre de 2026).
   Cambios incompatibles leídos: pasa a Lighthouse 13.6.0 y exige Node ≥ 22 (se usa 26).

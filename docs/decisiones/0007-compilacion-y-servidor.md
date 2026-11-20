@@ -13,15 +13,15 @@ Comprobado el 2026-11-11:
 - Node 26 «Lithium» es Active LTS desde el 2026-10-28 y tiene soporte hasta el
   2029-04-30; Node 22 termina el 2027-04-30, en mitad del curso
   (<https://github.com/nodejs/release#release-schedule>,
-  <https://nodejs.org/en/about/previous-releases>, última 26.13.0).
+  <https://nodejs.org/en/about/previous-releases>, última 26.13.1).
 - nginx estable: 1.30.6 (<https://nginx.org/en/download.html>); imagen
   `nginx:1.30.6-alpine3.24` (<https://hub.docker.com/_/nginx>).
-- Imagen de Node: `node:26.13.0-alpine3.24` (<https://hub.docker.com/_/node>).
+- Imagen de Node: `node:26.13.1-alpine3.24` (<https://hub.docker.com/_/node>).
 
 ## Decisión
-- **Node 26.13.0** en local, en Actions y en la imagen de compilación. Se fija en
+- **Node 26.13.1** en local, en Actions y en la imagen de compilación. Se fija en
   `package.json` (`engines`) y en un fichero `.nvmrc`.
-- **Dockerfile en dos etapas**: la primera (`node:26.13.0-alpine3.24`) ejecuta
+- **Dockerfile en dos etapas**: la primera (`node:26.13.1-alpine3.24`) ejecuta
   `npm ci --omit=dev`, la validación del contenido (ADR 0008) y la compilación; la
   segunda (`nginx:1.30.6-alpine3.24`) solo copia la carpeta generada y la configuración
   de nginx. Las herramientas de prueba son dependencias de desarrollo y no entran.

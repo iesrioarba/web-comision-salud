@@ -5,7 +5,7 @@
 
 ## Requisitos
 
-Los de `specs/001-reto-octubre/quickstart.md` (Node 26.13.0, `npm ci`, Chromium de
+Los de `specs/001-reto-octubre/quickstart.md` (Node 26.13.1, `npm ci`, Chromium de
 Playwright, Docker para las cabeceras y los registros). Datos INVENTADOS y evidentes en
 las fixtures (p. ej. `accesibilidad@example.org`, CIF `X00000000`).
 

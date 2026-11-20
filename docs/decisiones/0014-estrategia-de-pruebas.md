@@ -18,10 +18,10 @@ Cada comprobación es un script de npm. «comprobar» los ejecuta todos, en este
 | `npm run comprobar:contenido` | Ficheros de `content/` contra los esquemas y reglas (ADR 0008) | `yaml` 2.9.1, `ajv` 8.20.0, `ajv-formats` 3.0.1 |
 | `npm test` | Pruebas unitarias del validador y de los filtros de plantilla con contenido inventado | `node:test`, incluido en Node 26: sin dependencia nueva |
 | `npm run build` | Compila (incluye la validación) | Eleventy 3.1.8 (ADR 0006) |
-| `npm run validar` | HTML válido de `_site/` | `html-validate` **11.21.0** (sube desde 11.18.0) |
+| `npm run validar` | HTML válido de `_site/` | `html-validate` **11.21.1** (sube desde 11.18.0) |
 | `npm run comprobar:enlaces` | Enlaces internos y materiales sin romper en `_site/` (los externos se omiten) | `linkinator` **8.1.0** |
-| `npm run comprobar:web` | Escenarios de aceptación en navegador; accesibilidad automática WCAG 2.1 AA; 0 cookies y 0 peticiones a terceros; orden del foco con teclado | `@playwright/test` **1.65.0** (solo Chromium) y `@axe-core/playwright` **4.14.0** |
-| `npm run comprobar:rendimiento` | Presupuesto (ADR 0013) | `@lhci/cli` 0.16.0 |
+| `npm run comprobar:web` | Escenarios de aceptación en navegador; accesibilidad automática WCAG 2.1 AA; 0 cookies y 0 peticiones a terceros; orden del foco con teclado | `@playwright/test` **1.65.1** (solo Chromium) y `@axe-core/playwright` **4.14.0** |
+| `npm run comprobar:rendimiento` | Presupuesto (ADR 0013) | `@lhci/cli` 0.16.1 |
 
 - axe se ejecuta con las etiquetas `wcag2a`, `wcag2aa`, `wcag21a` y `wcag21aa`
   (<https://github.com/dequelabs/axe-core/blob/develop/doc/API.md>) y cero
@@ -33,21 +33,31 @@ Cada comprobación es un script de npm. «comprobar» los ejecuta todos, en este
 - La comprobación a mano con teclado y lector de pantalla sigue siendo obligatoria
   (principio I, SC-004) y se describe en `specs/001-reto-octubre/quickstart.md`.
 
-Versiones comprobadas el 2026-11-11 en el registro de npm (`/latest`) y notas leídas:
-- `html-validate` 11.21.0 (<https://registry.npmjs.org/html-validate/latest>), requiere
-  Node `^22.22.0 || >= 24.8.0`; cambios 11.18 a 11.21 sin incompatibilidades
+Versiones comprobadas el 2026-11-11 en el registro de npm (`/latest`) y notas leídas.
+`html-validate`, `@playwright/test` y `@lhci/cli` se subieron a su última versión de
+parche el 2026-11-20 (de 11.21.0, 1.65.0 y 0.16.0), tras comprobar de nuevo `/latest` y
+leer sus notas sin cambios incompatibles:
+- `html-validate` 11.21.1 (<https://registry.npmjs.org/html-validate/latest>), requiere
+  Node `^22.22.0 || >= 24.8.0`; cambios 11.18 a 11.21.1 sin incompatibilidades
   (<https://html-validate.org/changelog/>).
 - `linkinator` 8.1.0 (<https://registry.npmjs.org/linkinator/latest>); 8.0.0 exige
   Node ≥ 22, sin más cambios incompatibles
   (<https://github.com/JustinBeckwith/linkinator/releases>). Opciones `--recurse` y
   `--skip` (<https://github.com/JustinBeckwith/linkinator>).
-- `@playwright/test` 1.65.0 (<https://registry.npmjs.org/@playwright/test/latest>);
+- `@playwright/test` 1.65.1 (<https://registry.npmjs.org/@playwright/test/latest>);
   soporta Node 22, 24 y 26. Cambios incompatibles de 1.64 y 1.65 leídos
   (<https://playwright.dev/docs/release-notes>); afectan a TypeScript, cookies RFC 6265
   y nombres accesibles de texto no renderizado: se tienen en cuenta al escribir las
   pruebas, no hay código previo que migrar.
 - `@axe-core/playwright` 4.14.0 (<https://registry.npmjs.org/@axe-core/playwright/latest>),
   arrastra `axe-core` ~4.14.0.
+
+Nota del 2026-11-20 (`npm audit`): avisa de 3 vulnerabilidades moderadas en `glob` y
+`minimatch`, dentro de `linkinator` 8.1.0 (GHSA-3g3m-2fjr-6pw4 y GHSA-g3hv-75wg-m249).
+Riesgo aceptado: `linkinator` solo se usa en desarrollo y en Actions sobre la web
+propia, y los fallos necesitan patrones o rutas controlados por un atacante.
+`npm audit fix --force` bajaría `linkinator` a 4.1.2, así que no se aplica. Se revisa
+cuando `linkinator` publique una versión que los corrija.
 
 ## Alternativas consideradas
 | Opción | Coste | Riesgo |

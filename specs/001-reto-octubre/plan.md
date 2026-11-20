@@ -33,12 +33,12 @@ Enfoque técnico:
 
 ## Technical Context
 
-**Language/Version**: JavaScript (módulos ES) sobre Node.js 26.13.0 LTS (ADR 0007);
+**Language/Version**: JavaScript (módulos ES) sobre Node.js 26.13.1 LTS (ADR 0007);
 plantillas Nunjucks; HTML y CSS estándar.
 
 **Primary Dependencies**: compilación: `@11ty/eleventy` 3.1.8, `yaml` 2.9.1, `ajv`
-8.20.0, `ajv-formats` 3.0.1. Desarrollo: `html-validate` 11.21.0, `linkinator` 8.1.0,
-`@playwright/test` 1.65.0, `@axe-core/playwright` 4.14.0, `@lhci/cli` 0.16.0. Fuera del
+8.20.0, `ajv-formats` 3.0.1. Desarrollo: `html-validate` 11.21.1, `linkinator` 8.1.0,
+`@playwright/test` 1.65.1, `@axe-core/playwright` 4.14.0, `@lhci/cli` 0.16.1. Fuera del
 repositorio: Pages CMS 2.1.8 + PostgreSQL en Easypanel. Versiones exactas y fuentes en
 [research.md](research.md).
 
@@ -130,10 +130,10 @@ specs/001-reto-octubre/
 
 ```text
 .pages.yml                      # Configuración del panel (contracts/panel-pages-cms.md)
-.nvmrc                          # 26.13.0
+.nvmrc                          # 26.13.1
 package.json / package-lock.json  # "type": "module", engines, scripts y versiones exactas
 eleventy.config.js              # Entrada src/, salida _site/, datos YAML, copia de materiales
-Dockerfile                      # 2 etapas: node:26.13.0-alpine3.24 → nginx:1.30.6-alpine3.24
+Dockerfile                      # 2 etapas: node:26.13.1-alpine3.24 → nginx:1.30.6-alpine3.24
 nginx/default.conf              # CSP, compresión, caché de materiales, 404, sin cookies
 lighthouserc.json               # Presupuesto (ADR 0013)
 playwright.config.js            # Chromium, servidor local, proyectos con contenido real y fixtures
@@ -238,14 +238,14 @@ Comisión ─▶ Pages CMS (valida required/pattern) ─▶ commit en main (GitH
 |---|---|
 | [0005](../../docs/decisiones/0005-panel-de-edicion-pages-cms.md) | Pages CMS 2.1.8 autoalojado, GitHub App de la organización, colaboradores por correo (decisión de Michel) |
 | [0006](../../docs/decisiones/0006-generador-de-sitio-eleventy.md) | Eleventy 3.1.8 con Nunjucks |
-| [0007](../../docs/decisiones/0007-compilacion-y-servidor.md) | Node 26.13.0; Dockerfile en dos etapas; nginx 1.30.6 con CSP |
+| [0007](../../docs/decisiones/0007-compilacion-y-servidor.md) | Node 26.13.1; Dockerfile en dos etapas; nginx 1.30.6 con CSP |
 | [0008](../../docs/decisiones/0008-formato-y-validacion-del-contenido.md) | YAML + JSON Schema con `yaml` 2.9.1, `ajv` 8.20.0 y `ajv-formats` 3.0.1 |
 | [0009](../../docs/decisiones/0009-correo-del-panel.md) | Correo del panel por SMTP del centro |
 | [0010](../../docs/decisiones/0010-datos-de-quienes-editan.md) | Solo el correo de quien edita, en el VPS; nada en los commits |
 | [0011](../../docs/decisiones/0011-borradores.md) | Campo `estado` (borrador/publicado) en repositorio público |
 | [0012](../../docs/decisiones/0012-aviso-de-fallos-al-publicar.md) | Correo al buzón de la comisión si «comprobar» falla con un commit de contenido de la app; si falla un cambio de código, aviso a quien mantiene la web |
-| [0013](../../docs/decisiones/0013-presupuesto-de-rendimiento.md) | Presupuesto de rendimiento con Lighthouse CI 0.16.0 |
-| [0014](../../docs/decisiones/0014-estrategia-de-pruebas.md) | html-validate 11.21.0, linkinator 8.1.0, Playwright 1.65.0 + axe 4.14.0, `node:test` |
+| [0013](../../docs/decisiones/0013-presupuesto-de-rendimiento.md) | Presupuesto de rendimiento con Lighthouse CI 0.16.1 |
+| [0014](../../docs/decisiones/0014-estrategia-de-pruebas.md) | html-validate 11.21.1, linkinator 8.1.0, Playwright 1.65.1 + axe 4.14.0, `node:test` |
 | [0016](../../docs/decisiones/0016-lanzamiento-sin-anunciar.md) | (Aceptada, 2026-11-19) Lanzamiento sin anunciar: `noindex` y `X-Robots-Tag` hasta el estreno |
 
 ## Decisiones confirmadas
