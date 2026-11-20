@@ -9,10 +9,6 @@ description: "Lista de tareas de 002-paginas-legales (declaración de accesibili
 
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-> Borrador del subagente `planificador` (fase 5, 2026-11-19) a partir del plan aprobado
-> y de los ADR 0017 a 0019. No está aprobado: necesita el visto bueno de Michel antes de
-> la fase 6. Modelo de formato: `specs/001-reto-octubre/tasks.md`.
-
 **Tests**: sí. Constitución (principio VII), ADR 0014 y AGENTS.md («primero la prueba o
 la comprobación; luego el código»). Las pruebas se escriben primero y DEBEN fallar antes
 de implementar, dentro de la misma rama (ver «Ramas y commits»).
@@ -196,7 +192,7 @@ encuentra el canal de contacto y el plazo de 20 días hábiles (quickstart B: US
   - **Rama**: `tarea/002-T009-declaracion` (primer commit) · **Depende de**: grupo T006 integrado
   - **Casos**:
     - `common.spec.js`, en CADA página de CADA proyecto (también `/404.html`): dentro del `footer`, un `nav` con nombre accesible «Información legal» con un `ul` cuyo enlace «Declaración de accesibilidad» apunta a `/accesibilidad/` (ruta absoluta); en `/accesibilidad/`, ese enlace lleva `aria-current="page"`. La lista de enlaces esperados es un array que amplían T013 y T015, en el orden del contrato.
-    - `legal-pages.spec.js`, proyecto `real`, en `/accesibilidad/`: `title` «Declaración de accesibilidad · Comisión de Salud · IES Río Arba»; un `h1`; párrafo «Última actualización: <fecha larga sin día de la semana>»; los seis `h2` exactamente en el orden del contrato («Compromiso y alcance», «Situación de cumplimiento», «Contenido no accesible», «Preparación de la declaración», «Observaciones y datos de contacto», «Procedimiento de aplicación») (SC-004); «parcialmente conforme» y «Esta declaración está en revisión» (US1-3); un `h3` por grupo con entradas; cada entrada de `contenido_no_accesible` de `datos.yml` aparece en `/accesibilidad/` (la prueba lee `datos.yml` y no fija cuántas son); el texto fijo «La accesibilidad del panel de edición aún no se ha comprobado» mientras `panel_comprobado` es `null`; la alternativa del panel con «5 días lectivos»; el canal como enlace `mailto:` o `https://`; «20 días hábiles»; ni `form`, `img`, `video`, `iframe` ni `audio` (FR-007).
+    - `legal-pages.spec.js`, proyecto `real`, en `/accesibilidad/`: `title` «Declaración de accesibilidad · Comisión de Salud · IES Río Arba»; un `h1`; párrafo «Última actualización: <fecha larga sin día de la semana>»; los seis `h2` exactamente en el orden del contrato («Compromiso y alcance», «Situación de cumplimiento», «Contenido no accesible», «Preparación de la declaración», «Observaciones y datos de contacto», «Procedimiento de aplicación») (SC-004); «panel de edición» dentro de «Compromiso y alcance» (FR-009); los tres usos del canal: comunicar un problema, pedir información en formato accesible y presentar una queja (FR-013); «parcialmente conforme» y «Esta declaración está en revisión» (US1-3); un `h3` por grupo con entradas; cada entrada de `contenido_no_accesible` de `datos.yml` aparece en `/accesibilidad/` (la prueba lee `datos.yml` y no fija cuántas son); el texto fijo «La accesibilidad del panel de edición aún no se ha comprobado» mientras `panel_comprobado` es `null`; la alternativa del panel con «5 días lectivos»; el canal como enlace `mailto:` o `https://`; «20 días hábiles»; ni `form`, `img`, `video`, `iframe` ni `audio` (FR-007).
     - Proyecto `legal-pendientes`: las dos entradas fijas de `contenido_no_accesible` de la fixture; «Pendiente de confirmar» en la dirección de la web y en la unidad de reclamaciones; ningún `dd` ni `li` vacío; la entrada sin `alternativa` no muestra «Alternativa:».
   - **Hecho cuando**: las pruebas existen y fallan porque no hay pie legal ni página.
   - **Comprobación**: `npm run build && npm run build:fixtures && npx playwright test tests/e2e/legal-pages.spec.js tests/e2e/common.spec.js` falla en esos casos, en local, antes del primer commit.
@@ -249,7 +245,7 @@ US2-1 a US2-4).
 
 - [ ] T014 [US2] Escribir `src/legal/privacidad.md` y añadir «Privacidad» al pie de `src/_includes/layouts/base.njk`
   - **Rama**: `tarea/002-T013-privacidad` · **Depende de**: T013; para integrar, T002 (resultado del proxy) y T017
-  - **Objetivo**: FR-018 a FR-021, contrato «`/privacidad/`». Front matter `title: Privacidad`, `permalink: /privacidad/`, `actualizado`. Describe SOLO lo que se hace (FR-021): nginx sin registros de visitas y errores sin IP (ADR 0018); lo que diga T002 del proxy (si guarda algo: qué, para qué y cuánto tiempo). Datos del tratamiento con `{{ legal.tratamiento_editores.… | pendiente }}`; ningún encargado supuesto (H3). «Datos técnicos de la sesión» sin detallar hasta 001-T030 (H9; lo completa T029).
+  - **Objetivo**: FR-018 a FR-021, contrato «`/privacidad/`». Front matter `title: Privacidad`, `permalink: /privacidad/`, `actualizado`. Describe SOLO lo que se hace (FR-021): nginx sin registros de visitas y errores sin IP (ADR 0018); lo que diga T002 del proxy (si guarda algo: qué, para qué y cuánto tiempo). Datos del tratamiento con `{{ legal.tratamiento_editores.… | pendiente }}`; ningún encargado supuesto (H3). «Datos técnicos de la sesión» sin detallar hasta 001-T030 (H9; lo completa T029). Se publica antes de consultar al DPD: responsable, base legal y encargados figuran como «Pendiente de confirmar» hasta T018 y T028 (FR-022, FR-024a).
   - **Hecho cuando**: todas las pruebas de T013 pasan y `npm run comprobar` sigue en verde.
   - **Comprobación**: `npx playwright test tests/e2e/legal-pages.spec.js` en verde; `npm run comprobar` con código 0; recorrido con teclado descrito en la PR; PR del grupo en verde.
   - **Revisión**: Michel; subagente `revisor` (texto legal, FR-018 a FR-021 y ADR 0018); visto bueno de la dirección anotado (T017).
@@ -271,7 +267,7 @@ desde el pie (quickstart B: US3-1 a US3-3).
 
 - [ ] T015 [P] [US3] Escribir los escenarios del aviso legal en `tests/e2e/legal-pages.spec.js` y completar el pie en `tests/e2e/common.spec.js` (en rojo)
   - **Rama**: `tarea/002-T015-aviso-legal` (primer commit) · **Depende de**: grupo T013 integrado (comparten `base.njk` y los dos `spec`)
-  - **Casos**: pie con los tres enlaces en el orden del contrato: «Declaración de accesibilidad», «Aviso legal», «Privacidad» (SC-001). `/aviso-legal/`: `title` «Aviso legal · Comisión de Salud · IES Río Arba»; un `h1`; «Última actualización»; `h2` «Quién es el titular», «Para qué es esta web», «Enlaces a otros sitios»; titular «IES Río Arba» y «Departamento de Educación del Gobierno de Aragón»; CIF, dirección y correo (FR-016); no se responde de los sitios externos (FR-017). Proyecto `legal-pendientes`: «Pendiente de confirmar» en CIF, dirección y correo.
+  - **Casos**: pie con los tres enlaces en el orden del contrato: «Declaración de accesibilidad», «Aviso legal», «Privacidad» (SC-001). `/aviso-legal/`: `title` «Aviso legal · Comisión de Salud · IES Río Arba»; un `h1`; «Última actualización»; `h2` «Quién es el titular», «Para qué es esta web», «Enlaces a otros sitios»; titular «IES Río Arba» y «Departamento de Educación del Gobierno de Aragón»; CIF, dirección y correo (FR-016); no se responde de los sitios externos (FR-017); ni `form`, `img`, `video`, `iframe` ni `audio` (FR-007). Proyecto `legal-pendientes`: «Pendiente de confirmar» en CIF, dirección y correo.
   - **Hecho cuando**: las pruebas existen y fallan porque no hay página.
   - **Comprobación**: `npx playwright test tests/e2e/legal-pages.spec.js tests/e2e/common.spec.js` falla en esos casos, en local, antes del primer commit.
 
@@ -294,7 +290,7 @@ desde el pie (quickstart B: US3-1 a US3-3).
   - **Rama**: no aplica · **Depende de**: T014 (borrador del texto)
   - **Pasos**: enviar a `protecciondatossecd@aragon.es` (por el canal que use el centro) el texto de «Si editas la web desde el panel» y preguntar: responsable, base legal, encargados (¿proveedor del VPS?, ¿Google por el SMTP del ADR 0009?) y conservación. No suponer ninguno.
   - **Hecho cuando**: hay respuesta escrita del DPD (o de la dirección tras consultarlo) con esos datos.
-  - **Comprobación**: anotación en ESTADO.md (sesión principal) con la fecha y los datos, sin nombres de personas. Alimenta T028; **bloquea 001-T040**.
+  - **Comprobación**: anotación en ESTADO.md (sesión principal) con la fecha y los datos, sin nombres de personas. Alimenta T028; **bloquea 001-T040**. No bloquea integrar el grupo T013: hasta T028, esos tres datos figuran como «Pendiente de confirmar» (FR-024a).
 
 ---
 
@@ -321,7 +317,7 @@ fecha de la última revisión en una rama y abre una PR en verde (C8, SC-008).
 
 - [ ] T020 [US4] Implementar `scripts/check-review-date.js`, el script `aviso:revision` en `package.json` y el paso «Aviso de revisión de la declaración» en `.github/workflows/despliegue.yml`
   - **Rama**: `tarea/002-T019-aviso-revision` · **Depende de**: T019
-  - **Objetivo**: ADR 0019. Sin dependencias nuevas. `aviso:revision` se añade al final de `npm run comprobar` (mismo orden que Actions) y nunca lo hace fallar. En el flujo, paso con ese nombre en «comprobar», con `--format actions`.
+  - **Objetivo**: ADR 0019. Sin dependencias nuevas. `aviso:revision` se añade al final de `npm run comprobar` (mismo orden que Actions) y nunca lo hace fallar. En el flujo, paso con ese nombre en «comprobar» (se ejecuta en cada PR y en cada push a `main`, FR-027), con `--format actions`.
   - **Hecho cuando**: las pruebas de T019 pasan; `npm run comprobar` sigue en verde.
   - **Comprobación**: `node --test tests/unit/` en verde; en local, sin integrar, con una copia de `datos.yml` con fecha de hace 400 días, `LEGAL_DATA_FILE=<temporal> npm run aviso:revision` imprime el `::warning` y sale con 0 (quickstart A9).
 
@@ -334,7 +330,7 @@ fecha de la última revisión en una rama y abre una PR en verde (C8, SC-008).
 
 - [ ] T022 [P] [US4] Escribir la guía del cambio en `docs/guia-paginas-legales.md`
   - **Rama**: `tarea/002-T022-guia` · **Depende de**: grupos T009, T013, T015 y T019 integrados (describe lo que existe); T003 (cargo del suplente)
-  - **Objetivo**: FR-025, FR-026, plan «6.». Lenguaje sencillo, pasos numerados: quién puede cambiar estas páginas (mantenedor y suplente, por cargo; la comisión no, desde el panel tampoco); desde la web de GitHub: abrir el fichero, lápiz «Edit», «Commit changes» → «Create a new branch» → abrir la PR; qué fichero tocar para cada cambio (dato → `src/legal/datos.yml`, escribir `null` si no está confirmado, nunca «pendiente»; texto → el `.md`; no tocar lo que va entre `{{ … }}`); cambiar `actualizado`; visto bueno de la dirección y, para el tratamiento, consulta al DPD, anotados en la PR; cómo ver que la PR está en verde y qué hacer si sale en rojo; revisión anual con su lista (situación, contenido no accesible, contacto, encargados, comprobar que el flujo programado `revision-declaracion` está activo y reactivarlo si GitHub lo desactivó); actualización del estreno (001-T047 → T031); qué hacer con la incidencia anual; cómo se publica el contenido de quien no puede usar el panel (5 días lectivos desde que llega al canal, calendario escolar de Aragón, H13).
+  - **Objetivo**: FR-025, FR-026, plan «6.». Lenguaje sencillo, pasos numerados: quién puede cambiar estas páginas (mantenedor y suplente, por cargo; la comisión no, desde el panel tampoco); desde la web de GitHub: abrir el fichero, lápiz «Edit», «Commit changes» → «Create a new branch» → abrir la PR; qué fichero tocar para cada cambio (dato → `src/legal/datos.yml`, escribir `null` si no está confirmado, nunca «pendiente»; texto → el `.md`; no tocar lo que va entre `{{ … }}`); cambiar `actualizado`; visto bueno de la dirección y, para el tratamiento, consulta al DPD, anotados en la PR; cómo ver que la PR está en verde y qué hacer si sale en rojo; revisión anual con su lista (situación, contenido no accesible, contacto, encargados, comprobar que el flujo programado `revision-declaracion` está activo y reactivarlo si GitHub lo desactivó); actualización del estreno (001-T047 → T031); qué hacer con la incidencia anual; cómo cambiar la variable `MANTENEDORES_WEB` («Settings → Secrets and variables → Actions → Variables») cuando cambie el suplente o quien mantiene la web; cómo se publica el contenido de quien no puede usar el panel (5 días lectivos desde que llega al canal, calendario escolar de Aragón, H13).
   - **Hecho cuando**: la guía cubre todos esos puntos sin datos personales.
   - **Comprobación**: revisión del `revisor` contra esta lista; `npm run comprobar` con código 0; prueba real en T024.
 
@@ -403,14 +399,14 @@ todo listo para el estreno (US4-1).
   - **Comprobación**: `npx playwright test tests/e2e/legal-pages.spec.js` en verde; `npm run comprobar` con código 0; PR en verde con el visto bueno de la dirección (T017).
   - **Revisión**: Michel y subagente `revisor` (texto legal).
 
-- [ ] T030 Prueba con personas SC-002 (quickstart C10) (comprobación manual, fase 7)
+- [ ] T030 Prueba con personas SC-002 (quickstart C10) (comprobación manual, fase 7 del método (revisión)). Es 002-T030, distinta de 001-T030 (ensayo del panel)
   - **Depende de**: 001-T023 desplegado (o en local con `npm run build`), T025
   - **Pasos**: al menos 3 personas (alumnado de 12 a 14 años incluido) buscan desde `/` cómo comunicar un problema de accesibilidad; se mide solo «sí/no» y el tiempo, sin datos personales.
   - **Hecho cuando**: al menos 2 de 3 encuentran el canal en menos de 1 minuto; si no, tarea nueva.
   - **Comprobación**: tabla con resultados agregados, sin nombres.
 
 - [ ] T031 [US4] Actualizar la declaración y los datos legales para el estreno (001-T047 → 001-T050) en `src/legal/datos.yml` y `src/legal/*.md`
-  - **Rama**: `tarea/002-T031-estreno-legal` · **Depende de**: 001-T047, T024, T027, T028, T029, T030; datos de H2 y H5 (dominio) confirmados
+  - **Rama**: `tarea/002-T031-estreno-legal` · **Depende de**: 001-T047, T024, T027, T028, T029, 002-T030; datos de H2 y H5 (dominio) confirmados
   - **Primer commit (en rojo)**: en local, `npm run comprobar:legal -- --estreno` falla con la lista de lo pendiente (es la «prueba» de esta tarea; quickstart A3).
   - **Después**: ningún `null` (CIF, dirección, correo y `web` del centro, unidad de reclamaciones…); `situacion` según el resultado de 001-T047; `en_revision: false`; `fecha_situacion` y `fecha_ultima_revision` = fecha de esta actualización, posterior a la de 001-T047 (SC-006); `contenido_no_accesible` al día (PDF revisados en 001-T047 C6 salen de la lista); `actualizado` de cada página que cambie.
   - **Hecho cuando**: `npm run comprobar:legal -- --estreno` sale con 0 y la PR está integrada antes de 001-T050.
@@ -505,7 +501,7 @@ Rama: "tarea/002-T019-aviso-revision"   # T019 (pruebas en rojo) → T020 → T0
 | FR-004 | T011, T014, T016, T026 |
 | FR-005, FR-022, SC-005 | T005, T006, T007, T009, T013, T015, T026 |
 | FR-006 | T006, T009, T013, T015 |
-| FR-007 | T009, T013 |
+| FR-007 | T009, T013, T015 |
 | FR-008 a FR-014, SC-004 | T007, T009, T011, T026 |
 | FR-011a, SC-009 | T012, T029; 001-T030 |
 | FR-015, SC-006 | T031; 001-T047, 001-T050 |
@@ -518,7 +514,7 @@ Rama: "tarea/002-T019-aviso-revision"   # T019 (pruebas en rojo) → T020 → T0
 | FR-025, SC-008 | T003, T022, T024 |
 | FR-026 | T022, T024 |
 | FR-027 | T004, T019, T020, T021, T023 |
-| SC-002 | T030 |
+| SC-002 | 002-T030 |
 
 Casos límite: dato pendiente (T006, T009, T013, T015), canal personal (T001, T017),
 contenido de terceros (T007), PDF sin revisar (T007, T031), página no encontrada (T016,
@@ -537,7 +533,7 @@ compartido (T002, T027).
 | P4 | Qué hace `comprobar:legal` si `_site/index.html` no existe (para detectar el estreno) | Aplica el modo pedido y lo dice; en `comprobar` va tras `build:fixtures` | T006, T008 |
 | P5 | Nombre del script local del aviso anual y si entra en `npm run comprobar` | `aviso:revision`, al final de `comprobar`, siempre con 0 | T020 |
 | P6 | Nombre del filtro de fecha sin día de la semana («19 de noviembre de 2026») | `dateNoWeekday` en `src/lib/format.js` | T006, T007 |
-| P7 | FR-024a pide consultar al DPD «antes de publicar» la parte de quienes editan; no está claro si vale publicarla antes con «Pendiente de confirmar» | Se publica con «Pendiente de confirmar» (T014) y la consulta (T018) bloquea T028 y 001-T040, no la integración | T014, T018 |
+| P7 | FR-024a pide consultar al DPD «antes de publicar» la parte de quienes editan; no está claro si vale publicarla antes con «Pendiente de confirmar» | Resuelto (FR-024a precisado el 2026-11-20): se publica con «Pendiente de confirmar» (T014) y la consulta (T018) bloquea T028 y 001-T040, no la integración | T014, T018 |
 | P8 | Si la PR de prueba del suplente (C8) se integra o se cierra | Se cierra sin integrar si era solo de prueba | T024 |
 | P9 | Formato de `MANTENEDORES_WEB` (lista de cuentas) | Cuentas separadas por comas | T004, T021 |
 | P10 | 29 de febrero + 1 año | Lo fija la prueba de T019 y se documenta en el script | T019 |

@@ -19,7 +19,7 @@ Si se declara un permiso del `GITHUB_TOKEN`, los demás quedan en `none`
 - `scripts/check-review-date.js` lee `declaracion.fecha_ultima_revision` de
   `src/legal/datos.yml` y calcula si la revisión vence en 30 días o menos o ya venció
   (sin dependencias nuevas; la fecha de «hoy» se puede inyectar para las pruebas).
-- En «comprobar» (push y PR), un paso con nombre «Aviso de revisión de la declaración»
+- En «comprobar» (en cada PR y en cada push a main), un paso con nombre «Aviso de revisión de la declaración»
   emite `::warning::` y escribe en el resumen; termina siempre con código 0 (FR-027:
   sin bloquear).
 - Flujo nuevo `.github/workflows/revision-declaracion.yml`: `schedule` semanal y
