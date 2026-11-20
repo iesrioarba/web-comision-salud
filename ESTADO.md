@@ -53,6 +53,7 @@ Actualizado: 2026-11-20
 - 2026-11-19 · 002-paginas-legales: especificación y 7 aclaraciones, aprobadas por Michel e integradas en main.
 - 2026-11-20 · 002: plan y tareas aprobados e integrados (PR #8)
 - 2026-11-20 · 001-T001: Node 26.13.1 y dependencias fijadas; versiones de parche actualizadas en los ADR y planes; npm audit con riesgo aceptado (ADR 0014)
+- 2026-11-20 · 001-T001 integrada en main sin PR por error (estaba en main); el diff se revisó antes. Desde hoy, la regla de main exige pull request.
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
