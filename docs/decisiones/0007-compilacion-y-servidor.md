@@ -62,9 +62,9 @@ hay una sola fuente de verdad (26.13.1).
 **Regla**: todas las acciones de GitHub del proyecto se fijan por el SHA completo (40
 caracteres) del commit, con un comentario con la versión (`# vX.Y.Z`), por ejemplo
 `uses: actions/checkout@<sha> # v7.0.1`. El `actions/checkout` lleva
-`persist-credentials: false`. Motivo: las etiquetas de una acción no son inmutables en
-GitHub (se pueden mover o reescribir, y así ocurre con las de `checkout` y
-`upload-artifact`), mientras que un SHA sí lo es; y los trabajos solo leen el código y
+`persist-credentials: false`. Motivo: la etiqueta de una acción se puede mover o
+reescribir salvo que su versión sea inmutable en GitHub, y no lo son las de `checkout`
+v7.0.1 ni `upload-artifact` v7.0.2, mientras que un SHA no cambia; y los trabajos solo leen el código y
 no necesitan git autenticado, así que no se deja el token guardado (mínimo privilegio).
 SHA comprobados el 2026-11-20 con `gh api repos/actions/<acción>/git/ref/tags/<tag>`
 (en los tres casos `object.type` es `commit`):

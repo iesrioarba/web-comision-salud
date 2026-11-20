@@ -128,7 +128,7 @@ Convenciones confirmadas por Michel (N7 a N9):
   - **Hecho cuando**: `npm ci` termina sin errores con Node 26.13.1 y `package.json` no tiene rangos.
   - **Comprobación**: `node --version` → `v26.13.1`; `npm ci` (código 0); `npm ls --depth=0` muestra las 9 versiones exactas; `grep -E '"[\^~][0-9]' package.json` no devuelve nada; `npm run validar` sigue en verde (aún valida `site/`).
 
-- [ ] T002 Pasar el flujo `.github/workflows/despliegue.yml` a Node 26 y fijar las versiones de `actions/checkout`, `actions/setup-node` y `actions/upload-artifact` (H18, N11)
+- [x] T002 Pasar el flujo `.github/workflows/despliegue.yml` a Node 26 y fijar las versiones de `actions/checkout`, `actions/setup-node` y `actions/upload-artifact` (H18, N11)
   - **Rama**: `tarea/001-T002-actions-node-26` · **Depende de**: T001
   - **Objetivo**: ADR 0007 («`.github/workflows/despliegue.yml` pasa a Node 26») y decisión N11 (`actions/upload-artifact` es una acción oficial de GitHub; se fija y se anota aquí para usarla en T014).
   - **Ficheros**: `.github/workflows/despliegue.yml` (solo `node-version-file: .nvmrc` en lugar de `node-version: 22`, y la versión de `checkout` y `setup-node`; `upload-artifact` aún no se usa). Propuesta de actualización en `docs/decisiones/0007-compilacion-y-servidor.md` con las versiones de las tres acciones y sus fuentes, que confirma Michel.
