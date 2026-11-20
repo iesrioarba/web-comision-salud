@@ -7,3 +7,10 @@
 .DS_Store
 node_modules/
 .claude/settings.local.json
+
+# Salidas generadas de compilación y pruebas
+_site/
+_site-fixtures/
+test-results/
+playwright-report/
+.lighthouseci/

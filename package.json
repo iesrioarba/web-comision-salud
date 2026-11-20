@@ -1,10 +1,24 @@
 {
   "name": "web-comision-salud",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": "26.13.1"
+  },
   "scripts": {
     "validar": "html-validate \"site/**/*.html\""
   },
+  "dependencies": {
+    "@11ty/eleventy": "3.1.8",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "yaml": "2.9.1"
+  },
   "devDependencies": {
-    "html-validate": "^11.18.0"
+    "@axe-core/playwright": "4.14.0",
+    "@lhci/cli": "0.16.1",
+    "@playwright/test": "1.65.1",
+    "html-validate": "11.21.1",
+    "linkinator": "8.1.0"
   }
 }
