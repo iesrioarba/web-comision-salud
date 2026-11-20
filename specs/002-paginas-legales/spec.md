@@ -41,6 +41,11 @@ Decisiones ya tomadas que condicionan esta funcionalidad:
 - Q: ¿Cómo se asegura la revisión anual de la declaración? → A: Un aviso automático en el repositorio (una incidencia que se abre sola) un mes antes de cumplirse el año desde la última revisión, para quien mantiene la web y su suplente; además, en cada push una comprobación avisa, sin bloquear, si la revisión vence en menos de un mes o ya ha vencido.
 - Q: ¿En cuántos días como máximo se publica el contenido que envía quien no puede usar el panel? → A: 5 días lectivos.
 
+### Session 2026-11-20 (tras /speckit-analyze)
+
+- Q: ¿La consulta al DPD bloquea publicar la página de privacidad? → A: No. El DPD se consulta antes de publicar el responsable, la base legal y los encargados; hasta entonces figuran como «Pendiente de confirmar» (FR-022, FR-024a).
+- Q: ¿Qué es «en cada push» para el aviso de revisión sin bloqueo? → A: En cada PR y en cada push a main (FR-027).
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Consultar la declaración de accesibilidad y comunicar un problema (Priority: P1)
@@ -321,8 +326,9 @@ RD 1112/2018)
 - **FR-024a**: Antes de la primera publicación y de cada cambio de contenido (no de
   diseño ni de formato), la dirección del centro DEBE dar su visto bueno al texto, y ese
   visto bueno queda anotado en la PR (sin datos personales: por cargo). La parte de
-  privacidad de quienes editan (responsable, base legal, encargados) se consulta además
-  con el DPD antes de publicarla.
+  privacidad de quienes editan se consulta además con el DPD antes de publicar el
+  responsable, la base legal y los encargados; hasta entonces figuran como «Pendiente de
+  confirmar» (FR-022).
 - **FR-025**: DEBE haber un mantenedor suplente nombrado por el centro, distinto de quien
   mantiene la web, que pueda hacer estos cambios. Su nombramiento queda registrado en la
   documentación del proyecto, por su cargo o función en el centro y sin datos personales
@@ -338,8 +344,8 @@ RD 1112/2018)
 - **FR-027**: Un mes antes de cumplirse un año desde la fecha de la última revisión de
   la declaración, DEBE abrirse sola una incidencia en el repositorio dirigida a quien
   mantiene la web y a su suplente, sin servicios de terceros nuevos. Además, en cada push
-  una comprobación DEBE avisar, sin bloquear el despliegue, si la revisión vence en menos
-  de un mes o ya ha vencido.
+  una comprobación DEBE avisar, sin bloquear el despliegue, en cada PR y en cada push a
+  main, si la revisión vence en menos de un mes o ya ha vencido.
 
 ### Key Entities
 

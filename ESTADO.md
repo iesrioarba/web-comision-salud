@@ -2,7 +2,7 @@
 Actualizado: 2026-11-19
 
 ## Fase actual
-5 · Tareas · 001-reto-octubre
+001-reto-octubre: fase 6 (implementación) pendiente de empezar · 002-paginas-legales: fase 4 (plan técnico)
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -29,6 +29,8 @@ Actualizado: 2026-11-19
 - 2026-11-19 · Ningún material lleva fotos de alumnado (carteles incluidos).
 - 2026-11-19 · Lanzamiento sin anunciar hasta el estreno: noindex y X-Robots-Tag (ADR 0016).
 - 2026-11-19 · Las páginas legales (002: declaración de accesibilidad, aviso legal y privacidad) se integran antes de desplegar la web nueva (T023).
+- 2026-11-19 · El VPS está en Fráncfort (Alemania), dentro de la UE.
+- 2026-11-19 · Plan de 002-paginas-legales aprobado (ADR 0017 a 0019).
 
 ## Hecho
 - Inventario de la petición de la comisión.
@@ -48,6 +50,7 @@ Actualizado: 2026-11-19
 - 2026-11-11 · Fase 4: plan de 001-reto-octubre con el subagente planificador, revisado y corregido.
 - 2026-11-11 · Fase 4 cerrada: plan técnico de 001-reto-octubre aprobado por Michel e integrado en main (PR #4).
 - 2026-11-19 · Fase 5: tareas de 001-reto-octubre (50) revisadas con tres pasadas de /speckit-analyze, sin críticos.
+- 2026-11-19 · 002-paginas-legales: especificación y 7 aclaraciones, aprobadas por Michel e integradas en main.
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
@@ -60,4 +63,4 @@ Actualizado: 2026-11-19
 - Crear la cuenta del centro solo para enviar correo, con verificación en dos pasos y contraseña de aplicación (será una tarea MANUAL de tasks.md).
 
 ## Próximo paso
-Visto bueno de Michel a las tareas (PR). Después, en paralelo: fase 6 de 001 (T001 a T012) y fase 2 de 002 con /speckit-specify.
+Plan técnico de 002 con el subagente planificador; después, tareas de 002 y ajustes de tasks.md de 001 (T030 y T040).
