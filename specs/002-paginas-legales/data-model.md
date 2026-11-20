@@ -54,7 +54,7 @@ edita quien mantiene la web o su suplente (FR-024), fuera de `content/`.
 | `fecha_preparacion` | fecha | sí | no | ≤ `fecha_ultima_revision` |
 | `fecha_ultima_revision` | fecha | sí | no | no futura; base del aviso anual (FR-015, FR-027) |
 | `panel_comprobado` | fecha o `null` | sí | sí | fecha del ensayo de accesibilidad del panel (SC-009); `null` = aún sin comprobar (`--estreno` lo exige no nulo) |
-| `contenido_no_accesible` | lista de Contenido no accesible | sí | no | al menos 2 entradas antes del estreno (PDF sin revisar y Genially, FR-011) |
+| `contenido_no_accesible` | lista de Contenido no accesible | sí | no | sin número mínimo: la lista refleja la situación real (hoy, PDF sin revisar y Genially, FR-011) y la revisan la dirección y el subagente revisor |
 
 ### Contenido no accesible (elemento de la lista)
 
