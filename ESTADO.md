@@ -2,7 +2,7 @@
 Actualizado: 2026-11-20
 
 ## Fase actual
-001: fase 6 (implementación), T002 · 002: fase 6 pendiente (empieza tras 001-T012 y la rama T013+T014)
+001: fase 6 (implementación), T003 · 002: fase 6 pendiente (empieza tras 001-T012 y la rama T013+T014)
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -54,6 +54,7 @@ Actualizado: 2026-11-20
 - 2026-11-20 · 002: plan y tareas aprobados e integrados (PR #8)
 - 2026-11-20 · 001-T001: Node 26.13.1 y dependencias fijadas; versiones de parche actualizadas en los ADR y planes; npm audit con riesgo aceptado (ADR 0014)
 - 2026-11-20 · 001-T001 integrada en main sin PR por error (estaba en main); el diff se revisó antes. Desde hoy, la regla de main exige pull request.
+- 2026-11-20 · 001-T002: acciones fijadas por SHA y Node desde .nvmrc (PR #9). La regla de main exige además que pase "comprobar".
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
