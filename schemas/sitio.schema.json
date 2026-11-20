@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:web-comision-salud:schema:sitio",
+  "title": "Datos generales del sitio",
+  "description": "Contrato de content/sitio.yml. Ver data-model.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["genially"],
+  "properties": {
+    "genially": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nombre", "url"],
+      "properties": {
+        "nombre": { "type": "string", "minLength": 1, "maxLength": 80, "pattern": "\\S" },
+        "url": { "type": "string", "maxLength": 300, "pattern": "^https://[^\\s]+$" }
+      }
+    }
+  }
+}
