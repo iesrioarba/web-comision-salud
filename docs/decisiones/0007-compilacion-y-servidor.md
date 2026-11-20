@@ -51,3 +51,53 @@ Comprobado el 2026-11-11:
 - El VPS necesita acceso a npm durante la compilación.
 - `.github/workflows/despliegue.yml` pasa a Node 26 y a las comprobaciones del ADR 0014.
 - Actualizar Node o nginx es una decisión consciente: cambiar la etiqueta, leer notas, ADR.
+
+## Actualización 2026-11-20 (T002 de la 001): acciones de GitHub del flujo
+Decisión aceptada. Versiones comprobadas el 2026-11-20 en la página de
+versiones de cada acción (última versión estable, sin marcar como prerelease) y notas
+leídas buscando cambios incompatibles. Las tres son acciones oficiales de GitHub.
+`despliegue.yml` lee la versión de Node de `.nvmrc` (`node-version-file`), de modo que
+hay una sola fuente de verdad (26.13.1).
+
+**Regla**: todas las acciones de GitHub del proyecto se fijan por el SHA completo (40
+caracteres) del commit, con un comentario con la versión (`# vX.Y.Z`), por ejemplo
+`uses: actions/checkout@<sha> # v7.0.1`. El `actions/checkout` lleva
+`persist-credentials: false`. Motivo: la etiqueta de una acción se puede mover o
+reescribir salvo que su versión sea inmutable en GitHub, y no lo son las de `checkout`
+v7.0.1 ni `upload-artifact` v7.0.2, mientras que un SHA no cambia; y los trabajos solo leen el código y
+no necesitan git autenticado, así que no se deja el token guardado (mínimo privilegio).
+SHA comprobados el 2026-11-20 con `gh api repos/actions/<acción>/git/ref/tags/<tag>`
+(en los tres casos `object.type` es `commit`):
+- `actions/checkout` v7.0.1: `3d3c42e5aac5ba805825da76410c181273ba90b1`.
+- `actions/setup-node` v7.1.0: `949feb2413d6458794dcd2491c4babbbce0c15c1`.
+- `actions/upload-artifact` v7.0.2: `cf430e030ddbb5b0abf93d22962f4752f3646cd9` (para T014).
+
+Detalle por acción:
+- `actions/checkout` **v7.0.1** (<https://github.com/actions/checkout/releases/tag/v7.0.1>,
+  publicada el 2026-07-20). Antes: `@v5` (el paso a node24 llegó en v5.0.0, «Update
+  actions checkout to use node 24»; el flujo ya lo usaba). Cambios incompatibles de v6 y
+  v7: exige runner ≥ 2.327.1 (el de GitHub ya lo cumple); con `persist-credentials`
+  las credenciales se guardan en un fichero aparte bajo `$RUNNER_TEMP` y no en
+  `.git/config`; v7 se niega a bajar el código de un fork con `pull_request_target` o
+  `workflow_run` salvo con `allow-unsafe-pr-checkout: true`. El flujo solo usa
+  `push` y `pull_request` y no ejecuta git autenticado en contenedores Docker: no le
+  afecta. (<https://github.com/actions/checkout/releases>)
+- `actions/setup-node` **v7.1.0** (<https://github.com/actions/setup-node/releases/tag/v7.1.0>,
+  publicada el 2026-10-08). Antes: `@v4`. Cambios de v5 a v7: v5 pasa a node24 (runner
+  ≥ 2.327.1) y activa la caché automática si `package.json` tiene `packageManager` (el
+  flujo ya indica `cache: npm`); v6 limita la caché automática a npm; v7 migra a ESM sin
+  cambiar entradas ni salidas y deja de exportar un `NODE_AUTH_TOKEN` vacío (el flujo no
+  publica en npm). v7.1.0 añade rutas absolutas en `node-version-file` y valida la versión
+  de Node con reintento. Se usa `node-version-file: .nvmrc` (el fichero solo contiene
+  `26.13.1`). (<https://github.com/actions/setup-node/releases>)
+- `actions/upload-artifact` **v7.0.2** (<https://github.com/actions/upload-artifact/releases/tag/v7.0.2>,
+  publicada el 2026-10-07). Decisión N11: se anota ahora y se usará en T014 para los
+  informes de Lighthouse; aún no está en el flujo. Cambios incompatibles de v4 a v7: v6
+  usa node24 (runner ≥ 2.327.1); v7 migra a ESM y añade la subida directa de un fichero
+  sin comprimir (`archive: false`, opcional). Las etiquetas `v3.2.2` y `v3.2.2-node20` son
+  retroportes para GHES, marcados como obsoletos en github.com: no se usan.
+  (<https://github.com/actions/upload-artifact/releases>)
+
+Las notas completas de `checkout` v6.1.0, v5.1.0 y posteriores solo retroportan
+`allow-unsafe-pr-checkout`; no cambian nada para este flujo. Actualizar una acción es una
+decisión consciente: cambiar el SHA y su comentario de versión, leer notas y anotarlo aquí.
