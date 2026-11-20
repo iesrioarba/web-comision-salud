@@ -145,7 +145,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
 
 **⚠️ CRITICAL**: ninguna historia empieza hasta terminar esta fase.
 
-- [ ] T003 [P] Copiar los contratos JSON Schema a `schemas/curso.schema.json`, `schemas/reto.schema.json` y `schemas/sitio.schema.json`
+- [x] T003 [P] Copiar los contratos JSON Schema a `schemas/curso.schema.json`, `schemas/reto.schema.json` y `schemas/sitio.schema.json`
   - **Rama**: `tarea/001-T003-esquemas` · **Depende de**: T001
   - **Objetivo**: ADR 0008 («un JSON Schema por tipo de fichero, en `schemas/`, copia de `specs/001-reto-octubre/contracts/`»).
   - **Hecho cuando**: los tres ficheros son copia idéntica de `specs/001-reto-octubre/contracts/*.schema.json`.
@@ -171,7 +171,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
 
 - [ ] T006 [P] Escribir las pruebas unitarias del validador en `tests/unit/validate-content.test.js` (en rojo)
   - **Rama**: `tarea/001-T006-validador` (grupo T006 + T009; primer commit) · **Depende de**: T003, T004
-  - **Objetivo**: FR-014, ADR 0008 y quickstart A2. Interfaz que fijan las pruebas: `validateContent(contentDir)` de `scripts/validate-content.js` devuelve `{ errors: [{ file, field, message }] }`; como orden, imprime los errores y sale con código 1, o imprime «Contenido correcto» y sale con 0.
+  - **Objetivo**: FR-014, ADR 0008 y quickstart A2. Interfaz que fijan las pruebas: `validateContent(contentDir)` de `scripts/validate-content.js` devuelve `{ errors: [{ file, field, message }] }`; como orden, imprime los errores y sale con código 1, o imprime «Contenido correcto» y sale con 0. Incluye un script aparte, `scripts/check-schemas-sync.js` con su script npm `comprobar:esquemas`, que falle si algún esquema de schemas/ no es idéntico byte a byte a su contrato en specs/001-reto-octubre/contracts/ (ADR 0008). T013 lo añade a `comprobar`.
   - **Casos válidos**: las cuatro fixtures de T004; los tres esquemas compilan con `ajv` en modo estricto; un campo opcional `""`, `null` o ausente cuenta como vacío.
   - **Casos que DEBEN fallar** (cada uno con mensaje en español que dice fichero, campo y qué corregir; se generan copiando una fixture a una carpeta temporal y modificándola, sin añadir ficheros grandes al repositorio):
     - `curso`: no cumple `^\d{4}-\d{4}$` o «el segundo año es el primero + 1» no se cumple.
@@ -233,7 +233,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Rama**: `tarea/001-T013-comprobaciones` (grupo T013 + T014; ver «Ramas y commits», hallazgo H1) · **Depende de**: T002, T011, T012
   - **Objetivo**: ADR 0013 y 0014; plan, «Flujo de publicación y despliegue» (`npm run comprobar` = la misma secuencia que Actions). Decisión N10: esta tarea actualiza AGENTS.md.
   - **Ficheros**:
-    - `package.json`: `test` (`node --test tests/unit/`), `build:fixtures` (compila cada carpeta de `tests/fixtures/` a `_site-fixtures/<nombre>/` con `CONTENT_DIR` y `OUTPUT_DIR`), `validar` (pasa de `site/**/*.html` a `_site/**/*.html` y `_site-fixtures/**/*.html`), `comprobar:enlaces`, `comprobar:web`, `comprobar:rendimiento` y `comprobar` (en este orden: `comprobar:contenido` → `test` → `build` → `build:fixtures` → `validar` → `comprobar:enlaces` → `comprobar:web` → `comprobar:rendimiento`; T022 añade `comprobar:cabeceras` al final).
+    - `package.json`: `test` (`node --test tests/unit/`), `build:fixtures` (compila cada carpeta de `tests/fixtures/` a `_site-fixtures/<nombre>/` con `CONTENT_DIR` y `OUTPUT_DIR`), `validar` (pasa de `site/**/*.html` a `_site/**/*.html` y `_site-fixtures/**/*.html`), `comprobar:enlaces`, `comprobar:web`, `comprobar:rendimiento` y `comprobar` (en este orden: `comprobar:esquemas` → `comprobar:contenido` → `test` → `build` → `build:fixtures` → `validar` → `comprobar:enlaces` → `comprobar:web` → `comprobar:rendimiento`; T022 añade `comprobar:cabeceras` al final).
     - `linkinator.config.json`: recorre `_site/` y `_site-fixtures/`, solo enlaces internos y materiales; omite los externos.
     - `scripts/serve-static.js`: servidor local mínimo con `node:http`, sin dependencias.
     - `playwright.config.js`: solo Chromium; un proyecto `real` (sirve `_site/`) y uno por fixture (sirve `_site-fixtures/<nombre>/`).
