@@ -1,0 +1,70 @@
+# Contenido INVENTADO de prueba: reto publicado y en curso, con todos los campos.
+curso: "2026-2027"
+mes: noviembre
+estado: publicado
+nombre: "Reto de prueba inventado"
+objetivo: >-
+  Objetivo de prueba inventado: comprobar que la web muestra todos los campos de un
+  reto completo.
+descripcion: >-
+  Descripción de prueba inventada del reto completo.
+pasos:
+  - "Primer paso de prueba"
+  - "Segundo paso de prueba"
+  - "Tercer paso de prueba"
+fuentes:
+  - titulo: "Fuente de prueba inventada uno"
+    url: "https://example.org/fuente-uno"
+  - titulo: "Fuente de prueba inventada dos"
+    url: "https://example.org/fuente-dos"
+motriz:
+  nombre: "Reto motriz de prueba"
+  descripcion: "Actividad motriz de prueba inventada, sin datos reales."
+  fecha: "2026-11-13"
+  hora: "11:30"
+  lugar: "Patio de ejemplo"
+  desde: "2026-11-09"
+  hasta: "2026-11-13"
+  materiales:
+    - titulo: "Cartel de prueba inventado"
+      tipo: cartel
+      destinatario: todo-el-centro
+      archivo: "/materiales/2026-2027-noviembre/cartel-prueba.png"
+tutoria:
+  nombre: "Reto de tutoría de prueba"
+  descripcion: |-
+    Descripción de prueba inventada de la tutoría.
+
+    Prueba de escape: <script>alert(1)</script> y <b>negrita</b> deben verse como texto.
+  adaptado_por_etapas: true
+  desde: "2026-11-16"
+  hasta: "2026-11-27"
+  materiales:
+    - titulo: "Documento de prueba inventado"
+      tipo: documento
+      destinatario: tutores
+      archivo: "/materiales/2026-2027-noviembre/documento-prueba.pdf"
+    - titulo: "Ficha de prueba inventada"
+      tipo: ficha
+      destinatario: alumnado
+      archivo: "/materiales/2026-2027-noviembre/ficha-prueba.pdf"
+    - titulo: "Infografía de prueba inventada"
+      tipo: infografia
+      destinatario: todo-el-centro
+      archivo: "/materiales/2026-2027-noviembre/infografia-prueba.jpg"
+      version_texto: |-
+        1. Primer punto de la infografía de prueba.
+
+        2. Segundo punto de la infografía de prueba.
+
+        3. Tercer punto de la infografía de prueba.
+familia:
+  nombre: "Reto en familia de prueba"
+  descripcion: "Descripción de prueba inventada del reto en familia."
+  desde: "2026-11-16"
+  hasta: "2026-11-27"
+  materiales:
+    - titulo: "Justificante de prueba inventado"
+      tipo: justificante
+      destinatario: familias
+      archivo: "/materiales/2026-2027-noviembre/justificante-prueba.pdf"

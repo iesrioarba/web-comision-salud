@@ -1,0 +1,14 @@
+# Contenido INVENTADO de prueba. No es contenido real.
+curso: "2026-2027"
+meses:
+  - { mes: octubre, tema: "Tema de prueba de octubre" }
+  - { mes: noviembre, tema: "Tema de prueba de noviembre" }
+  - { mes: diciembre, tema: "Tema de prueba de diciembre" }
+  - { mes: enero, tema: "Tema de prueba de enero" }
+  - { mes: febrero, tema: "Tema de prueba de febrero" }
+  - { mes: marzo, tema: "Tema de prueba de marzo" }
+  - { mes: abril, tema: "Tema de prueba de abril" }
+  - { mes: mayo, tema: "Tema de prueba de mayo" }
+  - { mes: junio, tema: "Tema de prueba de junio" }
+en_curso: "content/retos/2026-2027-noviembre.yml"
+proximo_mes: ""

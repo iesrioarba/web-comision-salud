@@ -1,0 +1,41 @@
+# Contenido INVENTADO de prueba: datos pendientes en las tres formas de «vacío»
+# (research R1): "" (descripcion), null (fecha, hora) y ausente (lugar).
+curso: "2026-2027"
+mes: octubre
+estado: publicado
+nombre: "Reto de prueba con datos pendientes"
+objetivo: "Objetivo de prueba inventado."
+descripcion: "Descripción de prueba inventada."
+pasos:
+  - "Paso de prueba"
+fuentes:
+  - titulo: "Fuente de prueba inventada"
+    url: ""
+motriz:
+  nombre: "Reto motriz de prueba"
+  descripcion: ""
+  fecha: null
+  hora: null
+  materiales:
+    - titulo: "Cartel pendiente de prueba"
+      tipo: cartel
+      destinatario: todo-el-centro
+      archivo: ""
+tutoria:
+  nombre: ""
+  descripcion: "Descripción de tutoría de prueba inventada."
+  materiales:
+    - titulo: "Ficha pendiente de prueba"
+      tipo: ficha
+      destinatario: alumnado
+      archivo: null
+    - titulo: "Documento pendiente de prueba"
+      tipo: documento
+      destinatario: tutores
+familia:
+  nombre: null
+  descripcion: "Descripción de familia de prueba inventada."
+  materiales:
+    - titulo: "Justificante pendiente de prueba"
+      tipo: justificante
+      destinatario: familias
