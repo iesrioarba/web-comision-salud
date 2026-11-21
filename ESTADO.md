@@ -67,6 +67,7 @@ Actualizado: 2026-11-21
 - Dominio definitivo
 - Huecos del plan: sección HUECOS de specs/001-reto-octubre/plan.md
 - Crear la cuenta del centro solo para enviar correo, con verificación en dos pasos y contraseña de aplicación (será una tarea MANUAL de tasks.md).
+- Dependabot para actualizar las acciones fijadas por SHA: ¿se añade como tarea? (propuesta sin decidir)
 
 ## Próximo paso
-Tareas de 001 en orden; gestiones manuales 002-T001 a T003 en paralelo.
+001-T005 con el implementador (mismo ciclo: rama, implementador, comprobaciones propias, PR).
