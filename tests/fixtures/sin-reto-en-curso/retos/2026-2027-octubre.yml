@@ -1,0 +1,16 @@
+# Contenido INVENTADO de prueba: reto publicado de octubre.
+curso: "2026-2027"
+mes: octubre
+estado: publicado
+nombre: "Reto de prueba de octubre inventado"
+objetivo: "Objetivo de prueba inventado."
+descripcion: "Descripción de prueba inventada."
+fuentes:
+  - titulo: "Fuente de prueba inventada"
+    url: "https://example.org/fuente"
+motriz:
+  nombre: "Reto motriz de prueba"
+tutoria:
+  descripcion: "Descripción de tutoría de prueba inventada."
+familia:
+  descripcion: "Descripción de familia de prueba inventada."

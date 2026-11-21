@@ -1,0 +1,11 @@
+# Contenido INVENTADO de prueba: borrador (no debe aparecer en la web).
+curso: "2026-2027"
+mes: diciembre
+estado: borrador
+nombre: "Borrador de prueba inventado"
+objetivo: "Objetivo pendiente de prueba."
+descripcion: "Descripción pendiente de prueba."
+motriz:
+  nombre: "Motriz pendiente de prueba"
+tutoria: {}
+familia: {}

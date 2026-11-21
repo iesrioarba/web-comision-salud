@@ -151,7 +151,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Hecho cuando**: los tres ficheros son copia idéntica de `specs/001-reto-octubre/contracts/*.schema.json`.
   - **Comprobación**: `diff specs/001-reto-octubre/contracts/reto.schema.json schemas/reto.schema.json` (y los otros dos) sin diferencias. La compilación en modo estricto se prueba en T006.
 
-- [ ] T004 [P] Crear el contenido inventado de pruebas en `tests/fixtures/completo/`, `tests/fixtures/pendientes/`, `tests/fixtures/sin-reto-en-curso/` y `tests/fixtures/sin-reto-ni-anuncio/`
+- [x] T004 [P] Crear el contenido inventado de pruebas en `tests/fixtures/completo/`, `tests/fixtures/pendientes/`, `tests/fixtures/sin-reto-en-curso/` y `tests/fixtures/sin-reto-ni-anuncio/`
   - **Rama**: `tarea/001-T004-fixtures` · **Depende de**: T001
   - **Objetivo**: cubrir los casos límite de la especificación sin tocar `content/` (ADR 0014). Cada carpeta tiene `curso.yml`, `sitio.yml`, `retos/*.yml` y, si hace falta, `materiales/`. Todo inventado y evidente («Reto de prueba inventado», «Patio de ejemplo», URLs `https://example.org/…`); ningún dato real de personas.
   - **Contenido mínimo**:
@@ -171,7 +171,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
 
 - [ ] T006 [P] Escribir las pruebas unitarias del validador en `tests/unit/validate-content.test.js` (en rojo)
   - **Rama**: `tarea/001-T006-validador` (grupo T006 + T009; primer commit) · **Depende de**: T003, T004
-  - **Objetivo**: FR-014, ADR 0008 y quickstart A2. Interfaz que fijan las pruebas: `validateContent(contentDir)` de `scripts/validate-content.js` devuelve `{ errors: [{ file, field, message }] }`; como orden, imprime los errores y sale con código 1, o imprime «Contenido correcto» y sale con 0. Incluye un script aparte, `scripts/check-schemas-sync.js` con su script npm `comprobar:esquemas`, que falle si algún esquema de schemas/ no es idéntico byte a byte a su contrato en specs/001-reto-octubre/contracts/ (ADR 0008). T013 lo añade a `comprobar`.
+  - **Objetivo**: FR-014, ADR 0008 y quickstart A2. Interfaz que fijan las pruebas: `validateContent(contentDir)` de `scripts/validate-content.js` devuelve `{ errors: [{ file, field, message }] }`; como orden, imprime los errores y sale con código 1, o imprime «Contenido correcto» y sale con 0. Incluye un script aparte, `scripts/check-schemas-sync.js` con su script npm `comprobar:esquemas`, que falle si algún esquema de schemas/ no es idéntico byte a byte a su contrato en specs/001-reto-octubre/contracts/ (ADR 0008). T013 lo añade a `comprobar`. Las rutas de `en_curso` (y cualquier otra que empiece por `content/`) se resuelven contra `CONTENT_DIR`, quitando el prefijo `content/`; así las fixtures funcionan con CONTENT_DIR=tests/fixtures/<nombre>.
   - **Casos válidos**: las cuatro fixtures de T004; los tres esquemas compilan con `ajv` en modo estricto; un campo opcional `""`, `null` o ausente cuenta como vacío.
   - **Casos que DEBEN fallar** (cada uno con mensaje en español que dice fichero, campo y qué corregir; se generan copiando una fixture a una carpeta temporal y modificándola, sin añadir ficheros grandes al repositorio):
     - `curso`: no cumple `^\d{4}-\d{4}$` o «el segundo año es el primero + 1» no se cumple.
