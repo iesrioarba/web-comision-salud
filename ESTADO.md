@@ -1,8 +1,8 @@
 # ESTADO · Web de la Comisión de Salud (IES Río Arba)
-Actualizado: 2026-11-20
+Actualizado: 2026-11-21
 
 ## Fase actual
-001: fase 6 (implementación), T004 · 002: fase 6 pendiente (empieza tras 001-T012 y la rama T013+T014)
+001: fase 6 (implementación), T005 · 002: fase 6 pendiente (empieza tras 001-T012 y la rama T013+T014)
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -56,6 +56,7 @@ Actualizado: 2026-11-20
 - 2026-11-20 · 001-T001 integrada en main sin PR por error (estaba en main); el diff se revisó antes. Desde hoy, la regla de main exige pull request.
 - 2026-11-20 · 001-T002: acciones fijadas por SHA y Node desde .nvmrc (PR #9). La regla de main exige además que pase "comprobar".
 - 2026-11-20 · 001-T003: esquemas copiados a schemas/ (PR #10); T006 añadirá comprobar:esquemas.
+- 2026-11-21 · 001-T004: fixtures inventadas en tests/fixtures/ (PR #11); .gitattributes trata los PDF como binarios.
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
