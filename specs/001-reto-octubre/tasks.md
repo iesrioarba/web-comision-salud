@@ -165,6 +165,14 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
 - [ ] T005 [P] Escribir las pruebas unitarias del formato en español en `tests/unit/format.test.js` (en rojo)
   - **Rama**: `tarea/001-T005-formato` (grupo T005 + T008; primer commit) · **Depende de**: T001
   - **Objetivo**: fijar con `node:test` el comportamiento de `src/lib/format.js` (plan, «Source Code»): `Intl`, sin dependencias.
+  - **Interfaz que fijan las pruebas** (ESM, exports con nombre desde `src/lib/format.js`):
+    - `formatDate(isoDate: string) => string`: `'2026-10-09'` → «viernes, 9 de octubre de 2026».
+    - `formatTime(hhmm: string) => string`: `'11:30'` → «11:30».
+    - `formatFileType(archivo: string) => string`: recibe la ruta tal como viene en el campo `archivo` del contenido y compara la extensión sin distinguir mayúsculas; `'/materiales/2026-2027-noviembre/ficha-prueba.pdf'` → «PDF», `…/cartel-prueba.png` → «Imagen PNG», `…/infografia-prueba.jpg`, `….jpeg` y `….JPG` → «Imagen JPG».
+    - `formatFileSize(bytes: number) => string`: `870400` → «850 KB»; `1258291` → «1,2 MB» (N8).
+    - `formatWeekRange(desde: string, hasta: string) => string`: mismo formato de fecha que `formatDate`; `'2026-10-12'`, `'2026-10-23'` → «del lunes, 12 de octubre de 2026 al viernes, 23 de octubre de 2026» (N8).
+    - `yearForMonth(curso: string, mes: string) => number`: `mes` es un valor del esquema (`octubre`…`junio`); `('2026-2027', 'octubre' | 'noviembre' | 'diciembre')` → 2026; `('2026-2027', 'enero'…'junio')` → 2027. No se prueba ningún valor fuera del esquema (el validador no lo admite).
+    - `toParagraphs(text: string) => string[]`: separa por líneas en blanco y devuelve los párrafos sin vacíos.
   - **Casos**: fecha `2026-10-09` → «viernes, 9 de octubre de 2026»; hora `11:30` → «11:30»; formato por extensión: `pdf` → «PDF», `png` → «Imagen PNG», `jpg`/`jpeg`/`JPG` → «Imagen JPG»; tamaño `870400` bytes → «850 KB» y `1258291` → «1,2 MB» (N8); rango de semana `2026-10-12`/`2026-10-23` → «del lunes, 12 de octubre de 2026 al viernes, 23 de octubre de 2026» (N8); año del mes dentro del curso (`2026-2027`: octubre a diciembre → 2026, enero a junio → 2027); texto en párrafos: un texto con líneas en blanco → lista de párrafos sin vacíos.
   - **Hecho cuando**: las pruebas existen y fallan porque `src/lib/format.js` no existe.
   - **Comprobación**: `node --test tests/unit/format.test.js` falla con «Cannot find module» (o equivalente), en local, antes del primer commit.
@@ -195,6 +203,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
 
 - [ ] T008 Implementar el formato en español en `src/lib/format.js`
   - **Rama**: `tarea/001-T005-formato` (grupo T005 + T008; después del primer commit) · **Depende de**: T005
+  - **Objetivo**: implementar la interfaz que fija T005 («Interfaz que fijan las pruebas») sin cambiarla: mismos nombres, firmas y sistema de módulos.
   - **Hecho cuando**: todas las pruebas de T005 pasan, sin dependencias nuevas (solo `Intl`).
   - **Comprobación**: `node --test tests/unit/format.test.js` en verde; PR del grupo en verde.
 
