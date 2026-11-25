@@ -1,8 +1,8 @@
 # ESTADO · Web de la Comisión de Salud (IES Río Arba)
-Actualizado: 2026-11-21
+Actualizado: 2026-11-25
 
 ## Fase actual
-001: fase 6 (implementación), T005 · 002: fase 6 pendiente (empieza tras 001-T012 y la rama T013+T014)
+001: fase 6 (implementación), rama T006+T009 · 002: fase 6 pendiente (empieza tras 001-T012 y la rama T013+T014)
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -31,6 +31,11 @@ Actualizado: 2026-11-21
 - 2026-11-19 · Las páginas legales (002: declaración de accesibilidad, aviso legal y privacidad) se integran antes de desplegar la web nueva (T023).
 - 2026-11-19 · El VPS está en Fráncfort (Alemania), dentro de la UE.
 - 2026-11-19 · Plan de 002-paginas-legales aprobado (ADR 0017 a 0019).
+- 2026-11-24 · Interfaz de src/lib/format.js fijada en T005 y T008 de tasks.md: siete funciones (formatDate, formatTime, formatFileType, formatFileSize, formatWeekRange, yearForMonth, toParagraphs), ESM con exports con nombre. Si una tarea no fija la interfaz, se fija en tasks.md, en su propio commit, antes de escribir las pruebas.
+- 2026-11-24 · Fechas como fechas de calendario (UTC): el formato no depende de la zona horaria de la máquina.
+- 2026-11-24 · Tamaños de archivo: base 1024; por debajo de 1 MB, KB enteros (mínimo 1 KB); desde 1 MB, MB con un decimal y coma decimal.
+- 2026-11-25 · Los PR de tarea se integran con merge commit, no squash, para conservar el commit en rojo.
+- 2026-11-25 · Cada PR de tarea marca sus tareas con [x] en tasks.md, en su último commit.
 
 ## Hecho
 - Inventario de la petición de la comisión.
@@ -51,12 +56,13 @@ Actualizado: 2026-11-21
 - 2026-11-11 · Fase 4 cerrada: plan técnico de 001-reto-octubre aprobado por Michel e integrado en main (PR #4).
 - 2026-11-19 · Fase 5: tareas de 001-reto-octubre (50) revisadas con tres pasadas de /speckit-analyze, sin críticos.
 - 2026-11-19 · 002-paginas-legales: especificación y 7 aclaraciones, aprobadas por Michel e integradas en main.
-- 2026-11-20 · 002: plan y tareas aprobados e integrados (PR #8)
+- 2026-11-20 · 002: plan y tareas aprobados e integrados (PR #8).
 - 2026-11-20 · 001-T001: Node 26.13.1 y dependencias fijadas; versiones de parche actualizadas en los ADR y planes; npm audit con riesgo aceptado (ADR 0014)
 - 2026-11-20 · 001-T001 integrada en main sin PR por error (estaba en main); el diff se revisó antes. Desde hoy, la regla de main exige pull request.
 - 2026-11-20 · 001-T002: acciones fijadas por SHA y Node desde .nvmrc (PR #9). La regla de main exige además que pase "comprobar".
 - 2026-11-20 · 001-T003: esquemas copiados a schemas/ (PR #10); T006 añadirá comprobar:esquemas.
 - 2026-11-21 · 001-T004: fixtures inventadas en tests/fixtures/ (PR #11); .gitattributes trata los PDF como binarios.
+- 2026-11-25 · 001-T005 + T008: interfaz fijada en tasks.md, pruebas del formato en rojo y src/lib/format.js; 14/14 en local, también con TZ=America/Los_Angeles (PR #13). Las pruebas unitarias aún no se ejecutan en Actions: entran con T013.
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
@@ -68,6 +74,8 @@ Actualizado: 2026-11-21
 - Huecos del plan: sección HUECOS de specs/001-reto-octubre/plan.md
 - Crear la cuenta del centro solo para enviar correo, con verificación en dos pasos y contraseña de aplicación (será una tarea MANUAL de tasks.md).
 - Dependabot para actualizar las acciones fijadas por SHA: ¿se añade como tarea? (propuesta sin decidir)
+- Caracteres invisibles: las herramientas de Claude Code escribieron U+00A0 y U+202F tal cual dos veces en T005/T008. Propuesta: regla en AGENTS.md (generarlos con String.fromCodePoint, nunca literales ni escapes \u) y comprobación automática en T013.
+- 002 añade dateNoWeekday y pendiente al mismo src/lib/format.js; pendiente choca con «código en inglés». Decidir al empezar 002.
 
 ## Próximo paso
-001-T005 con el implementador (mismo ciclo: rama, implementador, comprobaciones propias, PR).
+001-T006 (pruebas del validador, en rojo) en la rama tarea/001-T006-validador; después T009. Luego la rama T007+T010.

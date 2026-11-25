@@ -162,7 +162,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Hecho cuando**: existen las cuatro carpetas con ese contenido y siguen los contratos de `specs/001-reto-octubre/contracts/` y `data-model.md`.
   - **Comprobación**: revisión de que no hay datos reales (`grep -ri '@' tests/fixtures` solo devuelve direcciones `example.org`); `du -k tests/fixtures/*/materiales/*/*` ≤ 50 por fichero. La validez se demuestra en el grupo T006 + T009 (las fixtures son los casos válidos).
 
-- [ ] T005 [P] Escribir las pruebas unitarias del formato en español en `tests/unit/format.test.js` (en rojo)
+- [x] T005 [P] Escribir las pruebas unitarias del formato en español en `tests/unit/format.test.js` (en rojo)
   - **Rama**: `tarea/001-T005-formato` (grupo T005 + T008; primer commit) · **Depende de**: T001
   - **Objetivo**: fijar con `node:test` el comportamiento de `src/lib/format.js` (plan, «Source Code»): `Intl`, sin dependencias.
   - **Interfaz que fijan las pruebas** (ESM, exports con nombre desde `src/lib/format.js`):
@@ -201,7 +201,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Hecho cuando**: las pruebas existen y fallan porque `src/lib/content.js` no existe.
   - **Comprobación**: `node --test tests/unit/content-data.test.js` falla por módulo inexistente, en local, antes del primer commit.
 
-- [ ] T008 Implementar el formato en español en `src/lib/format.js`
+- [x] T008 Implementar el formato en español en `src/lib/format.js`
   - **Rama**: `tarea/001-T005-formato` (grupo T005 + T008; después del primer commit) · **Depende de**: T005
   - **Objetivo**: implementar la interfaz que fija T005 («Interfaz que fijan las pruebas») sin cambiarla: mismos nombres, firmas y sistema de módulos.
   - **Hecho cuando**: todas las pruebas de T005 pasan, sin dependencias nuevas (solo `Intl`).
