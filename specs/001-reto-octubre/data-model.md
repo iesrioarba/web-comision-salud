@@ -49,7 +49,7 @@ lo genera el panel: `{curso}-{mes}.yml` (p. ej. `2026-2027-octubre.yml`).
 
 | Campo | Tipo | Obligatorio | Reglas |
 |---|---|---|---|
-| `curso` | texto | sí | Igual que `curso` de `curso.yml` |
+| `curso` | texto | sí | `^\d{4}-\d{4}$`. El de `curso.yml` o uno anterior (los retos pasados siguen consultables); el tema solo se toma de `curso.yml` si es del mismo curso |
 | `mes` | mes | sí | Único por `curso` (script) |
 | `estado` | `borrador` \| `publicado` | sí | Por defecto `borrador` (ADR 0011) |
 | `nombre` | texto | sí | ≤ 80. Ej.: «Resolver, no ganar» |
