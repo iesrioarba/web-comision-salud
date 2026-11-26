@@ -1,0 +1,16 @@
+# Ejemplo de contrato: content/curso.yml (temas de spec.md, «Contexto»)
+curso: "2026-2027"
+meses:
+  - { mes: octubre, tema: "Gestión del conflicto" }
+  - { mes: noviembre, tema: "Igualdad" }
+  - { mes: diciembre, tema: "Nutrición" }
+  - { mes: enero, tema: "Horas de sueño y pantallas" }
+  - { mes: febrero, tema: "Consumo de sustancias (vapeo)" }
+  - { mes: marzo, tema: "Convivencia y salud social" }
+  - { mes: abril, tema: "Actividad física saludable" }
+  - { mes: mayo, tema: "Gestión del estrés" }
+  - { mes: junio, tema: "Ecosalud" }
+# Reto en curso: ruta del fichero del reto, o vacío si no hay reto en curso (FR-029).
+en_curso: "content/retos/2026-2027-octubre.yml"
+# Solo se usa cuando en_curso está vacío.
+proximo_mes: ""
