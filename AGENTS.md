@@ -101,6 +101,7 @@ Quien actualiza los contenidos cada mes es profesorado sin conocimientos de prog
 - Documentación, textos de la web y mensajes de commit: español. Las plantillas de
   Spec Kit tienen los encabezados en inglés: se mantienen, y el contenido se escribe en español.
 - Código (variables, funciones, clases, nombres de fichero de código): inglés.
+- Lenguaje del dominio: las propiedades de datos que vienen del dominio usan las palabras de la especificación y del contenido, en español y en camelCase (enCurso, proximoMes, calendario, materiales, paraQuien). Las funciones, las variables internas y los nombres técnicos van en inglés (loadSite, readChallenge).
 - Respuestas al usuario: español, directas y breves; di qué has comprobado y qué no.
 
 ## Cuándo parar y preguntar
