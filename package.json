@@ -6,6 +6,7 @@
     "node": "26.13.1"
   },
   "scripts": {
+    "build": "npm run comprobar:contenido && eleventy",
     "validar": "html-validate \"site/**/*.html\"",
     "comprobar:contenido": "node scripts/validate-content.js",
     "comprobar:esquemas": "node scripts/check-schemas-sync.js"

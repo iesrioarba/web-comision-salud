@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {#- noindex hasta el estreno (ADR 0016). Lo quita la tarea T050. #}
+  <meta name="robots" content="noindex">
+  <title>{{ title }} · Comisión de Salud · IES Río Arba</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header>
+    <p><a href="/">Comisión de Salud · IES Río Arba</a></p>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="/">Inicio</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="contenido" tabindex="-1">
+    {{ content | safe }}
+  </main>
+  <footer>
+    <p>Comisión de Salud · IES Río Arba · Tauste</p>
+  </footer>
+</body>
+</html>
