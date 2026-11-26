@@ -2,7 +2,7 @@
 name: tarea
 description: Ejecuta de principio a fin una pareja de tareas de tasks.md (pruebas en rojo e implementación) y abre el PR sin integrarlo. Solo se lanza a mano con /tarea.
 disable-model-invocation: true
-argument-hint: "<funcionalidad> <tarea de pruebas> <tarea de implementación>, por ejemplo: 001 T007 T010"
+argument-hint: "<funcionalidad> <tarea o pareja de tareas> [notas], por ejemplo: 001 T007 T010 o 001 T012"
 ---
 
 # Ciclo completo de una tarea: $ARGUMENTS
@@ -35,6 +35,12 @@ Trabajas sin pararte, salvo en las PUERTAS del final. Lo demás lo decides tú y
 - Cuerpo del PR: «Qué hace»; «Comprobado en local» (órdenes y su salida resumida); «DECIDIR» (tabla: caso, elección, alternativa, por qué); «Notas para la fase 7».
 - gh pr checks --watch hasta que termine «comprobar». NO integres el PR.
 - Termina con la URL del PR, el resumen de las pruebas y la lista DECIDIR.
+
+## Tarea suelta (sin pareja de pruebas)
+- Si llega una sola tarea, o la tarea no es de pruebas en rojo (configuración, infraestructura, contenido), sáltate el paso 2.
+- Si la tarea crea algo que se puede comprobar con una prueba unitaria barata, escríbela antes de implementar, con el doble vacío del paso 2.
+- La tarea está hecha cuando se cumple su «Comprobación» y la sección «Comprobaciones» de AGENTS.md. En el PR, «Comprobado en local» lo demuestra.
+- Si después de las tareas vienen notas, tenlas en cuenta como requisitos y di en el PR cómo has cumplido cada una.
 
 ## PUERTAS: para, explica el caso concreto y espera
 - Habría que cambiar spec.md, plan.md, data-model.md, contratos, esquemas, ADR, la constitución o AGENTS.md.
