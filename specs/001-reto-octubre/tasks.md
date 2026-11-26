@@ -202,7 +202,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Hecho cuando**: las pruebas de los dos ficheros existen y fallan porque los módulos no existen.
   - **Comprobación**: `node --test tests/unit/validate-content.test.js tests/unit/check-schemas-sync.test.js` falla por módulo inexistente, en local, antes del primer commit.
 
-- [ ] T007 [P] Escribir las pruebas unitarias de los datos derivados en `tests/unit/content-data.test.js` (en rojo)
+- [x] T007 [P] Escribir las pruebas unitarias de los datos derivados en `tests/unit/content-data.test.js` (en rojo)
   - **Rama**: `tarea/001-T007-capa-de-datos` (grupo T007 + T010; primer commit) · **Depende de**: T004 y, para cerrar la rama, T008
   - **Objetivo**: fijar con `node:test` `loadSite(contentDir)` de `src/lib/content.js` según data-model.md («Derivado», «Fijo», «Relaciones», «Estados») y lo que consumen las plantillas (contracts/paginas-web.md; T016, T017, T019, T043, T044, T046). Las plantillas acceden a todo por `site.…` (nombre del fichero `src/_data/site.js`).
   - **Interfaz que fijan las pruebas**:
@@ -258,7 +258,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Hecho cuando**: todas las pruebas de T006 pasan (los dos ficheros).
   - **Comprobación**: `node --test tests/unit/validate-content.test.js tests/unit/check-schemas-sync.test.js` en verde; `CONTENT_DIR=tests/fixtures/completo npm run comprobar:contenido` sale con 0 y «Contenido correcto»; `npm run comprobar:esquemas` sale con 0 y «Esquemas sincronizados»; PR del grupo en verde.
 
-- [ ] T010 Implementar la capa de datos en `src/lib/content.js` y `src/_data/site.js`
+- [x] T010 Implementar la capa de datos en `src/lib/content.js` y `src/_data/site.js`
   - **Rama**: `tarea/001-T007-capa-de-datos` (grupo T007 + T010; después del primer commit) · **Depende de**: T007, T008
   - **Objetivo**: implementar la interfaz que fija T007 («Interfaz que fijan las pruebas») sin cambiarla: mismos nombres de exports y de propiedades, mismas formas de vacío y sistema de módulos.
   - **Detalles de la implementación**:
