@@ -274,7 +274,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Hecho cuando**: los tres ficheros coinciden con los ejemplos (se pueden quitar los comentarios de HUECO, nunca los datos) y pasan la validación.
   - **Comprobación**: `npm run comprobar:contenido` sale con 0 y «Contenido correcto»; `diff` con los ejemplos solo muestra comentarios.
 
-- [ ] T012 Montar el esqueleto de Eleventy en `eleventy.config.js`, `src/_includes/layouts/base.njk`, `src/assets/css/main.css`, `src/404.njk` y el script `build` de `package.json`
+- [x] T012 Montar el esqueleto de Eleventy en `eleventy.config.js`, `src/_includes/layouts/base.njk`, `src/assets/css/main.css`, `src/404.njk` y el script `build` de `package.json`
   - **Rama**: `tarea/001-T012-esqueleto-eleventy` · **Depende de**: T009, T010
   - **Objetivo**: ADR 0006 y contracts/paginas-web.md («Reglas comunes a todas las páginas»).
   - **Ficheros y reglas**:
