@@ -177,7 +177,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Hecho cuando**: las pruebas existen y fallan porque `src/lib/format.js` no existe.
   - **Comprobación**: `node --test tests/unit/format.test.js` falla con «Cannot find module» (o equivalente), en local, antes del primer commit.
 
-- [ ] T006 [P] Escribir las pruebas unitarias del validador en `tests/unit/validate-content.test.js` y `tests/unit/check-schemas-sync.test.js` (en rojo)
+- [x] T006 [P] Escribir las pruebas unitarias del validador en `tests/unit/validate-content.test.js` y `tests/unit/check-schemas-sync.test.js` (en rojo)
   - **Rama**: `tarea/001-T006-validador` (grupo T006 + T009; primer commit) · **Depende de**: T003, T004
   - **Objetivo**: FR-014, ADR 0008 y quickstart A2. Interfaz que fijan las pruebas: `validateContent(contentDir)` de `scripts/validate-content.js` devuelve `{ errors: [{ file, field, message }] }`; como orden, imprime los errores y sale con código 1, o imprime «Contenido correcto» y sale con 0. Las rutas de `en_curso` (y cualquier otra que empiece por `content/`) se resuelven contra `CONTENT_DIR`, quitando el prefijo `content/`; así las fixtures funcionan con CONTENT_DIR=tests/fixtures/<nombre>.
   - **Detalles de la interfaz**:
@@ -215,7 +215,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Hecho cuando**: todas las pruebas de T005 pasan, sin dependencias nuevas (solo `Intl`).
   - **Comprobación**: `node --test tests/unit/format.test.js` en verde; PR del grupo en verde.
 
-- [ ] T009 Implementar el validador en `scripts/validate-content.js`, `scripts/check-schemas-sync.js` y los scripts `comprobar:contenido` y `comprobar:esquemas` en `package.json`
+- [x] T009 Implementar el validador en `scripts/validate-content.js`, `scripts/check-schemas-sync.js` y los scripts `comprobar:contenido` y `comprobar:esquemas` en `package.json`
   - **Rama**: `tarea/001-T006-validador` (grupo T006 + T009; después del primer commit) · **Depende de**: T006
   - **Objetivo**: ADR 0008. Esquemas con `ajv` + `ajv-formats` (formato `date` completo) y reglas entre campos. Se usa `Ajv2020` de `ajv/dist/2020` (los esquemas son 2020-12), con `strict: true` y `allErrors: true`; el YAML se lee con el esquema por defecto de `yaml` (core), así que las fechas quedan como texto. Traduce los mensajes de `ajv` a uno por campo en español, sin repetirlos por los `anyOf` (research R3). Lee `CONTENT_DIR` (por defecto `content`). Los mensajes de patrón coinciden con los del panel: «Escribe la hora así: 11:30», «Escribe el curso así: 2026-2027», «La dirección debe empezar por https://». La regla M7 (solo PDF salvo `cartel` e `infografia`) está en `schemas/reto.schema.json` (copia de T003) y su mensaje es el de T006. `check-schemas-sync.js` implementa la interfaz que fija T006 y T013 lo añade a `comprobar`.
   - **Hecho cuando**: todas las pruebas de T006 pasan (los dos ficheros).
