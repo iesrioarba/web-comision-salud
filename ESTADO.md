@@ -2,7 +2,7 @@
 Actualizado: 2026-11-26
 
 ## Fase actual
-001: fase 6 (implementación), rama T007+T010 · 002: fase 6 pendiente (empieza tras 001-T012 y la rama T013+T014)
+001: fase 6 (implementación), rama T013+T014 · 002: fase 6 pendiente (empieza al integrar la rama T013+T014)
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -39,7 +39,11 @@ Actualizado: 2026-11-26
 - 2026-11-25 · Interfaz del validador fijada en T006: field en notación JavaScript (meses[3].tema), message solo dice qué corregir, un error por fichero + campo, cada caso negativo da exactamente un error, y los errores entre ficheros van en el que va después según sort().
 - 2026-11-25 · Un reto puede ser de un curso anterior al de curso.yml; el tema solo se toma de curso.yml si es del mismo curso (data-model.md corregido). Las reglas entre campos y entre ficheros solo se aplican a valores que ya pasan el esquema.
 - 2026-11-26 · Antes de hacer commit de pruebas en rojo, se ejecutan contra un doble vacío: todos los fallos deben ser AssertionError.
-- 2026-11-26 · Claude Code en auto mode (antes, modo manual), por ritmo de entrega. Las reglas deny siguen bloqueando (.env, MCP). La integración de los PR la hace Michel.
+- 2026-11-26 · Claude Code en auto mode, activado al abrir la sesión con --permission-mode auto; el repositorio sigue en modo manual por defecto. Las reglas deny siguen bloqueando (.env, MCP). La integración de los PR la hace Michel.
+- 2026-11-26 · Las tareas se ejecutan con la skill de proyecto /tarea (.claude/skills/tarea/): ciclo completo (interfaz, pruebas en rojo con doble vacío, implementación, PR) sin paradas salvo en sus PUERTAS; admite tareas sueltas y notas. El mentor revisa en el PR y Michel integra. Las tareas de contenido de la comisión y las MANUAL se hacen aparte.
+- 2026-11-26 · Lenguaje del dominio (AGENTS.md): propiedades de datos en español y camelCase (enCurso, calendario, paraQuien); funciones y nombres técnicos en inglés (loadSite).
+- 2026-11-26 · Capa de datos (loadSite): da los textos fijos y los valores ya formateados (sufijo Texto); «Por confirmar» y «Por anunciar» los ponen las plantillas. No valida: npm run build ejecuta primero el validador.
+- 2026-11-26 · Escape: Eleventy 3 usa las opciones por defecto de Nunjucks (autoescape activado); | safe solo con content en el layout.
 
 ## Hecho
 - Inventario de la petición de la comisión.
@@ -68,6 +72,10 @@ Actualizado: 2026-11-26
 - 2026-11-21 · 001-T004: fixtures inventadas en tests/fixtures/ (PR #11); .gitattributes trata los PDF como binarios.
 - 2026-11-25 · 001-T005 + T008: interfaz fijada en tasks.md, pruebas del formato en rojo y src/lib/format.js; 14/14 en local, también con TZ=America/Los_Angeles (PR #13). Las pruebas unitarias aún no se ejecutan en Actions: entran con T013.
 - 2026-11-26 · 001-T006 + T009: interfaz enmendada en tasks.md, 88 pruebas en rojo comprobadas con un doble vacío, validador y check-schemas-sync; 102/102 en local; código revisado por el mentor (PR #15).
+- 2026-11-26 · Skill /tarea y regla del lenguaje del dominio en AGENTS.md (PR #17); /tarea admite tareas sueltas y notas (PR #20).
+- 2026-11-26 · 001-T007 + T010: loadSite y src/_data/site.js, 71 pruebas; primera pareja hecha con /tarea; 173/173 en local (PR #18).
+- 2026-11-26 · 001-T011: contenido real de partida de octubre, copiado de los ejemplos; comprobar:contenido en verde (PR #19).
+- 2026-11-26 · 001-T012: esqueleto de Eleventy (base.njk con noindex y salto al contenido, 404, CSS funcional); build = validador + Eleventy (PR #21).
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
@@ -79,12 +87,16 @@ Actualizado: 2026-11-26
 - Huecos del plan: sección HUECOS de specs/001-reto-octubre/plan.md
 - Crear la cuenta del centro solo para enviar correo, con verificación en dos pasos y contraseña de aplicación (será una tarea MANUAL de tasks.md).
 - Dependabot para actualizar las acciones fijadas por SHA: ¿se añade como tarea? (propuesta sin decidir)
-- Caracteres invisibles: las herramientas de Claude Code escribieron U+00A0 y U+202F tal cual dos veces en T005/T008. Propuesta: regla en AGENTS.md (generarlos con String.fromCodePoint, nunca literales ni escapes \u) y comprobación automática en T013.
-- 002 añade dateNoWeekday y pendiente al mismo src/lib/format.js; pendiente choca con «código en inglés». Decidir al empezar 002.
+- Caracteres invisibles: regla en AGENTS.md y comprobación automática, en la rama T013+T014 (nota 3).
+- 002 añade dateNoWeekday y pendiente a src/lib/format.js: son funciones, así que por la regla del lenguaje del dominio van en inglés. Renombrar pendiente al empezar 002.
 - Cambio de curso: al pasar curso.yml a 2027-2028, los retos de 2026-2027 pierden su tema (sale de curso.yml) y su calendario. Decidir antes de junio de 2027.
-- Auto mode: añadir regla ask para git push y gh pr (punto de control humano).
-- Para la fase 7 (del PR #15): M7 detectado por /allOf/1/then/; mensaje de format siempre de fecha; mayúsculas en nombres de archivo en macOS; enlaces simbólicos en materiales/; reto.curso sin comprobar años consecutivos ni curso futuro; error de tema que oculta el de orden de meses.
-- Error de fichero entero impreso «curso.yml · : …»: arreglarlo en T011.
+- Auto mode: regla ask para gh pr merge (el push lo necesita /tarea).
+- Pedir a la comisión: descripción y lugar del Banco Chipi Chipi, texto completo de la infografía de octubre y URL real del Genially.
+- Antes de T016 y T017: h1 de los retos sin tema (propuesta: «Reto de octubre de 2026», sin dos puntos); cambia paginas-web.md.
+- T016: reunir todos los textos fijos (capa de datos y plantillas) en un módulo y alinear el apartado «Fijo» de data-model.md; usar los valores *Texto de la capa de datos y quitar los filtros de eleventy.config.js que no se usen.
+- T048: revisar con la comisión los textos provisionales de cabecera y pie (H12) y si la cabecera lleva el nombre del proyecto.
+- /tarea se saltó una PUERTA en T012 (textos visibles de cabecera y pie): revisar la redacción de esa puerta.
+- Para la fase 7: M7 detectado por /allOf/1/then/; mensaje de format siempre de fecha; mayúsculas en nombres de archivo en macOS; enlaces simbólicos en materiales/; reto.curso sin comprobar años consecutivos ni curso futuro; error de tema que oculta el de orden de meses; error de fichero entero impreso «curso.yml · : …»; .gitkeep publicado en /materiales/.
 
 ## Próximo paso
-001-T007 (pruebas de la capa de datos, en rojo) en la rama tarea/001-T007-capa-de-datos; después T010. Luego, el camino más corto a una página visible para la comisión.
+Rama T013+T014 con /tarea (comprobaciones completas en local y en Actions). Después, T015 a T017 (portada y página del reto): primera demo en local para la comisión.
