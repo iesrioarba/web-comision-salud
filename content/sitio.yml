@@ -1,0 +1,5 @@
+# Ejemplo de contrato: content/sitio.yml
+# HUECO: la URL real del Genially no está en la especificación. Esta es inventada y evidente.
+genially:
+  nombre: "El Arbalquimista de la salud"
+  url: "https://example.org/genially-inventado"
