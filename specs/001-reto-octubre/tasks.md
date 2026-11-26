@@ -268,7 +268,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Hecho cuando**: todas las pruebas de T007 pasan.
   - **Comprobación**: `node --test tests/unit/content-data.test.js` en verde; PR del grupo en verde.
 
-- [ ] T011 [P] Escribir a mano el contenido real de partida en `content/curso.yml`, `content/sitio.yml` y `content/retos/2026-2027-octubre.yml`
+- [x] T011 [P] Escribir a mano el contenido real de partida en `content/curso.yml`, `content/sitio.yml` y `content/retos/2026-2027-octubre.yml`
   - **Rama**: `tarea/001-T011-contenido-octubre` · **Depende de**: T009
   - **Objetivo**: los datos reales de octubre de spec.md, tal como están en `specs/001-reto-octubre/contracts/ejemplos/` (FR-005, FR-006). Lo pendiente de la comisión queda vacío (H7: descripción y lugar del motriz) y los materiales sin `archivo` (H8: no hay ficheros todavía). `content/materiales/2026-2027-octubre/` se crea vacío con un `.gitkeep`. La URL del Genially es la inventada del ejemplo (H6): ver T050.
   - **Hecho cuando**: los tres ficheros coinciden con los ejemplos (se pueden quitar los comentarios de HUECO, nunca los datos) y pasan la validación.
