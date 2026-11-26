@@ -1,6 +1,6 @@
 ---
 name: tarea
-description: Ejecuta de principio a fin una pareja de tareas de tasks.md (pruebas en rojo e implementación) y abre el PR sin integrarlo. Solo se lanza a mano con /tarea.
+description: Ejecuta de principio a fin una tarea o una pareja de tareas de tasks.md (pruebas en rojo e implementación, o una tarea suelta) y abre el PR sin integrarlo. Solo se lanza a mano con /tarea.
 disable-model-invocation: true
 argument-hint: "<funcionalidad> <tarea o pareja de tareas> [notas], por ejemplo: 001 T007 T010 o 001 T012"
 ---
