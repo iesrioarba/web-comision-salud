@@ -1,8 +1,8 @@
 # ESTADO · Web de la Comisión de Salud (IES Río Arba)
-Actualizado: 2026-11-25
+Actualizado: 2026-11-26
 
 ## Fase actual
-001: fase 6 (implementación), rama T006+T009 · 002: fase 6 pendiente (empieza tras 001-T012 y la rama T013+T014)
+001: fase 6 (implementación), rama T007+T010 · 002: fase 6 pendiente (empieza tras 001-T012 y la rama T013+T014)
 
 ## Decisiones
 - 2026-11-05 · Plazo: lista a finales de diciembre de 2026 para arrancar en enero. Las pruebas se hacen con el reto de octubre.
@@ -36,6 +36,10 @@ Actualizado: 2026-11-25
 - 2026-11-24 · Tamaños de archivo: base 1024; por debajo de 1 MB, KB enteros (mínimo 1 KB); desde 1 MB, MB con un decimal y coma decimal.
 - 2026-11-25 · Los PR de tarea se integran con merge commit, no squash, para conservar el commit en rojo.
 - 2026-11-25 · Cada PR de tarea marca sus tareas con [x] en tasks.md, en su último commit.
+- 2026-11-25 · Interfaz del validador fijada en T006: field en notación JavaScript (meses[3].tema), message solo dice qué corregir, un error por fichero + campo, cada caso negativo da exactamente un error, y los errores entre ficheros van en el que va después según sort().
+- 2026-11-25 · Un reto puede ser de un curso anterior al de curso.yml; el tema solo se toma de curso.yml si es del mismo curso (data-model.md corregido). Las reglas entre campos y entre ficheros solo se aplican a valores que ya pasan el esquema.
+- 2026-11-26 · Antes de hacer commit de pruebas en rojo, se ejecutan contra un doble vacío: todos los fallos deben ser AssertionError.
+- 2026-11-26 · Claude Code en auto mode (antes, modo manual), por ritmo de entrega. Las reglas deny siguen bloqueando (.env, MCP). La integración de los PR la hace Michel.
 
 ## Hecho
 - Inventario de la petición de la comisión.
@@ -63,6 +67,7 @@ Actualizado: 2026-11-25
 - 2026-11-20 · 001-T003: esquemas copiados a schemas/ (PR #10); T006 añadirá comprobar:esquemas.
 - 2026-11-21 · 001-T004: fixtures inventadas en tests/fixtures/ (PR #11); .gitattributes trata los PDF como binarios.
 - 2026-11-25 · 001-T005 + T008: interfaz fijada en tasks.md, pruebas del formato en rojo y src/lib/format.js; 14/14 en local, también con TZ=America/Los_Angeles (PR #13). Las pruebas unitarias aún no se ejecutan en Actions: entran con T013.
+- 2026-11-26 · 001-T006 + T009: interfaz enmendada en tasks.md, 88 pruebas en rojo comprobadas con un doble vacío, validador y check-schemas-sync; 102/102 en local; código revisado por el mentor (PR #15).
 
 ## Pendiente en fase 0
 - Instalar OpenCode y conectarlo a Copilot Pro como plan B (sin usarlo)
@@ -76,6 +81,10 @@ Actualizado: 2026-11-25
 - Dependabot para actualizar las acciones fijadas por SHA: ¿se añade como tarea? (propuesta sin decidir)
 - Caracteres invisibles: las herramientas de Claude Code escribieron U+00A0 y U+202F tal cual dos veces en T005/T008. Propuesta: regla en AGENTS.md (generarlos con String.fromCodePoint, nunca literales ni escapes \u) y comprobación automática en T013.
 - 002 añade dateNoWeekday y pendiente al mismo src/lib/format.js; pendiente choca con «código en inglés». Decidir al empezar 002.
+- Cambio de curso: al pasar curso.yml a 2027-2028, los retos de 2026-2027 pierden su tema (sale de curso.yml) y su calendario. Decidir antes de junio de 2027.
+- Auto mode: añadir regla ask para git push y gh pr (punto de control humano).
+- Para la fase 7 (del PR #15): M7 detectado por /allOf/1/then/; mensaje de format siempre de fecha; mayúsculas en nombres de archivo en macOS; enlaces simbólicos en materiales/; reto.curso sin comprobar años consecutivos ni curso futuro; error de tema que oculta el de orden de meses.
+- Error de fichero entero impreso «curso.yml · : …»: arreglarlo en T011.
 
 ## Próximo paso
-001-T006 (pruebas del validador, en rojo) en la rama tarea/001-T006-validador; después T009. Luego la rama T007+T010.
+001-T007 (pruebas de la capa de datos, en rojo) en la rama tarea/001-T007-capa-de-datos; después T010. Luego, el camino más corto a una página visible para la comisión.
