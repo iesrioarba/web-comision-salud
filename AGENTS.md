@@ -94,8 +94,21 @@ Quien actualiza los contenidos cada mes es profesorado sin conocimientos de prog
    Las ramas `ensayo/…` son de usar y tirar: se borran al terminar el ensayo.
 
 ## Comprobaciones
-- Validar HTML: `npm run validar`
-- (Se añadirán aquí las de accesibilidad, pruebas y rendimiento en la fase 4.)
+- Todas, en el orden de Actions: `npm run comprobar`.
+- `npm run comprobar:caracteres`: busca U+00A0 y U+202F (literales o como escape) en `src/`, `scripts/`, `tests/` y `eleventy.config.js`.
+- `npm run comprobar:esquemas`: comprueba que `schemas/` y los contratos de la funcionalidad son idénticos.
+- `npm run comprobar:contenido`: valida el contenido (`CONTENT_DIR`) con los esquemas y las reglas entre campos.
+- `npm test`: pruebas unitarias (`node --test tests/unit/`).
+- `npm run build`: compila `src/` y `CONTENT_DIR` a `_site/`; `npm run build:fixtures` compila cada fixture a `_site-fixtures/<nombre>/`.
+- `npm run validar`: valida el HTML de `_site/` y `_site-fixtures/` con html-validate.
+- `npm run comprobar:enlaces`: comprueba los enlaces internos de `_site/` y de cada fixture.
+- `npm run comprobar:web`: pruebas en Chromium de cada página (idioma, título, encabezados, regiones, enlace de salto, axe WCAG 2.1 AA, sin cookies, sin peticiones externas, sin `iframe`, `form` ni `script`).
+- `npm run comprobar:rendimiento`: Lighthouse CI sobre `_site/` con el presupuesto del ADR 0013; los informes quedan en `.lighthouseci/`.
+- Requisito: `npx playwright install chromium` (y Google Chrome para Lighthouse si no está instalado).
+- Cada compilación empieza con la salida limpia (`scripts/clean-output.js`).
+- Variables: `CONTENT_DIR` (carpeta de contenido, por defecto `content`) y `OUTPUT_DIR` (carpeta de salida de Eleventy, por defecto `_site`; `build:fixtures` la usa para compilar a `_site-fixtures/<nombre>/`; solo admite rutas que empiezan por `_site`).
+- U+00A0 y U+202F se generan con `String.fromCodePoint(0x00a0)` y `String.fromCodePoint(0x202f)`, nunca como carácter literal ni como escape `\u` o `\x`, en `src/`, `scripts/`, `tests/` y `eleventy.config.js`; lo comprueba `npm run comprobar:caracteres`.
+- Las comprobaciones manuales de teclado, lector de pantalla y móvil están en `specs/001-reto-octubre/quickstart.md` (apartado C).
 
 ## Idioma y estilo
 - Documentación, textos de la web y mensajes de commit: español. Las plantillas de
