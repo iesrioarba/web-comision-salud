@@ -88,7 +88,7 @@ describe('findInvisibleChars: escapes', () => {
       const dir = await makeDir(t);
       const file = await write(dir, 'a.js', "const s = 'x" + escape + "y';");
       assert.deepEqual(await findInvisibleChars([file]), [
-        { file, line: 1, column: 12, found: escape },
+        { file, line: 1, column: 13, found: escape },
       ]);
     });
   }
@@ -98,7 +98,7 @@ describe('findInvisibleChars: escapes', () => {
     const file = await write(dir, 'a.js', 'a' + BS + 'u00a0' + 'b' + NNBSP);
     assert.deepEqual(await findInvisibleChars([file]), [
       { file, line: 1, column: 2, found: BS + 'u00a0' },
-      { file, line: 1, column: 8, found: 'U+202F' },
+      { file, line: 1, column: 9, found: 'U+202F' },
     ]);
   });
 
