@@ -24,7 +24,35 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
-      - run: npm run validar
+      - name: Instalar Chromium para las pruebas en navegador
+        run: npx playwright install --with-deps chromium
+      - name: Comprobar caracteres invisibles
+        run: npm run comprobar:caracteres
+      - name: Comprobar que los esquemas están sincronizados
+        run: npm run comprobar:esquemas
+      - name: Validar el contenido
+        run: npm run comprobar:contenido
+      - name: Pasar las pruebas unitarias
+        run: npm test
+      - name: Compilar la web
+        run: npm run build
+      - name: Compilar las fixtures
+        run: npm run build:fixtures
+      - name: Validar el HTML generado
+        run: npm run validar
+      - name: Comprobar los enlaces
+        run: npm run comprobar:enlaces
+      - name: Comprobar la web en el navegador
+        run: npm run comprobar:web
+      - name: Comprobar el rendimiento
+        run: npm run comprobar:rendimiento
+      - name: Guardar los informes de Lighthouse
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: informes-lighthouse
+          path: .lighthouseci/
+          if-no-files-found: warn
 
   desplegar:
     needs: comprobar
