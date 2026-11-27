@@ -6,10 +6,17 @@
     "node": "26.13.1"
   },
   "scripts": {
-    "build": "npm run comprobar:contenido && eleventy",
-    "validar": "html-validate \"site/**/*.html\"",
+    "test": "node --test tests/unit/",
+    "build": "node scripts/clean-output.js && npm run comprobar:contenido && eleventy",
+    "build:fixtures": "node scripts/build-fixtures.js",
+    "validar": "html-validate \"_site/**/*.html\" \"_site-fixtures/**/*.html\"",
+    "comprobar:caracteres": "node scripts/check-invisible-chars.js",
+    "comprobar:esquemas": "node scripts/check-schemas-sync.js",
     "comprobar:contenido": "node scripts/validate-content.js",
-    "comprobar:esquemas": "node scripts/check-schemas-sync.js"
+    "comprobar:enlaces": "node scripts/check-links.js",
+    "comprobar:web": "playwright test",
+    "comprobar:rendimiento": "lhci collect && lhci assert",
+    "comprobar": "npm run comprobar:caracteres && npm run comprobar:esquemas && npm run comprobar:contenido && npm test && npm run build && npm run build:fixtures && npm run validar && npm run comprobar:enlaces && npm run comprobar:web && npm run comprobar:rendimiento"
   },
   "dependencies": {
     "@11ty/eleventy": "3.1.8",

@@ -1,0 +1,25 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "_site",
+      "maxAutodiscoverUrls": 0,
+      "staticDirFileDiscoveryDepth": 3,
+      "numberOfRuns": 3
+    },
+    "assert": {
+      "assertions": {
+        "largest-contentful-paint": ["error", { "maxNumericValue": 2500, "aggregationMethod": "median" }],
+        "first-contentful-paint": ["error", { "maxNumericValue": 1800, "aggregationMethod": "median" }],
+        "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1, "aggregationMethod": "median" }],
+        "total-blocking-time": ["error", { "maxNumericValue": 200, "aggregationMethod": "median" }],
+        "resource-summary:document:size": ["error", { "maxNumericValue": 30720, "aggregationMethod": "median" }],
+        "resource-summary:stylesheet:size": ["error", { "maxNumericValue": 20480, "aggregationMethod": "median" }],
+        "resource-summary:script:size": ["error", { "maxNumericValue": 10240, "aggregationMethod": "median" }],
+        "resource-summary:font:count": ["error", { "maxNumericValue": 0, "aggregationMethod": "median" }],
+        "resource-summary:image:size": ["error", { "maxNumericValue": 102400, "aggregationMethod": "median" }],
+        "resource-summary:total:size": ["error", { "maxNumericValue": 153600, "aggregationMethod": "median" }],
+        "resource-summary:third-party:count": ["error", { "maxNumericValue": 0, "aggregationMethod": "median" }]
+      }
+    }
+  }
+}
