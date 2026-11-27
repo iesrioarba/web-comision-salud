@@ -53,6 +53,7 @@ jobs:
           name: informes-lighthouse
           path: .lighthouseci/
           if-no-files-found: warn
+          include-hidden-files: true
 
   desplegar:
     needs: comprobar
