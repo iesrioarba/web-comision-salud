@@ -287,7 +287,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Hecho cuando**: compila con las fixtures y con `content/`, el HTML generado es válido y todas las páginas llevan el `noindex`.
   - **Comprobación**: `CONTENT_DIR=tests/fixtures/completo npm run build` genera `_site/404.html`; `npx html-validate "_site/**/*.html"` 0 errores; `grep -L '<meta name="robots" content="noindex">' $(find _site -name '*.html')` no devuelve ningún fichero; con una copia de `tests/fixtures/completo` en una carpeta temporal y `hora: "25:00"`, `CONTENT_DIR=<temporal> npm run build` sale con código distinto de 0 y el mensaje en español, sin llegar a Eleventy.
 
-- [ ] T013 Crear los scripts de comprobación, sus configuraciones y la prueba común en navegador, y actualizar la sección «Comprobaciones» de `AGENTS.md`
+- [x] T013 Crear los scripts de comprobación, sus configuraciones y la prueba común en navegador, y actualizar la sección «Comprobaciones» de `AGENTS.md`
   - **Rama**: `tarea/001-T013-comprobaciones` (grupo T013 + T014; ver «Ramas y commits», hallazgo H1) · **Depende de**: T002, T011, T012
   - **Objetivo**: ADR 0013 y 0014; plan, «Flujo de publicación y despliegue» (`npm run comprobar` = la misma secuencia que Actions). Decisión N10: esta tarea actualiza AGENTS.md (solo su sección «Comprobaciones»). Notas de Michel del 2026-11-26: abajo, en «Interfaz de los scripts nuevos».
   - **Ficheros**:
@@ -313,7 +313,7 @@ Eleventy y todas las comprobaciones automáticas en local y en Actions.
   - **Hecho cuando**: `node --test tests/unit/` en verde, con las tres pruebas nuevas; `npm run comprobar` termina en verde en local con el esqueleto (solo existe `/404.html` en cada salida); `AGENTS.md` cambia solo en «Comprobaciones». La PR no se abre hasta terminar T014 en la misma rama.
   - **Comprobación**: `node --test tests/unit/` con código 0; `npm run comprobar` con código 0; salida de axe con 0 infracciones; Lighthouse cumple las aserciones; `OUTPUT_DIR=. npm run build` sale con 1 y el mensaje de a) sin borrar nada; un fichero temporal creado con `node -e "require('node:fs').writeFileSync('tests/tmp-nbsp.txt', 'a' + String.fromCodePoint(0x00a0))"` hace fallar `npm run comprobar:caracteres` con la línea `tests/tmp-nbsp.txt:1:2 U+00A0` (después se borra); `git diff AGENTS.md` solo cambia la sección «Comprobaciones».
 
-- [ ] T014 Ampliar el trabajo «comprobar» de `.github/workflows/despliegue.yml` con toda la secuencia
+- [x] T014 Ampliar el trabajo «comprobar» de `.github/workflows/despliegue.yml` con toda la secuencia
   - **Rama**: `tarea/001-T013-comprobaciones` (grupo T013 + T014) · **Depende de**: T013
   - **Objetivo**: principio VII y ADR 0014: «desplegar» solo si todo pasa (ya `needs: comprobar`).
   - **Hecho cuando**: «comprobar» ejecuta `npm ci`, `npx playwright install --with-deps chromium` y los mismos pasos que `npm run comprobar`, en su orden, cada uno como paso con nombre en español (empezando por «comprobar:caracteres» e incluido «build:fixtures»), y guarda `.lighthouseci/` como artefacto con `actions/upload-artifact` en la versión fijada en T002 (también si falla). «desplegar» no cambia. El `Dockerfile` sigue copiando `site/` (la web publicada no cambia todavía).
